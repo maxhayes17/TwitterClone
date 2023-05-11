@@ -15,5 +15,10 @@ const postSchema = new mongoose.Schema(
         tags: [{tag: String}],
         likes: Number,
         comments: [{ author: String, body: String, date: Date }],
-    }
+    },
+    // Include while debugging
+    {timestamps: true}
 );
+
+const Post = mongoose.model("Post", postSchema);
+export default Post;
