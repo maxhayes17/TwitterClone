@@ -35,5 +35,10 @@ const userSchema = new mongoose.Schema(
             likes: Number,  
             comments: [{ author: String, body: String, date: Date }]
         }],
-    }
+    },
+    // Include while debugging
+    {timestamps: true}
 );
+
+const User = mongoose.model("User", userSchema);
+export default User;
