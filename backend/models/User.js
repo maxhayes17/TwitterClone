@@ -19,22 +19,22 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        posts: [{
-            author: String, 
-            body: String, 
-            date: Date, 
-            tags: [{tag: String}],  
-            likes: Number,
-            comments: [{ author: String, body: String, date: Date }]
-        }],
-        liked_posts: [{
-            author: String, 
-            body: String, 
-            date: Date, 
-            tags: [{tag: String}],
-            likes: Number,  
-            comments: [{ author: String, body: String, date: Date }]
-        }],
+        // posts: [{
+        //     author: String, 
+        //     body: String, 
+        //     date: Date, 
+        //     tags: [{tag: String}],  
+        //     likes: Number,
+        //     comments: [{ author: String, body: String, date: Date }]
+        // }],
+        // liked_posts: [{
+        //     author: String, 
+        //     body: String, 
+        //     date: Date, 
+        //     tags: [{tag: String}],
+        //     likes: Number,  
+        //     comments: [{ author: String, body: String, date: Date }]
+        // }],
     },
     // Include while debugging
     {timestamps: true}
