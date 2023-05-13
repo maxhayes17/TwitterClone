@@ -10,8 +10,10 @@ export default function Navbar(){
     return(
         <ul className="nav">
             <li><a onClick={() => navigate("/")}>/</a></li>
+            {user && <li><a onClick={() => navigate("/home")}>Home</a></li>}
             <li><a onClick={() => navigate("/explore")}>Explore</a></li>
-            <li>{user && <a onClick={() => dispatch(setLogout())}>Logout</a>}</li>
+            {user && <li><a onClick={() => navigate("/profile")}>Profile</a></li>}
+            {user && <li><a onClick={() => dispatch(setLogout())}>Logout</a></li>}
         </ul>
     );
 }
