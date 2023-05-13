@@ -1,12 +1,16 @@
 //import LoginForm from "../components/LoginForm";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { useState } from "react";
+import { setLogin } from "../state";
 
 function Login(){
     // Default page to be login
     const [pageType, setPageType] = useState("login");
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     // Assign boolean value to whether page is login or register
     const isLogin = pageType == "login";
 
@@ -25,8 +29,19 @@ function Login(){
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
-            // If user has submitted login form, redirect to feed; If user creates an account, redirect to login
-            isLogin ? navigate("/feed") : setPageType("login");
+            // If successful response from login form received...
+            if (isLogin){
+                // Update current state for this user, then redirect to their feed
+                dispatch(
+                    setLogin({
+                        user: data.user,
+                        token: data.token
+                    })
+                )
+                navigate("/feed")
+            }
+            // Otherwise, redirect to login page for user to login with newly created account
+            setPageType("login");
         })
         .catch((err) => console.log(err));
 
