@@ -1,4 +1,4 @@
-//import LoginForm from "../components/LoginForm";
+import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
@@ -38,7 +38,7 @@ function Login(){
                         token: data.token
                     })
                 )
-                navigate("/feed")
+                navigate("/home")
             }
             // Otherwise, redirect to login page for user to login with newly created account
             setPageType("login");
@@ -51,6 +51,7 @@ function Login(){
 
     return(
         <div>
+            <Navbar />
             <h1>{isLogin ? "Login to your account" : "Create an account"}</h1>
             <form onSubmit={handleSubmit}>
                 <input placeholder="E-mail" name="email" autoComplete="off"/>
