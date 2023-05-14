@@ -6,13 +6,14 @@ export default function Navbar(){
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector((state) => state.user);
+    const userId = user ? user._id: null;
 
     return(
         <ul className="nav">
             <li><a onClick={() => navigate("/")}>/</a></li>
             {user && <li><a onClick={() => navigate("/home")}>Home</a></li>}
             <li><a onClick={() => navigate("/explore")}>Explore</a></li>
-            {user && <li><a onClick={() => navigate("/profile")}>Profile</a></li>}
+            {user && <li><a onClick={() => navigate("/profile/" + userId)}>Profile</a></li>}
             {user && <li><a onClick={() => dispatch(setLogout())}>Logout</a></li>}
         </ul>
     );
