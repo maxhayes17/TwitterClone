@@ -4,8 +4,9 @@ import { useSelector } from "react-redux";
 
 
 import Login from "./pages/login";
-import Feed from "./pages/feed";
+import Home from "./pages/home";
 import Profile from "./pages/profile";
+import Explore from "./pages/explore";
 
 import Navbar from "./components/Navbar";
 
@@ -24,18 +25,21 @@ function App() {
       element: <Login />
     },
     {
-      path: "/feed",
-      element: auth ? <Feed /> : <Navigate to="/"/>
+      path: "/explore",
+      element: <Explore />
     },
     {
-      path: "/profile",
+      path: "/home",
+      element: auth ? <Home /> : <Navigate to="/"/>
+    },
+    {
+      path: "/profile/:id",
       element: auth ? <Profile /> : <Navigate to="/"/>
     }
   ]);
 
   return (
       <div>
-        <Navbar />
         <RouterProvider router={router}/>
       </div>
   );
