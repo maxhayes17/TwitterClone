@@ -2,7 +2,7 @@ import bcrypt from "bcrypt"; // Password encryption
 import jwt from "jsonwebtoken"; // Web-token to be used for authorization
 import User from "../models/User.js"; // User DB model
 
-// Must be async when making calls to DB
+// Register controller (must be async when making calls to DB)
 export const register = async(req, res) => {
     try {
         // De-structure request body
@@ -11,6 +11,7 @@ export const register = async(req, res) => {
             email,
             password
         } = req.body;
+        console.log(req.body);
 
         // Hash password
         const salt = await bcrypt.genSalt();
@@ -32,6 +33,7 @@ export const register = async(req, res) => {
     }
 };
 
+// Login controller
 export const login = async(req, res) => {
     try {
         // De-structure request body
@@ -39,12 +41,13 @@ export const login = async(req, res) => {
             email,
             password
         } = req.body;
-        
-        // Search DB for user with unique email
-        const user = User.findOne({email: email});
 
+        // Search DB for user with unique email
+        const user = await User.findOne({email: email});
+        // Compare entered password with stored password in DB
+        const isValid = await bcrypt.compare(password, user.pw_hash);
         // If user does not exist, or incorrect password was entered, return 400 (Client error) status code
-        if (!user || !(await bcrypt.compare(password, user.password))) 
+        if (!user || !isValid) 
             return res.status(400);
 
         // Otherwise... User exists and has logged in with correct credentials

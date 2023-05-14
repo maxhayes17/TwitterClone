@@ -9,6 +9,11 @@ import morgan from "morgan"; // HTTP Request logger
 import path from "path"; // File, directory paths
 import { fileURLToPath } from "url"; // File path
 
+import userRoutes from "./routes/user.js";
+import authRoutes from "./routes/auth.js"; // Routes for authentication/authorization
+
+import {register} from "./controllers/auth.js"; // Controllers for API endpoints
+
 // Configuration
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -41,6 +46,17 @@ const storage = multer.diskStorage({
 
 // Will use whenever uploading file
 const upload = multer({storage});
+
+// Authentication
+
+// Authentication routes
+app.use("/auth", authRoutes);
+
+// User information routes
+app.use("/user", userRoutes);
+
+// Route with file upload
+// app.post("/auth/register", upload.single("picture"), register);
 
 // Setup DB
 
