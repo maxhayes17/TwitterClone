@@ -2,7 +2,11 @@ import mongoose from "mongoose";
 
 const postSchema = new mongoose.Schema(
     {
-        author: String,
+        public: Boolean,
+        author: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        },
         body: {
             type: String,
             min: 1,
@@ -13,8 +17,15 @@ const postSchema = new mongoose.Schema(
             default: Date.now
         },
         tags: [{tag: String}],
-        likes: Number,
-        comments: [{ author: String, body: String, date: Date }],
+        likes: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        }],
+        comments: [{ 
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Post"
+        }],
+        media: Boolean
     },
     // Include while debugging
     {timestamps: true}
