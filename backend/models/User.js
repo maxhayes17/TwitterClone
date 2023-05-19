@@ -21,47 +21,40 @@ const userSchema = new mongoose.Schema(
         },
         name: {
             type: String,
-            max: 50
+            max: 50,
+            required: true
         },
         bio: {
             type: String,
-            max: 160
+            max: 160,
+            default: "",
         },
         location: {
             type: String,
-            max: 30
+            max: 30,
         },
         website: {
             type: String,
-            max: 100
+            max: 100,
         },
         followers: [{
-            type: ObjectId,
+            type: mongoose.Schema.Types.ObjectId,
             ref: "User", 
             required: true
         }],
         following: [{
-            type: ObjectId,
+            type: mongoose.Schema.Types.ObjectId,
             ref: "User", 
             required: true
         }],
-
-        // posts: [{
-        //     author: String, 
-        //     body: String, 
-        //     date: Date, 
-        //     tags: [{tag: String}],  
-        //     likes: Number,
-        //     comments: [{ author: String, body: String, date: Date }]
-        // }],
-        // liked_posts: [{
-        //     author: String, 
-        //     body: String, 
-        //     date: Date, 
-        //     tags: [{tag: String}],
-        //     likes: Number,  
-        //     comments: [{ author: String, body: String, date: Date }]
-        // }],
+        posts: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Post" 
+        }],
+        liked_posts: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Post"
+        }]
     },
     // Include while debugging
     {timestamps: true}
