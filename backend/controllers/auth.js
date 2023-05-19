@@ -39,12 +39,13 @@ export const login = async(req, res) => {
     try {
         // De-structure request body
         const {
-            email,
+            identifier,
             password
         } = req.body;
 
         // Search DB for user with unique email (or username)
-        const user = await User.findOne(email.includes("@") ? {email: email} : {username: email});
+        // If identifier has an @, an email was entered; otherwise, search for username
+        const user = await User.findOne(identifier.includes("@") ? {email: identifier} : {username: identifier});
         // Compare entered password with stored password in DB
         const isValid = await bcrypt.compare(password, user.pw_hash);
         // If user does not exist, or incorrect password was entered, return 400 (Client error) status code

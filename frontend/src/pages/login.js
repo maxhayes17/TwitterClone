@@ -54,7 +54,7 @@ function Login(){
             <Navbar />
             <h1>{isLogin ? "Login to your account" : "Create an account"}</h1>
             <form onSubmit={handleSubmit}>
-                <input placeholder="E-mail" name="email" autoComplete="off"/>
+                <input placeholder="Username or E-mail" name="identifier" autoComplete="off"/>
                 {!isLogin && <input placeholder="Username" name="username" autoComplete="off"/>}
                 <input placeholder="Password" name="password" autoComplete="off"/>
                 <button type="submit">{isLogin ? "Sign in" : "Sign up"}</button>
