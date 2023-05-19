@@ -10,6 +10,8 @@ import Explore from "./pages/explore";
 
 import Navbar from "./components/Navbar";
 
+import ProfileForm from "./components/ProfileForm";
+
 
 import logo from './logo.svg';
 import './App.css';
@@ -35,7 +37,12 @@ function App() {
     {
       path: "/profile/:id",
       element: auth ? <Profile /> : <Navigate to="/"/>
+    },
+    {
+      path: "/profile/:id/edit",
+      element: auth ? <Profile edit={true}/>: <Navigate to="/"/>
     }
+
   ]);
 
   return (

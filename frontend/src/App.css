@@ -77,3 +77,22 @@ ul{
   color: #FFFFFF;
 }
 
+.inline{
+  display: flex;
+} 
+.inline a{
+  margin: auto;
+  border-radius: 1ex;
+  padding: 10px;
+  border: 1px solid #333639;
+  right: 0;
+}
+
+.profileForm{
+  background-color: black;
+  border-radius: 1ex;
+  padding: 20px;
+  border: 1px solid #333639;
+  position: fixed;
+  z-index: 2;
+}

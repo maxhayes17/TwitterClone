@@ -11,3 +11,24 @@ export const getUserInfo = async (req, res) => {
         res.status(404).json({error: err.message});
     }
 }
+
+export const updateUserInfo = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const user = await User.findById(id);
+        const {
+            name,
+            bio,
+            location,
+            website
+        } = req.body;
+        user.name = name ? name : user.name;
+        user.bio = bio ? bio : user.bio;
+        user.save();
+        console.log(req.body);
+
+        res.status(200).json(user);
+    } catch (err) {
+        res.status(404).json({error: err.message});
+    }
+}

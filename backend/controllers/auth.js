@@ -19,9 +19,10 @@ export const register = async(req, res) => {
 
         // Create new user object with credentials passed in
         const newUser = new User({
-            username,
-            email,
-            pw_hash
+            name: username,
+            username: username,
+            email: email,
+            pw_hash: pw_hash
         });
         const savedUser = await newUser.save();
         // Send successful (Resource created) response
@@ -42,8 +43,8 @@ export const login = async(req, res) => {
             password
         } = req.body;
 
-        // Search DB for user with unique email
-        const user = await User.findOne({email: email});
+        // Search DB for user with unique email (or username)
+        const user = await User.findOne(email.includes("@") ? {email: email} : {username: email});
         // Compare entered password with stored password in DB
         const isValid = await bcrypt.compare(password, user.pw_hash);
         // If user does not exist, or incorrect password was entered, return 400 (Client error) status code
