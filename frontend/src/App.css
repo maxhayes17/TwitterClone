@@ -25,13 +25,22 @@ form button{
   border-radius: 3ex;
   border: none; */
 }
-input, textarea{
+input, textarea, select{
   padding: 10px;
   font-size: 1rem;
   border-radius: 1ex;
   margin-top: 10px;
   width: 100%;
   resize: none;
+}
+
+.postForm select{
+  width: auto;
+  padding: 5px;
+  margin-right: 10px;
+}
+label{
+  padding: 10px;
 }
 
 a:hover,button:hover{
@@ -72,10 +81,18 @@ ul{
   margin-right: 33%;
   height: 100%;
   text-align: left;
-  padding-left: 20px;
+  /* padding-left: 20px; */
   /* background-color: black; */
   /* border: 1px solid #333639; */
 }
+.mainCard h1{
+  padding: 20px 20px 0;
+}
+.mainCard .post{
+}
+/* .mainCard div, p{
+  padding: 0 20px;
+} */
 
 .exploreCard{
   list-style: none;
@@ -116,14 +133,16 @@ ul{
 
 .post{
   border: 1px solid #333639;
-  margin-left: -25px;
-  padding-left: 25px;
+  padding-left: 20px;
   padding-bottom: 10px;
 }
 .post p{
-  margin: auto;
   text-align: left;
-  margin-left: 10px;
+  /* margin-left: 10px; */
+}
+div.post:hover{
+  background-color: #080808;
+  cursor: pointer;
 }
 
 .input-text-large{

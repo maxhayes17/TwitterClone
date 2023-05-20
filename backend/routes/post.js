@@ -1,10 +1,12 @@
 import express from "express";
 
-import { getPosts, createPost } from "../controllers/post.js";
+import { getPosts, createPost, getUserPosts } from "../controllers/post.js";
+import { verifyToken } from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.get("/", getPosts);
-router.post("/compose", createPost);
+router.get("/", verifyToken, getPosts);
+router.get("/:id/posts", verifyToken, getUserPosts);
+router.post("/compose", verifyToken, createPost);
 
 export default router;

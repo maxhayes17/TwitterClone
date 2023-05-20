@@ -1,14 +1,22 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+export default function Post({author, body, date, userProfile}){
 
-export default function Post({author, body, date}){
-
-    useEffect( () =>{
-        getUserInfo()
+    useEffect(() => {
+        console.log(userProfile);
+        // If viewing a user's profile, do not need to search for author of each post
+        if (userProfile){
+            setUser(userProfile);
+        }
+        else{
+            getUserInfo();
+        }
     }, [])
     const [user, setUser] = useState(null);
-
     const token = useSelector((state) => state.token);
+
+    const navigate = useNavigate();
 
     const getUserInfo = () => {
         console.log(author);
@@ -20,7 +28,7 @@ export default function Post({author, body, date}){
         })
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
+            // console.log(data);
             setUser(data);
         })
         .catch((err) => console.log(err));
@@ -30,7 +38,7 @@ export default function Post({author, body, date}){
         <div>
             {user && <div className="post">
                 <div className="inline">
-                    <h3>{user.name}</h3>
+                    <a onClick={() => navigate("/profile/" + user._id)}><h3>{user.name}</h3></a>
                     <p>@{user.username}</p>
                 </div>
                 <p>{body}</p>

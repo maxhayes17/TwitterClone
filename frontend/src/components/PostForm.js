@@ -26,8 +26,13 @@ export default function PostForm({user}){
     return(
         <div>
             <a onClick={() => navigate("/home")}>X</a>
-            <form onSubmit={handleSubmit}>
-                <textarea placeholder="Body" name="body" autoComplete="off" className="input-text-large"/>
+            <form onSubmit={handleSubmit} className="postForm">
+                <textarea placeholder="Body" name="body" autoComplete="off" className="input-text-large" required/>
+                {/* <label for="audience">Who can see this?</label> */}
+                <select name="audience" required>
+                    <option value="Everyone">Everyone</option>
+                    <option value="Followers">My followers</option>
+                </select>
                 <button type="submit" className="button-round" id="blue">Post</button>
             </form>
         </div>

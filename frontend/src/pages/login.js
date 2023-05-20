@@ -57,7 +57,7 @@ function Login(){
                 <input placeholder="Username or E-mail" name="identifier" autoComplete="off"/>
                 {!isLogin && <input placeholder="Username" name="username" autoComplete="off"/>}
                 <input placeholder="Password" name="password" autoComplete="off"/>
-                <button type="submit">{isLogin ? "Sign in" : "Sign up"}</button>
+                <button type="submit" className="button-round" id="white">{isLogin ? "Sign in" : "Sign up"}</button>
                 {isLogin && <p>Don't have an account? <a onClick={() => setPageType("register")}>Sign up</a></p>}
             </form>
         </div>
