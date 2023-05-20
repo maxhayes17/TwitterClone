@@ -9,7 +9,9 @@ export default function ProfileCard({ user })
             <h1>{"<-"}</h1>
             <div className="inline">
                 <h3>{user.name}</h3>
-                <a onClick={() => navigate("/profile/" + user._id + "/edit")}>Edit profile</a>
+                <a onClick={() => navigate("/profile/" + user._id + "/edit")} 
+                className="button-round" 
+                style={{border: "1px solid #333639"}}>Edit profile</a>
             </div>
             <p>@{user.username}</p>
             <p>{user.bio}</p>

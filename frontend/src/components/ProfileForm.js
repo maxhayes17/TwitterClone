@@ -30,10 +30,10 @@ export default function ProfileForm({userId, token, setUser}){
             <a onClick={() => navigate("/profile/" + userId.id)}>X</a>
             <form onSubmit={handleSubmit}>
                 <input placeholder="Name" name="name" autoComplete="off"/>
-                <input placeholder="Bio" name="bio" autoComplete="off"/>
+                <textarea placeholder="Bio" name="bio" autoComplete="off"/>
                 <input placeholder="Location" name="location" autoComplete="off"/>
                 <input placeholder="Website" name="website" autoComplete="off"/>
-                <button type="submit">Save</button>
+                <button type="submit" className="button-round" id="white">Save</button>
             </form>
         </div>
     );

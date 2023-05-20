@@ -2,7 +2,9 @@
   text-align: center;
   margin: 0;
 }
+
 body{
+  font-family: Arial, Helvetica, sans-serif;
   background-color: black;
   color: white;
 }
@@ -15,28 +17,24 @@ form{
   margin: auto;
 }
 form button{
-  margin-top: 10px;
+  /* margin-top: 10px;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 1rem;
   background-color: white;
-  padding: 10px;
-  padding-inline: 15px;
+  padding: 10px 15px;
   border-radius: 3ex;
-  border: none;
+  border: none; */
 }
-input{
+input, textarea{
   padding: 10px;
-  font-size: 20px;
+  font-size: 1rem;
   border-radius: 1ex;
   margin-top: 10px;
   width: 100%;
+  resize: none;
 }
 
-a:hover{
-  cursor: pointer;
-  opacity: 70%;
-}
-button:hover{
+a:hover,button:hover{
   cursor: pointer;
   opacity: 70%;
 }
@@ -63,7 +61,7 @@ ul{
   border: 1px solid #333639;
 }
 .nav li{
-  margin-top: 10px;
+  margin-top: 20px;
   color: #FFFFFF;
 }
 
@@ -89,7 +87,6 @@ ul{
   position: fixed;
 
   background-color: black;
-  /* border: 2px solid black; */
   border: 1px solid #333639;
 }
 .exploreCard li {
@@ -100,12 +97,6 @@ ul{
   display: flex;
 } 
 .inline a{
-  font-weight: bold;
-  margin: auto;
-  border-radius: 3ex;
-  padding: 10px;
-  padding-inline: 15px;
-  border: 1px solid #333639;
   right: 0;
 }
 .inline p{
@@ -133,4 +124,34 @@ ul{
   margin: auto;
   text-align: left;
   margin-left: 10px;
+}
+
+.input-text-large{
+  padding: 5px 10px;
+  height: 150px;
+  box-sizing: border-box;
+  resize: none;
+}
+
+.button-round{
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 3ex;
+  border: none;
+  padding: 10px 15px;
+  margin: auto;
+}
+
+form .button-round{
+  margin-top: 10px;
+}
+
+#white{
+  color: black;
+  background-color: white;
+}
+
+#blue{
+  color: white;
+  background-color: #1d9bf0;
 }

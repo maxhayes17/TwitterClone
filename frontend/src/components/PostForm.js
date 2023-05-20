@@ -25,9 +25,10 @@ export default function PostForm({user}){
     }
     return(
         <div>
+            <a onClick={() => navigate("/home")}>X</a>
             <form onSubmit={handleSubmit}>
-                <input placeholder="Body" name="body" autoComplete="off"/>
-                <button type="submit">Post</button>
+                <textarea placeholder="Body" name="body" autoComplete="off" className="input-text-large"/>
+                <button type="submit" className="button-round" id="blue">Post</button>
             </form>
         </div>
     )
