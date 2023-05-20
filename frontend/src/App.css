@@ -16,10 +16,29 @@ form{
 }
 form button{
   margin-top: 10px;
+  font-weight: bold;
+  font-size: 15px;
+  background-color: white;
+  padding: 10px;
+  padding-inline: 15px;
+  border-radius: 3ex;
+  border: none;
 }
 input{
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 1ex;
   margin-top: 10px;
   width: 100%;
+}
+
+a:hover{
+  cursor: pointer;
+  opacity: 70%;
+}
+button:hover{
+  cursor: pointer;
+  opacity: 70%;
 }
 
 h1{
@@ -81,11 +100,18 @@ ul{
   display: flex;
 } 
 .inline a{
+  font-weight: bold;
   margin: auto;
-  border-radius: 1ex;
+  border-radius: 3ex;
   padding: 10px;
+  padding-inline: 15px;
   border: 1px solid #333639;
   right: 0;
+}
+.inline p{
+  margin: auto;
+  text-align: left;
+  margin-left: 10px;
 }
 
 .profileForm{
@@ -95,4 +121,16 @@ ul{
   border: 1px solid #333639;
   position: fixed;
   z-index: 2;
+}
+
+.post{
+  border: 1px solid #333639;
+  margin-left: -25px;
+  padding-left: 25px;
+  padding-bottom: 10px;
+}
+.post p{
+  margin: auto;
+  text-align: left;
+  margin-left: 10px;
 }
