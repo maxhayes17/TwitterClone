@@ -11,6 +11,7 @@ import { fileURLToPath } from "url"; // File path
 
 import userRoutes from "./routes/user.js";
 import authRoutes from "./routes/auth.js"; // Routes for authentication/authorization
+import postRoutes from "./routes/post.js";
 
 import {register} from "./controllers/auth.js"; // Controllers for API endpoints
 
@@ -54,6 +55,9 @@ app.use("/auth", authRoutes);
 
 // User information routes
 app.use("/user", userRoutes);
+
+// Post routes
+app.use("/posts", postRoutes);
 
 // Route with file upload
 // app.post("/auth/register", upload.single("picture"), register);
