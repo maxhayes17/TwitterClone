@@ -40,7 +40,7 @@ function Home(){
             <Navbar />
             <div className="mainCard">
                 <h1>Home</h1>
-                {posts.map( ({_id, author, body, date}) => <Post key={_id} author={author} body={body} date={date}/>)}
+                {posts.map( ({_id, author, body, date}) => <Post key={_id} id={_id} author={author} body={body} date={date}/>)}
             </div>
             <ExploreCard />
         </div>

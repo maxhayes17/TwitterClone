@@ -35,7 +35,7 @@ export default function ProfileCard({ user, posts })
                     <p>Tweets | Replies | Media | Likes</p>
                 </div>
                 {posts && posts.map(({_id, author, body, date}) => 
-                <Post key={_id} body={body} author={author} date={date} userProfile={user}/>)}
+                <Post key={_id} id={_id} body={body} author={author} date={date} userProfile={user}/>)}
             </div>}
         </div>
     );
