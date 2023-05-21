@@ -28,7 +28,6 @@ export default function Post({author, body, date, userProfile}){
         })
         .then((res) => res.json())
         .then((data) => {
-            // console.log(data);
             setUser(data);
         })
         .catch((err) => console.log(err));
@@ -38,11 +37,10 @@ export default function Post({author, body, date, userProfile}){
         <div>
             {user && <div className="post">
                 <div className="inline">
-                    <a onClick={() => navigate("/profile/" + user._id)}><h3>{user.name}</h3></a>
-                    <p>@{user.username}</p>
+                    <a onClick={() => navigate("/profile/" + user._id)} style={{fontWeight:"bold"}}>{user.name}</a>
+                    <p style={{opacity:"70%"}}>@{user.username} • {date.slice(0,10)}</p>
                 </div>
                 <p>{body}</p>
-                <p>{date.slice(0,10)}</p>
             </div>}
         </div>
     );
