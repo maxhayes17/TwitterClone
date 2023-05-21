@@ -16,6 +16,7 @@ import PostForm from "./components/PostForm";
 
 import logo from './logo.svg';
 import './App.css';
+import ViewPost from "./pages/post";
 
 function App() {
   // Create boolean variable to determine whether user is authorized
@@ -42,11 +43,15 @@ function App() {
     },
     {
       path: "/profile/:id/edit",
-      element: auth ? <Profile edit={true}/>: <Navigate to="/"/>
+      element: auth ? <Profile edit={true}/> : <Navigate to="/"/>
     },
     {
       path: "/post/compose",
       element: auth ? <PostForm user={user}/> : <Navigate to="/"/>
+    },
+    {
+      path: "/post/:id",
+      element: auth ? <ViewPost/> : <Navigate to="/"/>
     }
 
   ]);
