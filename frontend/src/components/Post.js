@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-export default function Post({author, body, date, userProfile}){
+export default function Post({id, author, body, date, userProfile}){
 
     useEffect(() => {
         console.log(userProfile);
@@ -35,9 +35,11 @@ export default function Post({author, body, date, userProfile}){
 
     return(
         <div>
-            {user && <div className="post">
+            {user && <div className="post" onClick={() => navigate("/post/" + id)}>
                 <div className="inline">
-                    <a onClick={() => navigate("/profile/" + user._id)} style={{fontWeight:"bold"}}>{user.name}</a>
+                    <a onClick={(event) => {
+                        event.stopPropagation()
+                        navigate("/profile/" + user._id)}} style={{fontWeight:"bold"}}>{user.name}</a>
                     <p style={{opacity:"70%"}}>@{user.username} • {date.slice(0,10)}</p>
                 </div>
                 <p>{body}</p>
