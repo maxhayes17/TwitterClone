@@ -24,6 +24,8 @@ export const updateUserInfo = async (req, res) => {
         } = req.body;
         user.name = name ? name : user.name;
         user.bio = bio ? bio : user.bio;
+        user.location = location ? location : user.location;
+        user.website = website ? website : user.website;
         user.save();
         console.log(req.body);
 
