@@ -38,6 +38,7 @@ export default function Post({id, author, body, date, userProfile}){
             {user && <div className="post" onClick={() => navigate("/post/" + id)}>
                 <div className="inline">
                     <a onClick={(event) => {
+                        // So click on elements inside div don't act as clicks on div
                         event.stopPropagation()
                         navigate("/profile/" + user._id)}} style={{fontWeight:"bold"}}>{user.name}</a>
                     <p style={{opacity:"70%"}}>@{user.username} • {date.slice(0,10)}</p>
