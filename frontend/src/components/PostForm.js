@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function PostForm({user}){
     const navigate = useNavigate();
+    const token = useSelector((state) => state.token);
 
     const handleSubmit = (form) => {
         form.preventDefault();
@@ -12,7 +14,9 @@ export default function PostForm({user}){
 
         fetch("http://localhost:3001/posts/compose", {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
+            headers: {
+                Authorization: "Bearer " + token,
+                "Content-Type": "application/json"},
             body: JSON.stringify(formJSON)
         })
         .then((res) => res.json())
