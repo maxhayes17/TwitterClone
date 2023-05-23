@@ -2,7 +2,7 @@ import Navbar from "../components/Navbar";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
+import { setUserInfo } from "../state";
 
 import ProfileCard from "../components/ProfileCard";
 import ExploreCard from "../components/ExploreCard";
@@ -70,7 +70,7 @@ function Profile({edit}){
         .then((data) => {
             console.log(data);
             dispatch(
-                setUser({user: data.follower})
+                setUserInfo({user: data.follower})
             );
             navigate("/profile/" + data.followee._id);
         })
