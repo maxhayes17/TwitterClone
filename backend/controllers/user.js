@@ -22,6 +22,7 @@ export const updateUserInfo = async (req, res) => {
             location,
             website
         } = req.body;
+
         user.name = name ? name : user.name;
         user.bio = bio ? bio : user.bio;
         user.location = location ? location : user.location;
@@ -30,6 +31,32 @@ export const updateUserInfo = async (req, res) => {
         console.log(req.body);
 
         res.status(200).json(user);
+    } catch (err) {
+        res.status(404).json({error: err.message});
+    }
+}
+
+export const addFollower = async (req, res) => {
+
+    try {
+
+        const {
+            followerId,
+            followeeId
+        } = req.body;
+
+        // Add followee to follower's following list
+        const follower = await User.findById(followerId);
+        follower.following.push(followeeId);
+        follower.save();
+
+        // Add follower to followee's following list
+        const followee = await User.findById(followeeId);
+        followee.followers.push(followerId);
+        followee.save()
+
+        // Return followee's data after successful follow
+        res.status(200).json({follower: follower, followee: followee});
     } catch (err) {
         res.status(404).json({error: err.message});
     }

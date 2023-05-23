@@ -8,7 +8,7 @@ export const register = async(req, res) => {
         // De-structure request body
         const {
             username,
-            email,
+            identifier,
             password
         } = req.body;
         console.log(req.body);
