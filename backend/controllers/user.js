@@ -37,7 +37,6 @@ export const updateUserInfo = async (req, res) => {
 }
 
 export const addFollower = async (req, res) => {
-
     try {
 
         const {
@@ -45,18 +44,45 @@ export const addFollower = async (req, res) => {
             followeeId
         } = req.body;
 
-        // Add followee to follower's following list
         const follower = await User.findById(followerId);
-        follower.following.push(followeeId);
-        follower.save();
-
-        // Add follower to followee's following list
         const followee = await User.findById(followeeId);
-        followee.followers.push(followerId);
+
+        // If follower already follows followee and clicks this... unfollow
+        if (follower.following.includes(followeeId)){
+            follower.following = follower.following.filter((id) => id != followeeId);
+            followee.followers = followee.followers.filter((id) => id != followerId);
+        }
+        else {
+            // Otherwise, add follower to followee's followers...
+            follower.following.push(followeeId);
+            followee.followers.push(followerId);
+
+        }
+        follower.save();
         followee.save()
 
         // Return followee's data after successful follow
         res.status(200).json({follower: follower, followee: followee});
+    } catch (err) {
+        res.status(404).json({error: err.message});
+    }
+}
+
+export const getUserFollowers = async (req, res) => {
+    try {
+        
+    } catch (err) {
+        res.status(404).json({error: err.message});
+    }
+}
+
+export const getUserFollowing = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const user = await User.findById(id);
+
+
+
     } catch (err) {
         res.status(404).json({error: err.message});
     }
