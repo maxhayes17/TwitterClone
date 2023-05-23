@@ -1,14 +1,18 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-export default function ProfileForm({userId, token, setUser}){
+export default function ProfileForm({token, setUser}){
     const navigate = useNavigate();
-
+    // Should only be able to edit profile of user logged in
+    // const {id} = useSelector((state) => state.user._id);
+    const {id} = useParams();
+    console.log(id);
     const handleSubmit = (form) => {
         form.preventDefault();
         const formData = new FormData(form.target);
         const formJSON = Object.fromEntries(formData.entries());
 
-        fetch("http://localhost:3001/user/" + userId.id + "/edit", {
+        fetch("http://localhost:3001/user/" + id + "/edit", {
             method: "PATCH",
             headers: {
                 Authorization: "Bearer " + token,
@@ -18,8 +22,8 @@ export default function ProfileForm({userId, token, setUser}){
         })
         .then((res) => res.json())
         .then((data) => {
-            navigate("/profile/" + userId.id);
             setUser(data);
+            navigate("/profile/" + id);
         })
         .catch((err) => console.log(err));
 
@@ -27,7 +31,7 @@ export default function ProfileForm({userId, token, setUser}){
     }
     return(
         <div className="profileForm">
-            <a onClick={() => navigate("/profile/" + userId.id)}>X</a>
+            <a onClick={() => navigate("/profile/" + id)}>X</a>
             <form onSubmit={handleSubmit}>
                 <input placeholder="Name" name="name" autoComplete="off"/>
                 <textarea placeholder="Bio" name="bio" autoComplete="off"/>
