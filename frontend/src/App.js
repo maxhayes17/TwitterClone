@@ -7,6 +7,7 @@ import Login from "./pages/login";
 import Home from "./pages/home";
 import Profile from "./pages/profile";
 import Explore from "./pages/explore";
+import Follows from "./pages/follows";
 
 import Navbar from "./components/Navbar";
 
@@ -44,6 +45,14 @@ function App() {
     {
       path: "/profile/:id/edit",
       element: auth ? <Profile edit={true}/> : <Navigate to="/"/>
+    },
+    {
+      path: "/profile/:id/followers",
+      element: auth ? <Follows isFollowers={true}/> : <Navigate to="/"/>
+    },
+    {
+      path: "/profile/:id/following",
+      element: auth ? <Follows /> : <Navigate to="/"/>
     },
     {
       path: "/post/compose",
