@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-export default function Post({id, author, body, date, userProfile}){
+export default function Post({id, author, body, createdAt, userProfile}){
 
     useEffect(() => {
         console.log(userProfile);
@@ -41,7 +41,7 @@ export default function Post({id, author, body, date, userProfile}){
                         // So click on elements inside div don't act as clicks on div
                         event.stopPropagation()
                         navigate("/profile/" + user._id)}} style={{fontWeight:"bold"}}>{user.name}</a>
-                    <p style={{opacity:"70%"}}>@{user.username} • {date.slice(0,10)}</p>
+                    <p style={{opacity:"70%"}}>@{user.username} • {createdAt.slice(0,10)}</p>
                 </div>
                 <p>{body}</p>
             </div>}

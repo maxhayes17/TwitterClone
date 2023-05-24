@@ -54,7 +54,11 @@ const userSchema = new mongoose.Schema(
         liked_posts: [{
             type: mongoose.Schema.Types.ObjectId,
             ref: "Post"
-        }]
+        }],
+        replies: [{ 
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Post"
+        }],
     },
     // Include while debugging
     {timestamps: true}

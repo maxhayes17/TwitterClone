@@ -26,6 +26,7 @@ function Home(){
         })
         .then((res) => res.json())
         .then((data) => {
+            console.log(data);
             dispatch(
                 setPosts({
                     posts: data
@@ -46,7 +47,7 @@ function Home(){
                         <button>Following</button>
                     </div>
                 </div>
-                {posts.map( ({_id, author, body, date}) => <Post key={_id} id={_id} author={author} body={body} date={date}/>)}
+                {posts.map( ({_id, author, body, createdAt}) => <Post key={_id} id={_id} author={author} body={body} createdAt={createdAt}/>)}
             </div>
             <ExploreCard />
         </div>

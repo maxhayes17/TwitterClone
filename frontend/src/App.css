@@ -16,6 +16,18 @@ form{
   width: 300px;
   margin: auto;
 }
+
+.replyForm{
+  display: inline;
+  padding: 10px;
+}
+.replyForm input{
+  width: 75%;
+}
+.replyForm button{
+  margin-left: 10px;
+}
+
 form button{
   /* margin-top: 10px;
   font-weight: bold;

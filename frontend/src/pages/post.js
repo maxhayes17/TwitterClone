@@ -16,6 +16,7 @@ function ViewPost(){
 
     const navigate = useNavigate();
     const token = useSelector((state) => state.token);
+    const currentUser = useSelector((state) => state.user);
     const {id} = useParams();
 
     const getPostInfo = () => {
@@ -33,13 +34,45 @@ function ViewPost(){
         .catch((err) => console.log(err));
     }
 
+    const composeReply = (form) => {
+        form.preventDefault();
+        const formData = new FormData(form.target);
+        const formJSON = Object.fromEntries(formData.entries());
+        formJSON["author"] = currentUser._id;
+        console.log(formJSON);
+
+        fetch("http://localhost:3001/posts/" + id + "/reply", {
+            method: "POST",
+            headers: {
+                Authorization: "Bearer " + token,
+                "Content-Type": "application/json"},
+            body: JSON.stringify(formJSON)
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data);
+            
+        }).catch((err) => console.log(err));
+
+        form.target.reset();
+    }
+
     return(
         <div>
             <Navbar />
-            <div className="mainCard">
-                <h1><a onClick={() => navigate("/")}>{"<"}</a> Post</h1>
-                {post && <Post key={post._id} id={post._id} author={post.author} body={post.body} date={post.date}/>}
-            </div>
+            {post && <div className="mainCard">
+
+                <div className="vertical-nav">
+                    <h2><a onClick={() => navigate("/")}>{"<"}</a> Post</h2>
+                </div>
+            
+                <Post key={post._id} id={post._id} author={post.author} body={post.body} createdAt={post.createdAt}/>
+
+                <form onSubmit={composeReply} className="replyForm">
+                    <input placeholder="Reply to this post!" name="body" autoComplete="off"/>
+                    <button type="submit" className="button-round" id="blue">Reply</button>
+                </form>
+            </div>}
             <ExploreCard />
         </div>
     );

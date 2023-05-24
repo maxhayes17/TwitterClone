@@ -128,8 +128,8 @@ function Profile({edit}){
                         </div>
 
                     </div>
-                    {posts && posts.map(({_id, author, body, date}) => 
-                    <Post key={_id} id={_id} body={body} author={author} date={date} userProfile={user}/>)}
+                    {posts && posts.map(({_id, author, body, createdAt}) => 
+                    <Post key={_id} id={_id} body={body} author={author} createdAt={createdAt} userProfile={user}/>)}
                 </div>}
             {/* {posts && <ProfileCard user={user} posts={posts}/>} */}
             </div>}

@@ -12,20 +12,21 @@ const postSchema = new mongoose.Schema(
             min: 1,
             max: 400
         },
-        date: {
-            type: Date,
-            default: Date.now
-        },
+        date: Date,
         tags: [{tag: String}],
         likes: [{
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
         }],
-        comments: [{ 
+        replies: [{ 
             type: mongoose.Schema.Types.ObjectId,
             ref: "Post"
         }],
-        media: Boolean
+        media: Boolean,
+        root: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Post"
+        }
     },
     // Include while debugging
     {timestamps: true}
