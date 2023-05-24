@@ -37,7 +37,7 @@ function ViewPost(){
         <div>
             <Navbar />
             <div className="mainCard">
-                <h1><a onClick={() => navigate("/")}>{"<--"}</a> Post</h1>
+                <h1><a onClick={() => navigate("/")}>{"<"}</a> Post</h1>
                 {post && <Post key={post._id} id={post._id} author={post.author} body={post.body} date={post.date}/>}
             </div>
             <ExploreCard />

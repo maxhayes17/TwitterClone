@@ -84,28 +84,49 @@ function Profile({edit}){
             {edit && (user._id == currentUser._id) && <ProfileForm token={token} setUser={setUser}/>}
             
                 {posts && <div className="mainCard">
-                    <a onClick={() => navigate("/home")}><h1>{"<--"}</h1></a>
+
+
+                    <div className="vertical-nav">
+                        <div className="inline">
+                            <a onClick={() => navigate("/home")} style={{paddingRight:"20px"}}><h2>{"<"}</h2></a>
+                            <div className="vertical-stack">
+                                <h3>{user.name}</h3>
+                                <p style={{opacity:"70%"}}>{user.posts.length} Posts</p>
+                            </div>
+                        </div>
+                    </div>
+
 
                     <div style={{padding: "0 20px", textAlign:"inherit"}}>
                         <div className="inline">
-                            <h3>{user.name}</h3>
+                            <div className="vertical-stack">
+                                <h3>{user.name}</h3>
+                                <p style={{opacity:"70%"}}>@{user.username}</p>
+                            </div>
+                            {/* <h3>{user.name}</h3> */}
                             {(user._id == currentUser._id ) 
                             ? 
                                 <a onClick={() => navigate("/profile/" + user._id + "/edit")} 
                                     className="button-round" 
-                                        style={{border: "1px solid #333639"}}>Edit profile</a>
+                                        id="border">Edit profile</a>
                             :
-                                <a onClick={addFollower} className="button-round" id="white">{currentUser.following.includes(user._id) ? "Following" : "Follow"}</a>
+                            <a onClick={addFollower} className="button-round" id={currentUser.following.includes(user._id) ? "border" : "white"}>{currentUser.following.includes(user._id) ? "Following" : "Follow"}</a>
                             }
                         </div>
-                        <p style={{opacity:"70%"}}>@{user.username}</p>
                         <p>{user.bio}</p>
                         <p style={{opacity:"70%"}}>{ user.location ? user.location : ""} Joined {user.createdAt.slice(0,10)}</p>
                         <p>
                             <a onClick={() => navigate("/profile/" + user._id + "/following")} style={{fontWeight:"bold"}}>{user.following.length}</a> Following 
                             <a onClick={() => navigate("/profile/" + user._id + "/followers")} style={{fontWeight:"bold"}}> {user.followers.length}</a> Followers
                         </p>
-                        <p>Posts| Replies | Media | Likes</p>
+                        
+                        <div className="btn-group">
+                            <button>Posts</button>
+                            <button>Replies</button>
+                            <button>Media</button>
+                            <button>Likes</button>
+                        </div>
+
                     </div>
                     {posts && posts.map(({_id, author, body, date}) => 
                     <Post key={_id} id={_id} body={body} author={author} date={date} userProfile={user}/>)}

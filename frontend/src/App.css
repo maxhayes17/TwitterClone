@@ -113,13 +113,16 @@ ul{
   display: flex;
 } 
 .inline .button-round{
-  margin-right: 0;
+  margin-right: 10px;
 }
 
 .inline p{
   margin: auto;
   text-align: left;
   margin-left: 10px;
+}
+.inline a{
+  /* margin-block: auto; */
 }
 
 .profileForm{
@@ -138,9 +141,68 @@ ul{
 }
 .post p{
   text-align: left;
-  margin-left: 5px;
-  /* margin-left: 10px; */
 }
+.vertical-nav .btn-group{
+  margin-left: -20px;
+}
+
+.btn-group{
+  display: inline-block;
+  min-width: 100%;
+}
+.btn-group button{
+  background-color: black;
+  color: white;
+  border: none;
+
+  font-size: 1rem;
+  font-weight: bold;
+
+  padding: 20px;
+}
+.btn-group button:hover{
+  /* text-decoration: underline; */
+  background-color: #212327;
+}
+
+.vertical-nav{
+  position: sticky;
+  height: auto;
+  width: inherit;
+  top: 0;
+
+  z-index: 2;
+  padding-left: 20px;
+
+  text-align: left;
+
+  border: 1px solid #333639;
+  background-color: black;
+}
+
+.vertical-nav .inline{
+  margin-top: 0;
+}
+
+.profile-list-element{
+  text-align: left;
+  padding-left: 20px;
+  padding-block: 10px;
+}
+
+div.profile-list-element:hover{
+  background-color: #080808;
+  cursor: pointer;
+}
+.vertical-stack{
+  text-align: left;
+  display: block;
+}
+.vertical-stack p, a{
+  margin-top: 5px;
+  margin-left: 0;
+}
+
 div.post:hover{
   background-color: #080808;
   cursor: pointer;
@@ -175,3 +237,10 @@ form .button-round{
   color: white;
   background-color: #1d9bf0;
 }
+
+#border{
+  color: white;
+  background-color: none;
+  border: 1px solid #333639;
+}
+
