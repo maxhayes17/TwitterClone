@@ -41,7 +41,7 @@ function Profile({edit}){
         .catch((err) => console.log(err));
     };
     const getUserPosts = () => {
-        fetch("http://localhost:3001/posts/" + id + "/posts", {
+        fetch("http://localhost:3001/user/" + id + "/posts", {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + token

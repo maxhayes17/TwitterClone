@@ -13,6 +13,7 @@ function ViewPost(){
     }, []);
 
     const [post, setPost] = useState(null);
+    const [replies, setReplies] = useState(null);
 
     const navigate = useNavigate();
     const token = useSelector((state) => state.token);
@@ -30,9 +31,26 @@ function ViewPost(){
         .then((data) => {
             console.log(data);
             setPost(data);
+            getPostReplies();
         })
         .catch((err) => console.log(err));
     }
+
+    const getPostReplies = () => {
+        fetch("http://localhost:3001/posts/" + id + "/replies", {
+            method: "GET",
+            headers: {
+                Authorization: "Bearer " + token
+            }
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data);
+            setReplies(data);
+        })
+        .catch((err) => console.log(err));
+    }
+
 
     const composeReply = (form) => {
         form.preventDefault();
@@ -72,6 +90,8 @@ function ViewPost(){
                     <input placeholder="Reply to this post!" name="body" autoComplete="off"/>
                     <button type="submit" className="button-round" id="blue">Reply</button>
                 </form>
+                
+                {replies && replies.map( ({_id, author, body, createdAt}) => <Post key={_id} id={_id} author={author} body={body} createdAt={createdAt}/>)}
             </div>}
             <ExploreCard />
         </div>

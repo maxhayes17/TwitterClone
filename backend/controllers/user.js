@@ -1,4 +1,5 @@
 import User from "../models/User.js"
+import Post from "../models/Post.js";
 
 export const getUserInfo = async (req, res) => {
     try {
@@ -63,6 +64,17 @@ export const addFollower = async (req, res) => {
 
         // Return followee's data after successful follow
         res.status(200).json({follower: follower, followee: followee});
+    } catch (err) {
+        res.status(404).json({error: err.message});
+    }
+}
+
+export const getUserPosts = async (req, res) => {
+    try {
+        const { id } = req.params;
+        // Sort by descending date
+        const posts = await Post.find({author: id}).sort({createdAt: -1});
+        res.status(200).json(posts);
     } catch (err) {
         res.status(404).json({error: err.message});
     }

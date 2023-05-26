@@ -11,7 +11,7 @@ function Home(){
 
     useEffect(() => {
         getPosts();
-    }, []);
+    }, [setPosts]);
 
     const dispatch = useDispatch();
     const token = useSelector((state) => state.token);

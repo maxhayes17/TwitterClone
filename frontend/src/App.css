@@ -23,6 +23,7 @@ form{
 }
 .replyForm input{
   width: 75%;
+  margin-bottom: 10px;
 }
 .replyForm button{
   margin-left: 10px;

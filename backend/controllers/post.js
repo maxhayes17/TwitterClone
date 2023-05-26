@@ -14,23 +14,14 @@ export const getPostInfo = async(req, res) => {
 
 export const getPosts = async (req, res) => {
     try {
-        // Sort by descending date
-        const posts = await Post.find().sort({createdAt: -1});
+        // Sort (public posts) by descending date
+        const posts = await Post.find({public:true}).sort({createdAt: -1});
+
+        // Filter replies out
         res.status(200).json(posts);
     } catch (err) {
         res.status(404).json({error: err.message});
     } 
-}
-
-export const getUserPosts = async (req, res) => {
-    try {
-        const { id } = req.params;
-        // Sort by descending date
-        const posts = await Post.find({author: id}).sort({createdAt: -1});
-        res.status(200).json(posts);
-    } catch (err) {
-        res.status(404).json({error: err.message});
-    }
 }
 
 export const createPost = async (req, res) => {
@@ -75,15 +66,63 @@ export const createReply = async (req, res) => {
             body: body,
             root: id
         });
+
+        await reply.save();
         // Add reply to post's replies
         const rootPost = await Post.findById(id);
         rootPost.replies.push(reply._id);
 
+        await rootPost.save();
+
         // Add reply to author's replies
         const replyAuthor = await User.findById(author);
         replyAuthor.replies.push(reply._id);
-        
+
+        await replyAuthor.save();
+
         res.status(200).json(rootPost);
+    } catch (err) {
+        res.status(404).json({error: err.message});
+    }
+}
+
+export const addLike = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { userId } = req.params;
+    
+        const post = await Post.findById(id);
+        const user = await User.findById(userId);
+    
+        // Add user to post's likes
+        post.likes.push(userId);
+        await post.save();
+    
+        // Add post to user's liked_posts
+        user.liked_posts.push(id);
+        await user.save();
+
+        res.status(200).json(post);
+    } catch (err) {
+        res.status(404).json({error: err.message});
+    }
+}
+
+export const getPostReplies = async (req, res) => {
+    try {
+        const { id } = req.params;
+        // Sort by descending date
+        const replies = await Post.find({root: id}).sort({createdAt: -1});
+        res.status(200).json(replies);
+    } catch (err) {
+        res.status(404).json({error: err.message});
+    } 
+}
+
+export const getPostLikes = async (req, res) => {
+    try {
+        const { id } = req.params;
+        res.status(200).json();
     } catch (err) {
         res.status(404).json({error: err.message});
     }
