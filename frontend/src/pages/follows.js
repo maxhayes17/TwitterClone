@@ -54,10 +54,6 @@ function Follows({isFollowers}){
         .catch((err) => console.log(err));
     };
 
-    const addFollower = () => {
-
-    }
-
     return(
         <div>
             <Navbar />
@@ -78,15 +74,15 @@ function Follows({isFollowers}){
                     </div>
                 </div>
 
-                {follows.map(({_id, name, username, bio}) =>
-                    <div className="profile-list-element">
+                {follows && follows.map(({_id, name, username, bio}) =>
+                    <div className="profile-list-element" onClick={() => {navigate("/profile/" + _id)}}>
                         <div className="inline"> 
                             <div className="vertical-stack">
                                 <a onClick={() => {navigate("/profile/" + _id)}} style={{fontWeight:"bold"}}>{name}</a>
                                 <p style={{opacity:"70%"}}>@{username}</p>
                                 <p>{bio}</p>
                             </div>             
-                            {currentUser._id != _id && <a onClick={addFollower} className="button-round" id={currentUser.following.includes(_id) ? "border" : "white"}>{currentUser.following.includes(_id) ? "Following" : "Follow"}</a>}
+                            {currentUser._id != _id && <a className="button-round" id={currentUser.following.includes(_id) ? "border" : "white"}>{currentUser.following.includes(_id) ? "Following" : "Follow"}</a>}
                         </div>
                     </div>
                 )}

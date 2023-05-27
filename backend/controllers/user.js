@@ -89,6 +89,9 @@ export const getUserReplies = async (req, res) => {
         const replies = await Promise.all(
             user.replies.map((id) => Post.findById(id))
         )
+        // Sort replies by date
+        replies.sort((a,b) => b.createdAt - a.createdAt);
+
         res.status(200).json(replies);
     } catch (err) {
         res.status(404).json({error: err.message});
@@ -104,6 +107,9 @@ export const getUserLiked = async (req, res) => {
         const liked_posts = await Promise.all(
             user.liked_posts.map((id) => Post.findById(id))
         )
+        // Sort posts by date
+        liked_posts.sort((a,b) => b.createdAt - a.createdAt);
+
         res.status(200).json(liked_posts);
     } catch (err) {
         res.status(404).json({error: err.message});
@@ -148,13 +154,14 @@ export const getUserFeed = async (req, res) => {
 
 
         // Will create of posts for each user followed... will have to un-nest these elements
-        const feed = await Promise.all(
+        const posts = await Promise.all(
             user.following.map((id) => Post.find({author: id}))
         )
 
+        // Use .flat() to un-nest array elements, and sort by date
 
-        // Use .flat() to un-nest array elements
-        res.status(200).json(feed.flat());
+        const feed = await posts.flat().sort((a,b) => b.createdAt - a.createdAt)
+        res.status(200).json(feed);
     } catch (err) {
         res.status(404).json({error: err.message});
     }
