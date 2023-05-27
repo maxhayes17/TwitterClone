@@ -86,11 +86,14 @@ function ViewPost(){
             
                 <Post key={post._id} id={post._id} author={post.author} body={post.body} createdAt={post.createdAt}/>
 
+                <div>
+                    <p><a>{post.likes.length}</a> likes</p>
+                </div>
                 <form onSubmit={composeReply} className="replyForm">
                     <input placeholder="Reply to this post!" name="body" autoComplete="off"/>
                     <button type="submit" className="button-round" id="blue">Reply</button>
                 </form>
-                
+
                 {replies && replies.map( ({_id, author, body, createdAt}) => <Post key={_id} id={_id} author={author} body={body} createdAt={createdAt}/>)}
             </div>}
             <ExploreCard />

@@ -178,6 +178,12 @@ ul{
   background-color: #212327;
 }
 
+.btn-group button:focus{
+  border-bottom: 3px solid #1d9bf0;
+  /* text-decoration-color: #1d9bf0; */
+  /* text-decoration: underline; */
+}
+
 .vertical-nav{
   position: sticky;
   height: auto;
@@ -257,3 +263,9 @@ form .button-round{
   border: 1px solid #333639;
 }
 
+.likeBtn{
+  font-weight: bold;
+}
+.likeBtn:hover{
+  color: red;
+}

@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
+import { setUserInfo } from "../state";
+
 export default function Post({id, author, body, createdAt, userProfile}){
 
     useEffect(() => {
@@ -13,9 +16,13 @@ export default function Post({id, author, body, createdAt, userProfile}){
             getUserInfo();
         }
     }, [])
+
     const [user, setUser] = useState(null);
     const token = useSelector((state) => state.token);
+    const currentUser = useSelector((state) => state.user);
 
+
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const getUserInfo = () => {
@@ -33,6 +40,28 @@ export default function Post({id, author, body, createdAt, userProfile}){
         .catch((err) => console.log(err));
     }
 
+    const addLike = () => {
+        fetch("http://localhost:3001/posts/" + id + "/like", {
+            method: "PATCH",
+            headers: {
+                Authorization: "Bearer " + token,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                userId: currentUser._id,
+            })
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data);
+            dispatch(
+                setUserInfo({user: data.user})
+            );
+        })
+        .catch((err) => console.log(err));
+    };
+
+
     return(
         <div>
             {user && <div className="post" onClick={() => navigate("/post/" + id)}>
@@ -44,6 +73,16 @@ export default function Post({id, author, body, createdAt, userProfile}){
                     <p style={{opacity:"70%"}}>@{user.username} • {createdAt.slice(0,10)}</p>
                 </div>
                 <p>{body}</p>
+
+                {currentUser && <div className="inline">
+                    <a onClick={(event) => {
+                        event.stopPropagation()
+                        addLike();
+                    }} className="likeBtn"
+                    style={{color: currentUser.liked_posts.includes(id) ? "red" : "white"}}
+                    >Like</a>
+                </div>}
+
             </div>}
         </div>
     );

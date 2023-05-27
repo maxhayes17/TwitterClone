@@ -80,6 +80,37 @@ export const getUserPosts = async (req, res) => {
     }
 }
 
+export const getUserReplies = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const user = await User.findById(id);
+
+        const replies = await Promise.all(
+            user.replies.map((id) => Post.findById(id))
+        )
+        res.status(200).json(replies);
+    } catch (err) {
+        res.status(404).json({error: err.message});
+    }
+}
+
+export const getUserLiked = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const user = await User.findById(id);
+
+        const liked_posts = await Promise.all(
+            user.liked_posts.map((id) => Post.findById(id))
+        )
+        res.status(200).json(liked_posts);
+    } catch (err) {
+        res.status(404).json({error: err.message});
+    }
+}
+
+
 export const getUserFollowers = async (req, res) => {
     try {
         const { id } = req.params;
@@ -105,6 +136,21 @@ export const getUserFollowing = async (req, res) => {
         );
 
         res.status(200).json({user: user, follows: following});
+    } catch (err) {
+        res.status(404).json({error: err.message});
+    }
+}
+
+export const getUserFeed = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const user = await User.findById(id);
+
+        const feed = await Promise.all(
+            user.following.map((id) => Post.find({author: id}))
+        )
+        
+        res.status(200).json(feed.flat());
     } catch (err) {
         res.status(404).json({error: err.message});
     }

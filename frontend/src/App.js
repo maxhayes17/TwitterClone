@@ -61,7 +61,10 @@ function App() {
     {
       path: "/post/:id",
       element: auth ? <ViewPost/> : <Navigate to="/"/>
-    }
+    },
+    // {
+    //   path: "/logout"
+    // }
 
   ]);
 

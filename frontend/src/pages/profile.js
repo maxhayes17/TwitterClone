@@ -54,6 +54,34 @@ function Profile({edit}){
         .catch((err) => console.log(err));
     };
 
+    const getUserReplies = () => {
+        fetch("http://localhost:3001/user/" + id + "/replies", {
+            method: "GET",
+            headers: {
+                Authorization: "Bearer " + token
+            }
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            setPosts(data);
+        })
+        .catch((err) => console.log(err));
+    };
+    
+    const getUserLiked = () => {
+        fetch("http://localhost:3001/user/" + id + "/liked", {
+            method: "GET",
+            headers: {
+                Authorization: "Bearer " + token
+            }
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            setPosts(data);
+        })
+        .catch((err) => console.log(err));
+    };
+
     const addFollower = () => {
         fetch("http://localhost:3001/user/" + user._id + "/follow", {
             method: "PATCH",
@@ -121,10 +149,10 @@ function Profile({edit}){
                         </p>
                         
                         <div className="btn-group">
-                            <button>Posts</button>
-                            <button>Replies</button>
+                            <button onClick={getUserPosts}>Posts</button>
+                            <button onClick={getUserReplies}>Replies</button>
                             <button>Media</button>
-                            <button>Likes</button>
+                            <button onClick={getUserLiked}>Likes</button>
                         </div>
 
                     </div>

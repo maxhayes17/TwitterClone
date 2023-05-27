@@ -89,20 +89,30 @@ export const createReply = async (req, res) => {
 export const addLike = async (req, res) => {
     try {
         const { id } = req.params;
-        const { userId } = req.params;
+        const { userId } = req.body;
+
     
         const post = await Post.findById(id);
         const user = await User.findById(userId);
+
+        console.log(user.name);
+        console.log(post.body);
+
+        if (post.likes.includes(userId)){
+            post.likes = post.likes.filter((id) => id != userId);
+            user.liked_posts = user.liked_posts.filter((postId) => postId != id);
+        }
+        else {
+            // Add user to post's likes
+            post.likes.push(userId);
+            // Add post to user's liked_posts
+            user.liked_posts.push(id);
+        }
     
-        // Add user to post's likes
-        post.likes.push(userId);
         await post.save();
-    
-        // Add post to user's liked_posts
-        user.liked_posts.push(id);
         await user.save();
 
-        res.status(200).json(post);
+        res.status(200).json({user: user, post: post});
     } catch (err) {
         res.status(404).json({error: err.message});
     }
