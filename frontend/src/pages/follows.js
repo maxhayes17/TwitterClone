@@ -9,7 +9,7 @@ import { setUserInfo } from "../state";
 function Follows({isFollowers}){
 
     useEffect(() => {
-        getUserFollows();
+        isFollowers ? getUserFollowers() : getUserFollowing();
     }, [])
 
     const [user, setUser] = useState(null);
@@ -17,14 +17,13 @@ function Follows({isFollowers}){
 
     const { id } = useParams();
     const navigate = useNavigate();
-    const dispatch = useDispatch();
 
     const token = useSelector((state) => state.token);
     const currentUser = useSelector((state) => state.user);
 
-    const getUserFollows = () => {
-        console.log("http://localhost:3001/user/" + id + (isFollowers ? "/followers" : "/following"));
-        fetch("http://localhost:3001/user/" + id + (isFollowers ? "/followers" : "/following"), {
+    const getUserFollowers = () => {
+        // console.log("http://localhost:3001/user/" + id + );
+        fetch("http://localhost:3001/user/" + id + "/followers", {
             method: "GET",
             headers: {
                 Authorization: "Bearer " + token
@@ -37,7 +36,23 @@ function Follows({isFollowers}){
             setFollows(data.follows)
         })
         .catch((err) => console.log(err));
-    }
+    };
+
+    const getUserFollowing = () => {
+        fetch("http://localhost:3001/user/" + id + "/following", {
+            method: "GET",
+            headers: {
+                Authorization: "Bearer " + token
+            }
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            // console.log(data);
+            setUser(data.user);
+            setFollows(data.follows)
+        })
+        .catch((err) => console.log(err));
+    };
 
     const addFollower = () => {
 
@@ -58,8 +73,8 @@ function Follows({isFollowers}){
                     </div>
 
                     <div className="btn-group">
-                        <button onClick={() => navigate("/profile/" + id + "/followers")}>Followers</button>
-                        <button onClick={() => navigate("/profile/" + id + "/following")}>Following</button>
+                        <button onClick={getUserFollowers}>Followers</button>
+                        <button onClick={getUserFollowing}>Following</button>
                     </div>
                 </div>
 

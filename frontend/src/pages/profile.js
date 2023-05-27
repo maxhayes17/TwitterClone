@@ -67,7 +67,7 @@ function Profile({edit}){
         })
         .catch((err) => console.log(err));
     };
-    
+
     const getUserLiked = () => {
         fetch("http://localhost:3001/user/" + id + "/liked", {
             method: "GET",
@@ -81,6 +81,10 @@ function Profile({edit}){
         })
         .catch((err) => console.log(err));
     };
+
+    const getUserMedia = () => {
+        setPosts([]);
+    }
 
     const addFollower = () => {
         fetch("http://localhost:3001/user/" + user._id + "/follow", {
@@ -151,13 +155,13 @@ function Profile({edit}){
                         <div className="btn-group">
                             <button onClick={getUserPosts}>Posts</button>
                             <button onClick={getUserReplies}>Replies</button>
-                            <button>Media</button>
+                            <button onClick={getUserMedia}>Media</button>
                             <button onClick={getUserLiked}>Likes</button>
                         </div>
 
                     </div>
-                    {posts && posts.map(({_id, author, body, createdAt}) => 
-                    <Post key={_id} id={_id} body={body} author={author} createdAt={createdAt} userProfile={user}/>)}
+                    {posts && posts.map(({_id, author, body, root, createdAt}) => 
+                    <Post key={_id} id={_id} body={body} author={author} root={root} createdAt={createdAt} /*userProfile={user}*//>)}
                 </div>}
             {/* {posts && <ProfileCard user={user} posts={posts}/>} */}
             </div>}

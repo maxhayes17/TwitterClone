@@ -146,10 +146,14 @@ export const getUserFeed = async (req, res) => {
         const { id } = req.params;
         const user = await User.findById(id);
 
+
+        // Will create of posts for each user followed... will have to un-nest these elements
         const feed = await Promise.all(
             user.following.map((id) => Post.find({author: id}))
         )
-        
+
+
+        // Use .flat() to un-nest array elements
         res.status(200).json(feed.flat());
     } catch (err) {
         res.status(404).json({error: err.message});

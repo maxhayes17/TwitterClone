@@ -79,7 +79,7 @@ export default function Post({id, author, body, createdAt, userProfile}){
                         event.stopPropagation()
                         addLike();
                     }} className="likeBtn"
-                    style={{color: currentUser.liked_posts.includes(id) ? "red" : "white"}}
+                    style={{color: currentUser.liked_posts.includes(id) ? "#f91880" : "white"}}
                     >Like</a>
                 </div>}
 
