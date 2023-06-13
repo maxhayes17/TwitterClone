@@ -4,13 +4,14 @@ import Post from "../components/Post";
 
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setPosts } from "../state";
+import { setPosts, setUsers } from "../state";
 
 
 function Home(){
 
     useEffect(() => {
         getPosts();
+        getUsers();
     }, [setPosts]);
 
     const [feed, setFeed] = useState(null);
@@ -30,7 +31,7 @@ function Home(){
         })
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
+            // console.log(data);
             dispatch(
                 setPosts({
                     posts: data
@@ -40,6 +41,24 @@ function Home(){
         })
         .catch((err) => console.log(err));
     };
+
+    const getUsers = () => {
+        fetch("http://localhost:3001/user/", {
+            method: "GET",
+            headers: {
+                Authorization: "Bearer " + token
+            }
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data);
+            dispatch(
+                setUsers({
+                    users: data
+                })
+            );
+        })
+    }
 
     const getUserFeed = () => {
         fetch("http://localhost:3001/user/" + currentUser._id + "/feed", {

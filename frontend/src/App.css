@@ -194,6 +194,7 @@ ul{
   padding-left: 20px;
 
   text-align: left;
+  margin-inline: 1px;
 
   border: 1px solid #333639;
   background-color: black;
@@ -268,4 +269,13 @@ form .button-round{
 }
 .likeBtn:hover{
   color: red;
+}
+
+.search{
+  border-block: 1px solid #333639;
+}
+.search input{
+  width: 100%;
+  margin-block: 25px;
+  border-radius: 3ex;
 }

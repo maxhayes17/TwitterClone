@@ -5,7 +5,8 @@ const initialState = {
     // Initialize auth information
     user: null,
     token: null,
-    posts: []
+    posts: [],
+    users: []
 };
 
 // Reducer functions for authorization
@@ -25,11 +26,14 @@ export const authSlice = createSlice({
         setPosts: (state, action) => {
             state.posts = action.payload.posts;
         },
+        setUsers: (state, action) => {
+            state.users = action.payload.users;
+        },
         setUserInfo: (state, action) => {
             state.user = action.payload.user;
         }
     }
 });
 
-export const {setLogin, setLogout, setPosts, setUserInfo} = authSlice.actions;
+export const {setLogin, setLogout, setPosts, setUsers, setUserInfo} = authSlice.actions;
 export default authSlice.reducer;
