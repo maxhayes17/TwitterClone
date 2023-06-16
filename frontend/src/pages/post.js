@@ -90,7 +90,7 @@ function ViewPost(){
                     <p><a>{post.likes.length}</a> likes</p>
                 </div>
                 <form onSubmit={composeReply} className="replyForm">
-                    <input placeholder="Reply to this post!" name="body" autoComplete="off"/>
+                    <input placeholder="Reply to this post!" name="body" autoComplete="off" type="text"/>
                     <button type="submit" className="button-round" id="blue">Reply</button>
                 </form>
 

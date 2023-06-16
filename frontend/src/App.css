@@ -45,6 +45,14 @@ input, textarea, select{
   margin-top: 10px;
   width: 100%;
   resize: none;
+  background-color: #212327;
+  border: none;
+  outline: none;
+  color: white;
+}
+input[type=text]:focus, textarea:focus{
+  /* outline: none; */
+  outline: 2px solid #1d9bf0;
 }
 
 .postForm select{
@@ -181,6 +189,7 @@ ul{
 .btn-group button:focus{
   outline: none;
   border-bottom: 3px solid #1d9bf0;
+  margin-bottom: -1px;
   /* text-decoration-color: #1d9bf0; */
   /* text-decoration: underline; */
 }
@@ -273,9 +282,10 @@ form .button-round{
 }
 
 .search{
-  border-block: 1px solid #333639;
+  border-bottom: 1px solid #333639;
 }
 .search input{
+  padding-left: 20px;
   width: 100%;
   margin-block: 25px;
   border-radius: 3ex;
