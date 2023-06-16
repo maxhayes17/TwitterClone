@@ -1,5 +1,5 @@
 import Navbar from "../components/Navbar";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setUserInfo } from "../state";
@@ -14,11 +14,14 @@ function Profile({edit}){
 
     useEffect(() => {
         getUserInfo();
+        getUserPosts();
     }, []);
 
     const [user, setUser] = useState(null);
     const [posts, setPosts] = useState(null);
     const {id} = useParams();
+
+    const feedRef = useRef(null);
     
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -36,7 +39,7 @@ function Profile({edit}){
         .then((res) => res.json())
         .then((data) => {
             setUser(data);
-            getUserPosts();
+            // getUserPosts();
         })
         .catch((err) => console.log(err));
     };
@@ -50,6 +53,7 @@ function Profile({edit}){
         .then((res) => res.json())
         .then((data) => {
             setPosts(data);
+            feedRef.current.focus();
         })
         .catch((err) => console.log(err));
     };
@@ -130,12 +134,13 @@ function Profile({edit}){
 
 
                     <div style={{padding: "0 20px", textAlign:"inherit"}}>
+
                         <div className="inline">
                             <div className="vertical-stack">
                                 <h3>{user.name}</h3>
                                 <p style={{opacity:"70%"}}>@{user.username}</p>
                             </div>
-                            {/* <h3>{user.name}</h3> */}
+                            
                             {(user._id == currentUser._id ) 
                             ? 
                                 <a onClick={() => navigate("/profile/" + user._id + "/edit")} 
@@ -145,25 +150,26 @@ function Profile({edit}){
                             <a onClick={addFollower} className="button-round" id={currentUser.following.includes(user._id) ? "border" : "white"}>{currentUser.following.includes(user._id) ? "Following" : "Follow"}</a>
                             }
                         </div>
+
                         <p>{user.bio}</p>
                         <p style={{opacity:"70%"}}>{ user.location ? user.location : ""} Joined {user.createdAt.slice(0,10)}</p>
+
                         <p>
                             <a onClick={() => navigate("/profile/" + user._id + "/following")} style={{fontWeight:"bold"}}>{user.following.length}</a> Following 
                             <a onClick={() => navigate("/profile/" + user._id + "/followers")} style={{fontWeight:"bold"}}> {user.followers.length}</a> Followers
                         </p>
                         
-                        <div className="btn-group">
-                            <button onClick={getUserPosts}>Posts</button>
+                        {posts && <div className="btn-group">
+                            <button onClick={getUserPosts} ref={feedRef}>Posts</button>
                             <button onClick={getUserReplies}>Replies</button>
                             <button onClick={getUserMedia}>Media</button>
                             <button onClick={getUserLiked}>Likes</button>
-                        </div>
+                        </div>}
 
                     </div>
                     {posts && posts.map(({_id, author, body, root, createdAt}) => 
                     <Post key={_id} id={_id} body={body} author={author} root={root} createdAt={createdAt} /*userProfile={user}*//>)}
                 </div>}
-            {/* {posts && <ProfileCard user={user} posts={posts}/>} */}
             </div>}
             <ExploreCard />
         </div>

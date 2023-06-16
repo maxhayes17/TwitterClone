@@ -1,7 +1,7 @@
 import ExploreCard from "../components/ExploreCard";
 import Navbar from "../components/Navbar";
 import { useParams, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setUserInfo } from "../state";
@@ -14,6 +14,9 @@ function Follows({isFollowers}){
 
     const [user, setUser] = useState(null);
     const [follows, setFollows] = useState(null);
+
+    const followersRef = useRef(null);
+    const followingRef = useRef(null);
 
     const { id } = useParams();
     const navigate = useNavigate();
@@ -34,6 +37,7 @@ function Follows({isFollowers}){
             // console.log(data);
             setUser(data.user);
             setFollows(data.follows)
+            followersRef.current.focus();
         })
         .catch((err) => console.log(err));
     };
@@ -50,6 +54,7 @@ function Follows({isFollowers}){
             // console.log(data);
             setUser(data.user);
             setFollows(data.follows)
+            followingRef.current.focus();
         })
         .catch((err) => console.log(err));
     };
@@ -69,8 +74,8 @@ function Follows({isFollowers}){
                     </div>
 
                     <div className="btn-group">
-                        <button onClick={getUserFollowers}>Followers</button>
-                        <button onClick={getUserFollowing}>Following</button>
+                        <button onClick={getUserFollowers} ref={followersRef}>Followers</button>
+                        <button onClick={getUserFollowing} ref={followingRef}>Following</button>
                     </div>
                 </div>
 

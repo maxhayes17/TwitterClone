@@ -2,7 +2,7 @@ import Navbar from "../components/Navbar";
 import ExploreCard from "../components/ExploreCard";
 import Post from "../components/Post";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setPosts, setUsers } from "../state";
 
@@ -12,9 +12,12 @@ function Home(){
     useEffect(() => {
         getPosts();
         getUsers();
+        feedRef.current.focus();
     }, [setPosts]);
 
     const [feed, setFeed] = useState(null);
+
+    const feedRef = useRef(null);
 
     const dispatch = useDispatch();
 
@@ -82,7 +85,7 @@ function Home(){
                 <div className="vertical-nav">
                     <h2>Home</h2>
                     <div className="btn-group">
-                        <button onClick={getPosts}>Public</button>
+                        <button onClick={getPosts} ref={feedRef}>Public</button>
                         {currentUser && <button onClick={getUserFeed}>Following</button>}
                     </div>
                 </div>
