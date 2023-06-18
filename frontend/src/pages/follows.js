@@ -66,7 +66,7 @@ function Follows({isFollowers}){
 
                 <div className="vertical-nav">
                     <div className="inline">
-                        <a onClick={() => navigate("/profile/" + id)} style={{paddingRight:"20px"}}><h2>{"<"}</h2></a>
+                        <a onClick={() => navigate(-1)} style={{paddingRight:"20px"}}><h2>{"<"}</h2></a>
                         <div className="vertical-stack">
                             <h3>{user.name}</h3>
                             <p style={{opacity:"70%"}}>@{user.username}</p>

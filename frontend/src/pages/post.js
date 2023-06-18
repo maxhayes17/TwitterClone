@@ -81,13 +81,13 @@ function ViewPost(){
             {post && <div className="mainCard">
 
                 <div className="vertical-nav">
-                    <h2><a onClick={() => navigate("/")}>{"<"}</a> Post</h2>
+                    <h2><a onClick={() => navigate(-1)}>{"<"}</a> Post</h2>
                 </div>
             
                 <Post key={post._id} id={post._id} author={post.author} body={post.body} createdAt={post.createdAt}/>
 
-                <div>
-                    <p><a>{post.likes.length}</a> likes</p>
+                <div className="inline" style={{paddingBottom:"10px", borderBottom: "1px solid #333639"}}>
+                    <p><a style={{fontWeight: "bold", marginLeft:"10px"}}>{post.likes.length}</a> {post.likes.length == 1 ? "like" : "likes"}</p>
                 </div>
                 <form onSubmit={composeReply} className="replyForm">
                     <input placeholder="Reply to this post!" name="body" autoComplete="off" type="text"/>

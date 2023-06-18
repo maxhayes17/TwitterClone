@@ -124,10 +124,10 @@ function Profile({edit}){
 
                     <div className="vertical-nav">
                         <div className="inline">
-                            <a onClick={() => navigate("/home")} style={{paddingRight:"20px"}}><h2>{"<"}</h2></a>
+                            <a onClick={() => navigate(-1)} style={{paddingRight:"20px"}}><h2>{"<"}</h2></a>
                             <div className="vertical-stack">
                                 <h3>{user.name}</h3>
-                                <p style={{opacity:"70%"}}>{user.posts.length} Posts</p>
+                                <p style={{opacity:"70%"}}>{user.posts.length} {user.posts.length == 1 ? "Post" : "Posts"}</p>
                             </div>
                         </div>
                     </div>

@@ -64,7 +64,7 @@ export default function Post({id, author, body, root, createdAt, userProfile}){
 
     return(
         <div>
-            {user && <div className="post" onClick={() => navigate("/post/" + (root && root != id ? root : id))}>
+            {user && <div className="post" onClick={() => navigate("/post/" + (root & root != id ? root : id))}>
                 <div className="inline">
                     <a onClick={(event) => {
                         // So click on elements inside div don't act as clicks on div

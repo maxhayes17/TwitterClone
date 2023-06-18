@@ -52,7 +52,7 @@ function Login(){
     return(
         <div>
             <Navbar />
-            <h1>{isLogin ? "Login to your account" : "Create an account"}</h1>
+            <h1 style={{marginTop: "50px"}}>{isLogin ? "Login to your account" : "Create an account"}</h1>
             <form onSubmit={handleSubmit}>
                 {isLogin ? <input placeholder="Username or E-mail" name="identifier" autoComplete="off"/>
                 : <input placeholder="E-mail" name="email" autoComplete="off"/>}

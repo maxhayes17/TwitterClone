@@ -290,3 +290,10 @@ form .button-round{
   margin-block: 25px;
   border-radius: 3ex;
 }
+
+
+.replyForm input{
+  margin-block: 20px;
+  width: 70%;
+  padding: 15px;
+}
