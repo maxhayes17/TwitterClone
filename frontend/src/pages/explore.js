@@ -5,7 +5,15 @@ function Explore(){
         <div>
             <Navbar />
             <div className="mainCard">
-                <h1>Explore</h1>
+                <div className="vertical-nav">
+                    <h2>Explore</h2>
+                    <div className="btn-group">
+                        <button>For you</button>
+                        <button>Trending</button>
+                        <button>News</button>
+                        <button>Sports</button>
+                    </div>
+                </div>
             </div>
             <ExploreCard />
         </div>

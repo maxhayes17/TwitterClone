@@ -54,10 +54,10 @@ function Login(){
             <Navbar />
             <h1 style={{marginTop: "50px"}}>{isLogin ? "Login to your account" : "Create an account"}</h1>
             <form onSubmit={handleSubmit}>
-                {isLogin ? <input placeholder="Username or E-mail" name="identifier" autoComplete="off"/>
-                : <input placeholder="E-mail" name="email" autoComplete="off"/>}
-                {!isLogin && <input placeholder="Username" name="username" autoComplete="off"/>}
-                <input placeholder="Password" name="password" autoComplete="off"/>
+                {isLogin ? <input placeholder="Username or E-mail" name="identifier" autoComplete="off" type="text"/>
+                : <input placeholder="E-mail" name="email" autoComplete="off" type="text"/>}
+                {!isLogin && <input placeholder="Username" name="username" autoComplete="off" type="text"/>}
+                <input placeholder="Password" name="password" autoComplete="off" type="text"/>
                 <button type="submit" className="button-round" id="white">{isLogin ? "Sign in" : "Sign up"}</button>
                 {isLogin && <p>Don't have an account? <a onClick={() => setPageType("register")}>Sign up</a></p>}
             </form>

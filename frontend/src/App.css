@@ -94,8 +94,25 @@ ul{
   border: 1px solid #333639;
 }
 .nav li{
-  margin-top: 20px;
+  text-align: left;
+  margin-left: 25%;
+  margin-top: 0px;
   color: #FFFFFF;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.nav a.button-round{
+  margin-left: -20px;
+  padding-inline: 80px;
+  padding-block: 15px;
+  font-size: 1rem;
+}
+.nav div.inline{
+  width: fit-content;
+  padding-inline: 15px;
+  padding-block: 15px;
+  border-radius: 3ex;
 }
 
 .mainCard{
@@ -273,6 +290,23 @@ form .button-round{
   background-color: none;
   border: 1px solid #333639;
 }
+#black{
+  color: white;
+  background-color: none;
+}
+#black:hover{
+  background-color: #212327;
+  cursor: pointer;
+}
+
+#grey{
+  color: white;
+  background-color: #16181c;
+}
+#grey:hover{
+  background-color: #212327;
+}
+
 
 .likeBtn{
   margin-block: auto;

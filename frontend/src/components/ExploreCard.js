@@ -26,7 +26,7 @@ export default function ExploreCard(){
                             // console.log(result);
                             setResults(result);
                         }}                 
-                        />
+                    />
                 </form>
                 {results && results.length < users.length 
                 && results.map(({_id, name, username, bio}) =>
@@ -40,6 +40,18 @@ export default function ExploreCard(){
                             </div>
                         </div>
                 )}
+            </div>
+            <div className="vertical-stack" id="grey" style={{marginInline:"50px", marginBlock:"20px", paddingInline:"20px", paddingBlock:"5px",borderRadius:"2ex"}}>
+                <h3>Trending</h3>
+                <p>aaaa</p>
+                <p>bbb</p>
+                <p>cccc</p>
+            </div>
+            <div className="vertical-stack" id="grey" style={{marginInline:"50px", marginBlock:"20px", paddingInline:"20px", paddingBlock:"5px",borderRadius:"2ex"}}>
+                <h3>Recommended accounts</h3>
+                <p>@foo</p>
+                <p>@bar</p>
+                <p>@baz</p>
             </div>
         </div>
     )

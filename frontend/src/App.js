@@ -40,7 +40,7 @@ function App() {
     },
     {
       path: "/profile/:id",
-      element: auth ? <Profile /> : <Navigate to="/"/>
+      element: auth ? <Profile/> : <Navigate to="/"/>
     },
     {
       path: "/profile/:id/edit",
