@@ -167,8 +167,8 @@ function Profile({edit}){
                         </div>}
 
                     </div>
-                    {posts && posts.map(({_id, author, body, root, createdAt}) => 
-                    <Post key={_id} id={_id} body={body} author={author} root={root} createdAt={createdAt} /*userProfile={user}*//>)}
+                    {posts && posts.map(({_id, author, body, root, createdAt, likes, replies}) => 
+                    <Post key={_id} id={_id} body={body} author={author} root={root} createdAt={createdAt} likes={likes} replies={replies}/>)}
                 </div>}
             </div>}
             <ExploreCard />

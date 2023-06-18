@@ -275,11 +275,32 @@ form .button-round{
 }
 
 .likeBtn{
-  font-weight: bold;
+  margin-right: 25px;
+  color: #ffffffba;
+  
 }
-.likeBtn:hover{
-  color: red;
+.likeBtn svg:hover{
+  opacity: 100%;
+  color: #f91880;
 }
+
+.commentBtn{
+  margin-right: 25px;
+  color: #ffffffba;
+}
+.commentBtn svg:hover{
+  opacity: 100%;
+  color: #1d9bf0;
+}
+
+.rtBtn{
+  color: #ffffffba;
+}
+.rtBtn svg:hover{
+  opacity: 100%;
+  color: rgb(28, 210, 152);
+}
+
 
 .search{
   border-bottom: 1px solid #333639;

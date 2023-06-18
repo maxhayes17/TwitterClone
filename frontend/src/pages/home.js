@@ -89,7 +89,7 @@ function Home(){
                         {currentUser && <button onClick={getUserFeed}>Following</button>}
                     </div>
                 </div>
-                {feed && feed.map( ({_id, author, body, createdAt}) => <Post key={_id} id={_id} author={author} body={body} createdAt={createdAt}/>)}
+                {feed && feed.map( ({_id, author, body, createdAt, likes, replies}) => <Post key={_id} id={_id} author={author} body={body} createdAt={createdAt} likes={likes} replies={replies}/>)}
             </div>
             <ExploreCard />
         </div>

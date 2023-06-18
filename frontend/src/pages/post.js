@@ -84,7 +84,7 @@ function ViewPost(){
                     <h2><a onClick={() => navigate(-1)}>{"<"}</a> Post</h2>
                 </div>
             
-                <Post key={post._id} id={post._id} author={post.author} body={post.body} createdAt={post.createdAt}/>
+                <Post key={post._id} id={post._id} author={post.author} body={post.body} createdAt={post.createdAt} likes={post.likes} replies={post.replies}/>
 
                 <div className="inline" style={{paddingBottom:"10px", borderBottom: "1px solid #333639"}}>
                     <p><a style={{fontWeight: "bold", marginLeft:"10px"}}>{post.likes.length}</a> {post.likes.length == 1 ? "like" : "likes"}</p>
@@ -94,7 +94,7 @@ function ViewPost(){
                     <button type="submit" className="button-round" id="blue">Reply</button>
                 </form>
 
-                {replies && replies.map( ({_id, author, body, createdAt}) => <Post key={_id} id={_id} author={author} body={body} createdAt={createdAt}/>)}
+                {replies && replies.map( ({_id, author, body, createdAt, likes, replies}) => <Post key={_id} id={_id} author={author} body={body} createdAt={createdAt} likes={likes} replies={replies}/>)}
             </div>}
             <ExploreCard />
         </div>
