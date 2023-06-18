@@ -62,6 +62,10 @@ function App() {
       path: "/post/:id",
       element: auth ? <ViewPost/> : <Navigate to="/"/>
     },
+    {
+      path: "/post/:id/reply",
+      element: auth ? <ViewPost reply={true}/> : <Navigate to="/"/>
+    },
     // {
     //   path: "/logout"
     // }

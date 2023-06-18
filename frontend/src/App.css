@@ -275,7 +275,7 @@ form .button-round{
 }
 
 .likeBtn{
-  margin-right: 25px;
+  margin-block: auto;
   color: #ffffffba;
   
 }
@@ -286,6 +286,7 @@ form .button-round{
 
 .commentBtn{
   margin-right: 25px;
+  margin-block: auto;
   color: #ffffffba;
 }
 .commentBtn svg:hover{
@@ -296,7 +297,7 @@ form .button-round{
 .rtBtn{
   color: #ffffffba;
 }
-.rtBtn svg:hover{
+.rtBtn:hover{
   opacity: 100%;
   color: rgb(28, 210, 152);
 }

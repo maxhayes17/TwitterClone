@@ -1,12 +1,12 @@
 import Navbar from "../components/Navbar";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import ExploreCard from "../components/ExploreCard";
 import Post from "../components/Post";
 
-function ViewPost(){
+function ViewPost({reply}){
 
     useEffect(() => {
         getPostInfo();
@@ -19,6 +19,7 @@ function ViewPost(){
     const token = useSelector((state) => state.token);
     const currentUser = useSelector((state) => state.user);
     const {id} = useParams();
+    const replyRef = useRef(null);
 
     const getPostInfo = () => {
         fetch("http://localhost:3001/posts/" + id, {
@@ -32,6 +33,11 @@ function ViewPost(){
             console.log(data);
             setPost(data);
             getPostReplies();
+            
+            console.log(reply);
+            // Focus on reply field
+            if(reply)
+                replyRef.current.focus();
         })
         .catch((err) => console.log(err));
     }
@@ -101,7 +107,7 @@ function ViewPost(){
                     <p><a style={{fontWeight: "bold", marginLeft:"10px"}}>{post.likes.length}</a> {post.likes.length == 1 ? "like" : "likes"}</p>
                 </div>
                 <form onSubmit={composeReply} className="replyForm">
-                    <input placeholder="Reply to this post!" name="body" autoComplete="off" type="text"/>
+                    <input placeholder="Reply to this post!" name="body" autoComplete="off" type="text" ref={replyRef}/>
                     <button type="submit" className="button-round" id="blue">Reply</button>
                 </form>
 
