@@ -1,10 +1,14 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Navbar from "./Navbar";
+import ExploreCard from "./ExploreCard";
+import VerticalNav from "./VerticalNav";
 
-export default function ProfileForm({token, setUser}){
+export default function ProfileForm(){
     const navigate = useNavigate();
     // Should only be able to edit profile of user logged in
     // const {id} = useSelector((state) => state.user._id);
+    const token = useSelector((state) => state.token);
     const {id} = useParams();
     console.log(id);
     const handleSubmit = (form) => {
@@ -22,7 +26,7 @@ export default function ProfileForm({token, setUser}){
         })
         .then((res) => res.json())
         .then((data) => {
-            setUser(data);
+            // setUser(data);
             navigate("/profile/" + id);
         })
         .catch((err) => console.log(err));
@@ -30,15 +34,21 @@ export default function ProfileForm({token, setUser}){
         form.target.reset();
     }
     return(
-        <div className="profileForm">
-            <a onClick={() => navigate("/profile/" + id)}>X</a>
-            <form onSubmit={handleSubmit}>
-                <input placeholder="Name" name="name" autoComplete="off"/>
-                <textarea placeholder="Bio" name="bio" autoComplete="off"/>
-                <input placeholder="Location" name="location" autoComplete="off"/>
-                <input placeholder="Website" name="website" autoComplete="off"/>
-                <button type="submit" className="button-round" id="white">Save</button>
-            </form>
+        <div>
+            <Navbar />
+            <div className="mainCard">
+                <VerticalNav header="Edit profile"/>
+                <div className="profileForm" style={{marginTop:"20px"}}>
+                    <form onSubmit={handleSubmit}>
+                        <input placeholder="Name" name="name" autoComplete="off" type="text"/>
+                        <textarea placeholder="Bio" name="bio" autoComplete="off" />
+                        <input placeholder="Location" name="location" autoComplete="off" type="text"/>
+                        <input placeholder="Website" name="website" autoComplete="off" type="text"/>
+                        <button type="submit" className="button-round" id="white">Save</button>
+                    </form>
+                </div>
+            </div>
+            <ExploreCard />
         </div>
     );
 }

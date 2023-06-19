@@ -54,7 +54,7 @@ export default function Navbar(){
             }
             {user && 
                 <li>
-                    <div className="inline" id="black" style={{fontSize:"1rem"}}>
+                    <div className="inline" style={{fontSize:"1rem"}}>
                         <a onClick={() => dispatch(setLogout())}>Log out @{user.username}</a>
                     </div>
                 </li>

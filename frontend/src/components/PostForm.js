@@ -1,5 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Navbar from "./Navbar";
+import ExploreCard from "./ExploreCard";
+import VerticalNav from "./VerticalNav";
 
 export default function PostForm({user}){
     const navigate = useNavigate();
@@ -29,16 +32,23 @@ export default function PostForm({user}){
     }
     return(
         <div>
-            <a onClick={() => navigate("/home")}>X</a>
-            <form onSubmit={handleSubmit} className="postForm">
-                <textarea placeholder="Body" name="body" autoComplete="off" className="input-text-large" required/>
-                {/* <label for="audience">Who can see this?</label> */}
-                <select name="audience" required>
-                    <option value="Everyone">Everyone</option>
-                    <option value="Followers">My followers</option>
-                </select>
-                <button type="submit" className="button-round" id="blue">Post</button>
-            </form>
+            <Navbar />
+            <div className="mainCard">
+                <VerticalNav header="New post"/>
+                <form onSubmit={handleSubmit} className="postForm">
+                    <textarea placeholder="What would you like to say?" name="body" autoComplete="off" className="input-text-large" required/>
+                    {/* <label for="audience">Who can see this?</label> */}
+                    <div className="inline">
+                        <p style={{color: "#ffffffba"}}>Who can see this?</p>
+                        <select name="audience" required>
+                            <option value="Everyone">Everyone</option>
+                            <option value="Followers">My followers</option>
+                        </select>
+                        <button type="submit" className="button-round" id="blue">Post</button>
+                    </div>
+                </form>
+            </div>
+            <ExploreCard />
         </div>
     )
 }

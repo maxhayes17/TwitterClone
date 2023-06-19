@@ -44,7 +44,7 @@ function App() {
     },
     {
       path: "/profile/:id/edit",
-      element: auth ? <Profile edit={true}/> : <Navigate to="/"/>
+      element: auth ? <ProfileForm/> : <Navigate to="/"/>
     },
     {
       path: "/profile/:id/followers",
