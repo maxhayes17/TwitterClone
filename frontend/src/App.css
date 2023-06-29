@@ -231,6 +231,8 @@ ul{
   height: auto;
   width: inherit;
   top: 0;
+  opacity: 80%;
+  backdrop-filter: blur(6px);
 
   z-index: 2;
   padding-left: 20px;
@@ -245,6 +247,7 @@ ul{
 .vertical-nav .inline{
   margin-top: 0;
 }
+
 
 .profile-list-element{
   text-align: left;
