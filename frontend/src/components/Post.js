@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import { setUserInfo } from "../state";
 
+
 export default function Post({id, author, body, root, createdAt, userProfile, likes, replies}){
 
     useEffect(() => {
@@ -66,10 +67,13 @@ export default function Post({id, author, body, root, createdAt, userProfile, li
         <div>
             {user && <div className="post" onClick={() => navigate("/post/" + (root & root != id ? root : id))}>
                 <div className="inline">
+                    <div className="image-avatar">
+                        <img src={require("../image-avatar-blank.webp")}></img>
+                    </div>
                     <a onClick={(event) => {
                         // So click on elements inside div don't act as clicks on div
                         event.stopPropagation()
-                        navigate("/profile/" + user._id)}} style={{fontWeight:"bold"}}>{user.name}</a>
+                        navigate("/profile/" + user._id)}} style={{fontWeight:"bold", marginBlock:"auto"}}>{user.name}</a>
                     <p style={{opacity:"70%"}}>@{user.username} • {createdAt.slice(0,10)}</p>
                 </div>
                 <p>{body}</p>

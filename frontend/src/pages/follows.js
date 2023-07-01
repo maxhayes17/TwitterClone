@@ -89,6 +89,9 @@ function Follows({isFollowers}){
                 {follows && follows.map(({_id, name, username, bio}) =>
                     <div className="profile-list-element" onClick={() => {navigate("/profile/" + _id)}}>
                         <div className="inline"> 
+                            <div className="image-avatar">
+                                <img src={require("../image-avatar-blank.webp")}></img>
+                            </div>
                             <div className="vertical-stack">
                                 <a onClick={() => {navigate("/profile/" + _id)}} style={{fontWeight:"bold"}}>{name}</a>
                                 <p style={{opacity:"70%"}}>@{username}</p>
