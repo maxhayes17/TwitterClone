@@ -90,7 +90,7 @@ function Follows({isFollowers}){
                     <div className="profile-list-element" onClick={() => {navigate("/profile/" + _id)}}>
                         <div className="inline"> 
                             <div className="image-avatar">
-                                <img src={require("../image-avatar-blank.webp")}></img>
+                                <img src={require("../image-avatar-blank.png")}></img>
                             </div>
                             <div className="vertical-stack">
                                 <a onClick={() => {navigate("/profile/" + _id)}} style={{fontWeight:"bold"}}>{name}</a>

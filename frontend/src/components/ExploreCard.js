@@ -15,9 +15,9 @@ export default function ExploreCard(){
 
     return(
         <div className="exploreCard">
-            <div className="search">
+            <div className="search" style={{borderBottom: results && results.length > 0 ? "1px solid #333639" : "none"}}>
                 <form>
-                    <input type="text" placeholder="Search" 
+                    <input type="text" placeholder="Search TwitClone" 
                         onChange={e => {
                             console.log(users);
                             let result = users.filter((user) => {
@@ -33,7 +33,7 @@ export default function ExploreCard(){
                         <div className="profile-list-element" onClick={() => {navigate("/profile/" + _id)}}>
                             <div className="inline"> 
                                 <div className="image-avatar">
-                                    <img src={require("../image-avatar-blank.webp")}></img>
+                                    <img src={require("../image-avatar-blank.png")}></img>
                                 </div>
                                 <div className="vertical-stack">
                                     <a onClick={() => {navigate("/profile/" + _id)}} style={{fontWeight:"bold"}}>{name}</a>
@@ -52,9 +52,39 @@ export default function ExploreCard(){
             </div>
             <div className="vertical-stack" id="grey" style={{marginInline:"50px", marginBlock:"20px", paddingInline:"20px", paddingBlock:"5px",borderRadius:"2ex"}}>
                 <h3>Recommended accounts</h3>
-                <p>@foo</p>
-                <p>@bar</p>
-                <p>@baz</p>
+                <div className="profile-list-element" onClick={() => {navigate("/profile/")}} style={{marginLeft:"-20px"}}>
+                            <div className="inline"> 
+                                <div className="image-avatar">
+                                    <img src={require("../image-avatar-blank.png")}></img>
+                                </div>
+                                <div className="vertical-stack">
+                                    <a onClick={() => {navigate("/profile/")}} style={{fontWeight:"bold"}}>foo</a>
+                                    <p style={{opacity:"70%"}}>@foo</p>
+                                </div>
+                            </div>
+                </div>
+                <div className="profile-list-element" onClick={() => {navigate("/profile/")}} style={{marginLeft:"-20px"}}>
+                            <div className="inline"> 
+                                <div className="image-avatar">
+                                    <img src={require("../image-avatar-blank.png")}></img>
+                                </div>
+                                <div className="vertical-stack">
+                                    <a onClick={() => {navigate("/profile/")}} style={{fontWeight:"bold"}}>bar</a>
+                                    <p style={{opacity:"70%"}}>@bar</p>
+                                </div>
+                            </div>
+                </div>
+                <div className="profile-list-element" onClick={() => {navigate("/profile/")}} style={{marginLeft:"-20px"}}>
+                            <div className="inline"> 
+                                <div className="image-avatar">
+                                    <img src={require("../image-avatar-blank.png")}></img>
+                                </div>
+                                <div className="vertical-stack">
+                                    <a onClick={() => {navigate("/profile/")}} style={{fontWeight:"bold"}}>baz</a>
+                                    <p style={{opacity:"70%"}}>@baz</p>
+                                </div>
+                            </div>
+                </div>
             </div>
         </div>
     )

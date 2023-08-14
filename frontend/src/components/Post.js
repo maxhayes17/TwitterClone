@@ -3,9 +3,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { setUserInfo } from "../state";
+import reactStringReplace from 'react-string-replace';
 
 
-export default function Post({id, author, body, root, createdAt, userProfile, likes, replies}){
+export default function Post({id, author, body, root, createdAt, userProfile, likes, replies, tags}){
 
     useEffect(() => {
         console.log(userProfile);
@@ -68,7 +69,7 @@ export default function Post({id, author, body, root, createdAt, userProfile, li
             {user && <div className="post" onClick={() => navigate("/post/" + (root & root != id ? root : id))}>
                 <div className="inline">
                     <div className="image-avatar">
-                        <img src={require("../image-avatar-blank.webp")}></img>
+                        <img src={require("../image-avatar-blank.png")}></img>
                     </div>
                     <a onClick={(event) => {
                         // So click on elements inside div don't act as clicks on div
@@ -76,7 +77,19 @@ export default function Post({id, author, body, root, createdAt, userProfile, li
                         navigate("/profile/" + user._id)}} style={{fontWeight:"bold", marginBlock:"auto"}}>{user.name}</a>
                     <p style={{opacity:"70%"}}>@{user.username} • {createdAt.slice(0,10)}</p>
                 </div>
-                <p>{body}</p>
+                
+
+                {/* use reactStringReplace to find/replace hashtags with links */}
+                <p>
+                    {reactStringReplace(body, /#(\w+)/g, (match, i) => (
+                        <a key={i} 
+                        className="hashtag"
+                        onClick={(event) => {
+                            event.stopPropagation();
+                             navigate("/explore/" + match)}}
+                        >#{match}</a>
+                    ) )}
+                </p>
 
                 {currentUser && <div className="inline">
 

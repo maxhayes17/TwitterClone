@@ -35,6 +35,10 @@ function App() {
       element: <Explore />
     },
     {
+      path: "/explore/:tag",
+      element: <Explore tag={true}/>
+    },
+    {
       path: "/home",
       element: auth ? <Home /> : <Navigate to="/"/>
     },

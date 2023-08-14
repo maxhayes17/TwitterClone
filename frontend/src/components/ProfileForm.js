@@ -15,6 +15,10 @@ export default function ProfileForm(){
         form.preventDefault();
         const formData = new FormData(form.target);
         const formJSON = Object.fromEntries(formData.entries());
+        // console.log(formJSON);
+        // let fileName = formJSON.avatar.name;
+        // formJSON.avatar = fileName;
+        // console.log(formJSON);
 
         fetch("http://localhost:3001/user/" + id + "/edit", {
             method: "PATCH",
@@ -39,7 +43,11 @@ export default function ProfileForm(){
             <div className="mainCard">
                 <VerticalNav header="Edit profile"/>
                 <div className="profileForm" style={{marginTop:"20px"}}>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} enctype="multipart/form-data">
+                        <div className="image-avatar" style={{width:"150px", height:"150px", marginInline:"auto", marginBlock:"15px"}}>
+                            <img src={require("../image-avatar-blank.png")}></img>
+                        </div>
+                        <input type="file" name="avatar" accept=".jpeg, .jpg, .png"/>
                         <input placeholder="Name" name="name" autoComplete="off" type="text"/>
                         <textarea placeholder="Bio" name="bio" autoComplete="off" />
                         <input placeholder="Location" name="location" autoComplete="off" type="text"/>

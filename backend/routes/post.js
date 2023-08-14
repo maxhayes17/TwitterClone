@@ -1,6 +1,6 @@
 import express from "express";
 
-import { getPosts, createPost, createReply, addLike, getPostInfo, getPostReplies, getPostLikes } from "../controllers/post.js";
+import { getPosts, createPost, createReply, addLike, getPostInfo, getPostReplies, getPostLikes, getPostsWithTag } from "../controllers/post.js";
 import { verifyToken } from "../middleware/auth.js";
 
 const router = express.Router();
@@ -8,6 +8,9 @@ const router = express.Router();
 
 // Get ALL posts
 router.get("/", verifyToken, getPosts);
+
+// Get all posts with a certain tag
+router.get("/tags/:tag", verifyToken, getPostsWithTag);
 
 
 // Individual post info

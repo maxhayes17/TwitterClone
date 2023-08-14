@@ -101,7 +101,7 @@ function ViewPost({reply}){
                     </div>
                 </div>
             
-                <Post key={post._id} id={post._id} author={post.author} body={post.body} createdAt={post.createdAt} likes={post.likes} replies={post.replies}/>
+                <Post key={post._id} id={post._id} author={post.author} body={post.body} createdAt={post.createdAt} likes={post.likes} replies={post.replies} tags={post.tags}/>
 
                 <div className="inline" style={{paddingBottom:"10px", borderBottom: "1px solid #333639"}}>
                     <p><a style={{fontWeight: "bold", marginLeft:"10px"}}>{post.likes.length}</a> {post.likes.length == 1 ? "like" : "likes"}</p>

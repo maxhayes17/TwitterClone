@@ -137,9 +137,9 @@ function Profile(){
 
                         <div className="inline">
                             <div className="image-avatar" style={{width:"75px", height:"75px"}}>
-                                <img src={require("../image-avatar-blank.webp")}></img>
+                                <img src={require("../image-avatar-blank.png")}></img>
                             </div>
-                            
+
                             <div className="vertical-stack" style={{marginBlock:"auto"}}>
                                 <h3>{user.name}</h3>
                                 <p style={{opacity:"70%"}}>@{user.username}</p>

@@ -13,7 +13,7 @@ const postSchema = new mongoose.Schema(
             max: 400
         },
         date: Date,
-        tags: [{tag: String}],
+        tags: [{type: String}],
         likes: [{
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"

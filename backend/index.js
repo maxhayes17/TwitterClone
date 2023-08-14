@@ -14,6 +14,8 @@ import authRoutes from "./routes/auth.js"; // Routes for authentication/authoriz
 import postRoutes from "./routes/post.js";
 
 import {register} from "./controllers/auth.js"; // Controllers for API endpoints
+import { updateUserInfo } from "./controllers/user.js";
+import { verifyToken } from "./middleware/auth.js";
 
 // Configuration
 const __filename = fileURLToPath(import.meta.url);
@@ -31,16 +33,17 @@ app.use(bodyParser.json({limit:"30mb", extended:true}));
 app.use(bodyParser.urlencoded({limit:"30mb", extended:true}));
 
 app.use(cors());
-// Set directory for assets locally
-app.use("/assets", express.static(path.join(__dirname, 'public/assets')));
+// Set directory for uploads locally
+app.use("/uploads", express.static(path.join(__dirname, 'public/uploads')));
 
 // File storage
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        // Store files uploaded in public/assets directory
-        cb(null, "public/assets");
+        // Store files uploaded in public/uploads directory
+        cb(null, "public/uploads");
     },
     filename: function(req, file, cb) {
+        console.log(file);
         cb(null, file.originalname);
     },
 });
@@ -60,7 +63,8 @@ app.use("/user", userRoutes);
 app.use("/posts", postRoutes);
 
 // Route with file upload
-// app.post("/auth/register", upload.single("picture"), register);
+// app.patch("/user/:id/edit", upload.single('avatar'), updateUserInfo);
+app.patch("/user/:id/edit", verifyToken, upload.single('avatar'), updateUserInfo);
 
 // Setup DB
 

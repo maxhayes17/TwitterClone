@@ -8,7 +8,7 @@ const router = express.Router();
 router.get("/", verifyToken, getUsers);
 
 // Edit user profile
-router.patch("/:id/edit", verifyToken, updateUserInfo);
+// router.patch("/:id/edit", verifyToken, updateUserInfo);
 
 // Add follower
 router.patch("/:id/follow", verifyToken, addFollower);

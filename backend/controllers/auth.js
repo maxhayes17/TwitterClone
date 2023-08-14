@@ -24,6 +24,7 @@ export const register = async(req, res) => {
             email: email,
             pw_hash: pw_hash
         });
+        
         const savedUser = await newUser.save();
         // Send successful (Resource created) response
         res.status(201).json(savedUser);

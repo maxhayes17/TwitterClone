@@ -56,6 +56,23 @@ input[type=text]:focus, textarea:focus{
   outline: 2px solid #1d9bf0;
 }
 
+input[type=file]::file-selector-button{
+  /* display: none; */
+  margin-block: auto;
+  background-color:#212327;
+  color: GrayText;
+  margin-top: 10px;
+  border: none;
+}
+
+input[type=file]::file-selector-button{
+  cursor: pointer;
+}
+
+input[type=file]{
+  /* color: #212121;; */
+}
+
 .postForm{
   margin-top: 20px;
   width: 400px;
@@ -125,6 +142,13 @@ ul{
   padding-inline: 15px;
   padding-block: 15px;
   border-radius: 3ex;
+}
+
+.backBtn {
+  margin-block: auto;
+  padding-inline: 5px;
+  padding-block: 5px;
+  border-radius: 10ex;
 }
 
 .mainCard{
@@ -277,7 +301,7 @@ div.profile-list-element:hover{
   width: 40px;
   height: 40px;
   /* background-color: #1d9bf0; */
-  background-color: #f91880;
+  background-color: none;
   border-radius: 10ex;
   margin-right: 10px;
 }
@@ -375,7 +399,7 @@ form .button-round{
 
 
 .search{
-  border-bottom: 1px solid #333639;
+  /* border-bottom: 1px solid #333639; */
 }
 .search input{
   padding-left: 20px;
@@ -389,4 +413,13 @@ form .button-round{
   margin-block: 20px;
   width: 70%;
   padding: 15px;
+}
+
+.hashtag{
+  color:#1d9bf0;
+
+}
+.hashtag:hover{
+  text-decoration: underline;
+  opacity: 100%;
 }

@@ -24,6 +24,18 @@ export const getPosts = async (req, res) => {
     } 
 }
 
+export const getPostsWithTag = async (req, res) => {
+    try {
+        const { tag } = req.params;
+        const posts = await Post.find({tags:tag});
+        console.log(posts);
+
+        res.status(200).json(posts);
+    } catch (err) {
+        res.status(404).json({error: err.message});
+    } 
+}
+
 export const createPost = async (req, res) => {
     try {
         console.log(req.body);
@@ -34,10 +46,19 @@ export const createPost = async (req, res) => {
         } = req.body;
 
 
+        console.log("body: " + body);
+        const words = body.split(' ');
+        console.log("words: " + words);
+        const tags = words.filter((word) => word.startsWith('#'));
+        const trimmedTags = tags.map((tag) => tag.substring(1));
+
+        console.log(trimmedTags);
+
         const newPost = new Post({
             author: author,
             body: body,
-            public: audience == "Everyone"
+            public: audience == "Everyone",
+            tags: trimmedTags
         });
 
 

@@ -59,6 +59,10 @@ const userSchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: "Post"
         }],
+        picture_path: [{
+            type: String,
+            default: ""
+        }]
     },
     // Include while debugging
     {timestamps: true}
