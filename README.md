@@ -30,26 +30,7 @@ This project is built on a [MERN tech stack](#), meaning...
 * **Liking** and **replying** to posts and other replies
 * Custom user profiles and global user lookup
 
-Check out [this video](#) to see this project with a working userbase
-
-
 ### Navigating
-.
-|-- backend
-|   |-- controllers
-|   |-- middleware
-|   |-- models
-|   |-- routes
-|   |-- index.js
-|
-|-- frontend
-|   |-- src
-|       |-- components
-|       |-- pages
-|       |-- state
-|       |   |--index.js
-|       |-- util.js
-|       |-- App.js
 
 Important files and directories
 * `backend/models/` includes how User and Post database entries are modeled
@@ -58,6 +39,7 @@ Important files and directories
 
 * `frontend/util.js` includes all handlers for requests between frontend and backend
 * `frontend/state/index.js` includes all current states accessible across the applicaton
+
 ## Setting up
 
 ## Additional Notes
