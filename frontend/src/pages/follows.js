@@ -87,11 +87,11 @@ function Follows({isFollowers}){
                     </div>
                 </div>
 
-                {follows && follows.map(({_id, name, username, bio}) =>
+                {follows && follows.map(({_id, name, username, bio, picture_path}) =>
                     <div className="profile-list-element" key={_id} onClick={() => {navigate(`/profile/${_id}`)}}>
                         <div className="inline"> 
                             <div className="image-avatar">
-                                <img src={require("../image-avatar-blank.png")}></img>
+                                <img src={`http://localhost:3001/uploads/${picture_path ? picture_path : "image-avatar-blank.png"}`}></img>
                             </div>
                             <div className="vertical-stack">
                                 <a onClick={() => {navigate(`/profile/${_id}`)}} style={{fontWeight:"bold"}}>{name}</a>

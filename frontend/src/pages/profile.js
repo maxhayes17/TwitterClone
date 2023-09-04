@@ -36,6 +36,7 @@ function Profile(){
         })
         .then((res) => res.json())
         .then((data) => {
+            console.log(data);
             setUser(data);
         })
         .catch((err) => console.log(err));
@@ -101,7 +102,6 @@ function Profile(){
         })
         .then((res) => res.json())
         .then((data) => {
-            // console.log(data);
             dispatch(
                 setUserInfo({user: data.follower})
             );
@@ -136,7 +136,7 @@ function Profile(){
 
                         <div className="inline">
                             <div className="image-avatar" style={{width:"75px", height:"75px"}}>
-                                <img src={require("../image-avatar-blank.png")}></img>
+                                <img src={`http://localhost:3001/uploads/${user.picture_path ? user.picture_path : "image-avatar-blank.png"}`}></img>
                             </div>
 
                             <div className="vertical-stack" style={{marginBlock:"auto"}}>

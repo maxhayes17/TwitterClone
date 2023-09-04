@@ -106,8 +106,8 @@ function ViewPost({reply}){
                     <button type="submit" className="button-round" id="blue">Reply</button>
                 </form>
 
-                {replies && replies.map( ({_id, author, body, createdAt, likes, replies}) => 
-                    <Post key={_id} id={_id} author={author} body={body} createdAt={createdAt} likes={likes} replies={replies}/>)
+                {replies && replies.map( ({_id, author, body, createdAt, likes, replies, picture_path}) => 
+                    <Post key={_id} id={_id} author={author} body={body} createdAt={createdAt} likes={likes} replies={replies} picture_path={picture_path}/>)
                 }
             </div>}
             <ExploreCard />

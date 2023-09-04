@@ -29,22 +29,23 @@ export const updateUserInfo = async (req, res) => {
     try {
         const { id } = req.params;
         const user = await User.findById(id);
-        // const file = req.file;
+        // console.log(req.file);
         const {
-            avatar,
+            picture_path,
             name,
             bio,
             location,
             website
         } = req.body;
 
-        
-        console.log(req.body);
+        // console.log("------BODY-----")
+        // console.log(req.body);
 
         user.name = name ? name : user.name;
         user.bio = bio ? bio : user.bio;
         user.location = location ? location : user.location;
         user.website = website ? website : user.website;
+        user.picture_path = picture_path;
         // if (user.picture_path)
         //     user.picture_path = avatar;
 

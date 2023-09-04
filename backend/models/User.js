@@ -59,10 +59,10 @@ const userSchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: "Post"
         }],
-        picture_path: [{
+        picture_path: {
             type: String,
-            default: ""
-        }]
+            default: "image-avatar-blank.png"
+        }
     },
     // Include while debugging
     {timestamps: true}

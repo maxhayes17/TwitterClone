@@ -51,7 +51,9 @@ const storage = multer.diskStorage({
 // Will use whenever uploading file
 const upload = multer({storage});
 
-// Authentication
+// Route with file upload
+app.patch("/user/:id/edit", verifyToken, upload.single('file'), updateUserInfo);
+
 
 // Authentication routes
 app.use("/auth", authRoutes);
@@ -62,9 +64,6 @@ app.use("/user", userRoutes);
 // Post routes
 app.use("/posts", postRoutes);
 
-// Route with file upload
-// app.patch("/user/:id/edit", upload.single('avatar'), updateUserInfo);
-app.patch("/user/:id/edit", verifyToken, upload.single('avatar'), updateUserInfo);
 
 // Setup DB
 

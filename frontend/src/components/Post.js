@@ -6,10 +6,10 @@ import { setUserInfo } from "../state";
 import reactStringReplace from 'react-string-replace';
 
 
-export default function Post({id, author, body, root, createdAt, userProfile, likes, replies, tags}){
+export default function Post({id, author, body, root, createdAt, userProfile, likes, replies, tags, picture_path}){
 
     useEffect(() => {
-        console.log(userProfile);
+        // console.log(userProfile);
         // If viewing a user's profile, do not need to search for author of each post
         if (userProfile){
             setUser(userProfile);
@@ -67,7 +67,7 @@ export default function Post({id, author, body, root, createdAt, userProfile, li
             {user && <div className="post" onClick={() => navigate(`/post/${(root & root != id ? root : id)}`)}>
                 <div className="inline">
                     <div className="image-avatar">
-                        <img src={require("../image-avatar-blank.png")}></img>
+                        <img src={`http://localhost:3001/uploads/${user.picture_path ? user.picture_path : "image-avatar-blank.png"}`}></img>
                     </div>
                     <a onClick={(event) => {
                         // So click on elements inside div don't act as clicks on div
