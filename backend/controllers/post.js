@@ -45,14 +45,10 @@ export const createPost = async (req, res) => {
             audience
         } = req.body;
 
-
-        console.log("body: " + body);
+        // Create array of all words in posts which are hashtags (denoted with #)
         const words = body.split(' ');
-        console.log("words: " + words);
         const tags = words.filter((word) => word.startsWith('#'));
         const trimmedTags = tags.map((tag) => tag.substring(1));
-
-        console.log(trimmedTags);
 
         const newPost = new Post({
             author: author,
