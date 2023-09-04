@@ -29,12 +29,11 @@ function Home(){
         fetch("http://localhost:3001/posts/", {
             method: "GET",
             headers: {
-                Authorization: "Bearer " + token
+                Authorization: `Bearer ${token}`
             }
         })
         .then((res) => res.json())
         .then((data) => {
-            // console.log(data);
             dispatch(
                 setPosts({
                     posts: data
@@ -49,7 +48,7 @@ function Home(){
         fetch("http://localhost:3001/user/", {
             method: "GET",
             headers: {
-                Authorization: "Bearer " + token
+                Authorization: `Bearer ${token}`
             }
         })
         .then((res) => res.json())
@@ -62,12 +61,11 @@ function Home(){
             );
         })
     }
-
     const getUserFeed = () => {
-        fetch("http://localhost:3001/user/" + currentUser._id + "/feed", {
+        fetch(`http://localhost:3001/user/${currentUser._id}/feed`, {
             method: "GET",
             headers: {
-                Authorization: "Bearer " + token
+                Authorization: `Bearer ${token}`
             }
         })
         .then((res) => res.json())
@@ -89,7 +87,9 @@ function Home(){
                         {currentUser && <button onClick={getUserFeed}>Following</button>}
                     </div>
                 </div>
-                {feed && feed.map( ({_id, author, body, createdAt, likes, replies}) => <Post key={_id} id={_id} author={author} body={body} createdAt={createdAt} likes={likes} replies={replies}/>)}
+                {feed && feed.map( ({_id, author, body, createdAt, likes, replies}) => 
+                    <Post key={_id} id={_id} author={author} body={body} createdAt={createdAt} likes={likes} replies={replies}/>)
+                }
             </div>
             <ExploreCard />
         </div>

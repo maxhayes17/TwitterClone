@@ -25,35 +25,36 @@ function Follows({isFollowers}){
     const currentUser = useSelector((state) => state.user);
 
     const getUserFollowers = () => {
-        // console.log("http://localhost:3001/user/" + id + );
-        fetch("http://localhost:3001/user/" + id + "/followers", {
+        fetch(`http://localhost:3001/user/${id}/followers`, {
             method: "GET",
             headers: {
-                Authorization: "Bearer " + token
+                Authorization: `Bearer ${token}`
             }
         })
         .then((res) => res.json())
         .then((data) => {
-            // console.log(data);
             setUser(data.user);
             setFollows(data.follows)
+
+            // Set focus to followers tab
             followersRef.current.focus();
         })
         .catch((err) => console.log(err));
     };
 
     const getUserFollowing = () => {
-        fetch("http://localhost:3001/user/" + id + "/following", {
+        fetch(`http://localhost:3001/user/${id}/following`, {
             method: "GET",
             headers: {
-                Authorization: "Bearer " + token
+                Authorization: `Bearer ${token}`
             }
         })
         .then((res) => res.json())
         .then((data) => {
-            // console.log(data);
             setUser(data.user);
             setFollows(data.follows)
+            
+            // Set focus to following tab
             followingRef.current.focus();
         })
         .catch((err) => console.log(err));
@@ -87,13 +88,13 @@ function Follows({isFollowers}){
                 </div>
 
                 {follows && follows.map(({_id, name, username, bio}) =>
-                    <div className="profile-list-element" onClick={() => {navigate("/profile/" + _id)}}>
+                    <div className="profile-list-element" key={_id} onClick={() => {navigate(`/profile/${_id}`)}}>
                         <div className="inline"> 
                             <div className="image-avatar">
                                 <img src={require("../image-avatar-blank.png")}></img>
                             </div>
                             <div className="vertical-stack">
-                                <a onClick={() => {navigate("/profile/" + _id)}} style={{fontWeight:"bold"}}>{name}</a>
+                                <a onClick={() => {navigate(`/profile/${_id}`)}} style={{fontWeight:"bold"}}>{name}</a>
                                 <p style={{opacity:"70%"}}>@{username}</p>
                                 <p>{bio}</p>
                             </div>             

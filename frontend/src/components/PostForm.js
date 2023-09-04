@@ -13,19 +13,17 @@ export default function PostForm({user}){
         const formData = new FormData(form.target);
         const formJSON = Object.fromEntries(formData.entries());
         formJSON["author"] = user._id;
-        console.log(formJSON);
 
         fetch("http://localhost:3001/posts/compose", {
             method: "POST",
             headers: {
-                Authorization: "Bearer " + token,
+                Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json"},
             body: JSON.stringify(formJSON)
         })
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
-            navigate("/home");
+            navigate(-1);
         }).catch((err) => console.log(err));
 
         form.target.reset();
@@ -37,7 +35,6 @@ export default function PostForm({user}){
                 <VerticalNav header="New post"/>
                 <form onSubmit={handleSubmit} className="postForm">
                     <textarea placeholder="What would you like to say?" name="body" autoComplete="off" className="input-text-large" required/>
-                    {/* <label for="audience">Who can see this?</label> */}
                     <div className="inline">
                         <p style={{color: "#ffffffba"}}>Who can see this?</p>
                         <select name="audience" required>

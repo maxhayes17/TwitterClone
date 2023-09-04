@@ -28,11 +28,10 @@ export default function Post({id, author, body, root, createdAt, userProfile, li
     const navigate = useNavigate();
 
     const getUserInfo = () => {
-        console.log(author);
-        fetch("http://localhost:3001/user/" + author, {
+        fetch(`http://localhost:3001/user/${author}`, {
             method: "GET",
             headers: {
-                Authorization: "Bearer " + token
+                Authorization: `Bearer ${token}`
             }
         })
         .then((res) => res.json())
@@ -43,10 +42,10 @@ export default function Post({id, author, body, root, createdAt, userProfile, li
     }
 
     const addLike = () => {
-        fetch("http://localhost:3001/posts/" + id + "/like", {
+        fetch(`http://localhost:3001/posts/${id}/like`, {
             method: "PATCH",
             headers: {
-                Authorization: "Bearer " + token,
+                Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
@@ -55,7 +54,6 @@ export default function Post({id, author, body, root, createdAt, userProfile, li
         })
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
             dispatch(
                 setUserInfo({user: data.user})
             );
@@ -66,7 +64,7 @@ export default function Post({id, author, body, root, createdAt, userProfile, li
 
     return(
         <div>
-            {user && <div className="post" onClick={() => navigate("/post/" + (root & root != id ? root : id))}>
+            {user && <div className="post" onClick={() => navigate(`/post/${(root & root != id ? root : id)}`)}>
                 <div className="inline">
                     <div className="image-avatar">
                         <img src={require("../image-avatar-blank.png")}></img>
@@ -74,7 +72,7 @@ export default function Post({id, author, body, root, createdAt, userProfile, li
                     <a onClick={(event) => {
                         // So click on elements inside div don't act as clicks on div
                         event.stopPropagation()
-                        navigate("/profile/" + user._id)}} style={{fontWeight:"bold", marginBlock:"auto"}}>{user.name}</a>
+                        navigate(`/profile/${user._id}`)}} style={{fontWeight:"bold", marginBlock:"auto"}}>{user.name}</a>
                     <p style={{opacity:"70%"}}>@{user.username} • {createdAt.slice(0,10)}</p>
                 </div>
                 
@@ -86,7 +84,7 @@ export default function Post({id, author, body, root, createdAt, userProfile, li
                         className="hashtag"
                         onClick={(event) => {
                             event.stopPropagation();
-                             navigate("/explore/" + match)}}
+                             navigate(`/explore/${match}`)}}
                         >#{match}</a>
                     ) )}
                 </p>
@@ -118,7 +116,7 @@ export default function Post({id, author, body, root, createdAt, userProfile, li
                     {/* comment Button */}
                     <a className="commentBtn" onClick={(event) => {
                         event.stopPropagation()
-                        navigate("/post/" + (root & root != id ? root : id) + "/reply")
+                        navigate(`/post/${(root & root != id ? root : id)}/reply`)
                     }}>
                         <div className="inline">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat" viewBox="0 0 16 16">
@@ -127,12 +125,6 @@ export default function Post({id, author, body, root, createdAt, userProfile, li
                             <p style={{marginBlock:"auto", marginRight:"25px"}}>{replies && replies.length}</p>
                         </div>
                     </a>
-                    {/* rt Button */}
-                    {/* <a className="rtBtn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
-                        </svg> 0
-                    </a> */}
                 </div>}
 
             </div>}

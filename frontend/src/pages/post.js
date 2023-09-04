@@ -22,19 +22,17 @@ function ViewPost({reply}){
     const replyRef = useRef(null);
 
     const getPostInfo = () => {
-        fetch("http://localhost:3001/posts/" + id, {
+        fetch(`http://localhost:3001/posts/${id}`, {
             method: "GET",
             headers: {
-                Authorization: "Bearer " + token
+                Authorization: `Bearer ${token}`
             }
         })
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
             setPost(data);
             getPostReplies();
             
-            console.log(reply);
             // Focus on reply field
             if(reply)
                 replyRef.current.focus();
@@ -43,15 +41,14 @@ function ViewPost({reply}){
     }
 
     const getPostReplies = () => {
-        fetch("http://localhost:3001/posts/" + id + "/replies", {
+        fetch(`http://localhost:3001/posts/${id}/replies`, {
             method: "GET",
             headers: {
-                Authorization: "Bearer " + token
+                Authorization: `Bearer ${token}`
             }
         })
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
             setReplies(data);
         })
         .catch((err) => console.log(err));
@@ -63,18 +60,16 @@ function ViewPost({reply}){
         const formData = new FormData(form.target);
         const formJSON = Object.fromEntries(formData.entries());
         formJSON["author"] = currentUser._id;
-        console.log(formJSON);
 
-        fetch("http://localhost:3001/posts/" + id + "/reply", {
+        fetch(`http://localhost:3001/posts/${id}/reply`, {
             method: "POST",
             headers: {
-                Authorization: "Bearer " + token,
+                Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json"},
             body: JSON.stringify(formJSON)
         })
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
             
         }).catch((err) => console.log(err));
 
@@ -111,7 +106,9 @@ function ViewPost({reply}){
                     <button type="submit" className="button-round" id="blue">Reply</button>
                 </form>
 
-                {replies && replies.map( ({_id, author, body, createdAt, likes, replies}) => <Post key={_id} id={_id} author={author} body={body} createdAt={createdAt} likes={likes} replies={replies}/>)}
+                {replies && replies.map( ({_id, author, body, createdAt, likes, replies}) => 
+                    <Post key={_id} id={_id} author={author} body={body} createdAt={createdAt} likes={likes} replies={replies}/>)
+                }
             </div>}
             <ExploreCard />
         </div>

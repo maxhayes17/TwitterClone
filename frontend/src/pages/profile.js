@@ -28,24 +28,23 @@ function Profile(){
     const token = useSelector((state) => state.token);
 
     const getUserInfo = () => {
-        fetch("http://localhost:3001/user/" + id, {
+        fetch(`http://localhost:3001/user/${id}`, {
             method: "GET",
             headers: {
-                Authorization: "Bearer " + token
+                Authorization: `Bearer ${token}`
             }
         })
         .then((res) => res.json())
         .then((data) => {
             setUser(data);
-            // getUserPosts();
         })
         .catch((err) => console.log(err));
     };
     const getUserPosts = () => {
-        fetch("http://localhost:3001/user/" + id + "/posts", {
+        fetch(`http://localhost:3001/user/${id}/posts`, {
             method: "GET",
             headers: {
-                Authorization: "Bearer " + token
+                Authorization: `Bearer ${token}`
             }
         })
         .then((res) => res.json())
@@ -57,10 +56,10 @@ function Profile(){
     };
 
     const getUserReplies = () => {
-        fetch("http://localhost:3001/user/" + id + "/replies", {
+        fetch(`http://localhost:3001/user/${id}/replies`, {
             method: "GET",
             headers: {
-                Authorization: "Bearer " + token
+                Authorization: `Bearer ${token}`
             }
         })
         .then((res) => res.json())
@@ -71,10 +70,10 @@ function Profile(){
     };
 
     const getUserLiked = () => {
-        fetch("http://localhost:3001/user/" + id + "/liked", {
+        fetch(`http://localhost:3001/user/${id}/liked`, {
             method: "GET",
             headers: {
-                Authorization: "Bearer " + token
+                Authorization: `Bearer ${token}`
             }
         })
         .then((res) => res.json())
@@ -89,10 +88,10 @@ function Profile(){
     }
 
     const addFollower = () => {
-        fetch("http://localhost:3001/user/" + user._id + "/follow", {
+        fetch(`http://localhost:3001/user/${user._id}/follow`, {
             method: "PATCH",
             headers: {
-                Authorization: "Bearer " + token,
+                Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
@@ -102,11 +101,11 @@ function Profile(){
         })
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
+            // console.log(data);
             dispatch(
                 setUserInfo({user: data.follower})
             );
-            navigate("/profile/" + data.followee._id);
+            navigate(`/profile/${data.followee._id}`);
         })
         .catch((err) => console.log(err));
     };
@@ -147,7 +146,7 @@ function Profile(){
                             
                             {(user._id == currentUser._id ) 
                             ? 
-                                <a onClick={() => navigate("/profile/" + user._id + "/edit")} 
+                                <a onClick={() => navigate(`/profile/${user._id}/edit`)} 
                                     className="button-round" 
                                         id="border">Edit profile</a>
                             :
@@ -159,8 +158,8 @@ function Profile(){
                         <p style={{opacity:"70%"}}>{ user.location ? user.location : ""} Joined {user.createdAt.slice(0,10)}</p>
 
                         <p>
-                            <a onClick={() => navigate("/profile/" + user._id + "/following")} style={{fontWeight:"bold"}}>{user.following.length}</a> Following 
-                            <a onClick={() => navigate("/profile/" + user._id + "/followers")} style={{fontWeight:"bold"}}> {user.followers.length}</a> Followers
+                            <a onClick={() => navigate(`/profile/${user._id}/following`)} style={{fontWeight:"bold"}}>{user.following.length}</a> Following 
+                            <a onClick={() => navigate(`/profile/${user._id}/followers`)} style={{fontWeight:"bold"}}> {user.followers.length}</a> Followers
                         </p>
                         
                         {posts && <div className="btn-group">
@@ -172,7 +171,8 @@ function Profile(){
 
                     </div>
                     {posts && posts.map(({_id, author, body, root, createdAt, likes, replies}) => 
-                    <Post key={_id} id={_id} body={body} author={author} root={root} createdAt={createdAt} likes={likes} replies={replies}/>)}
+                        <Post key={_id} id={_id} body={body} author={author} root={root} createdAt={createdAt} likes={likes} replies={replies}/>)
+                    }
                 </div>}
             </div>}
             <ExploreCard />

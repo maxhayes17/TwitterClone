@@ -17,10 +17,10 @@ function Explore(){
 
 
     const getPostsWithTag = () => {
-        fetch("http://localhost:3001/posts/tags/" + tag, {
+        fetch(`http://localhost:3001/posts/tags/${tag}`, {
             method: "GET",
             headers: {
-                Authorization: "Bearer " + token
+                Authorization: `Bearer ${token}`
             }
         })
         .then((res) => res.json())

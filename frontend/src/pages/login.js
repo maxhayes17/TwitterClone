@@ -21,7 +21,7 @@ function Login(){
         const formJSON = Object.fromEntries(formData.entries());
 
         // Send data to backend
-        fetch("http://localhost:3001/auth/" + pageType, {
+        fetch(`http://localhost:3001/auth/${pageType}`, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(formJSON)
