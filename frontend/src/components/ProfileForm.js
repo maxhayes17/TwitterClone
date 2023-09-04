@@ -21,11 +21,18 @@ export default function ProfileForm(){
     const handleSubmit = (form) => {
         form.preventDefault();
         const formData = new FormData();
-        for (let field in form){
-            formData.append(field, form[field]);
+
+        // Retrieve entries from form to send with formData
+        const formEntries = new FormData(form.target)
+        const formJSON = Object.fromEntries(formEntries.entries());
+        for (let field in formJSON){
+            formData.append(field, formJSON[field])
         }
-        formData.append("file", file)
-        formData.append("picture_path", file.name);
+        // formData.append("file", file)
+        if(file)
+            formData.append("picture_path", file.name);
+
+        console.log(formData);
 
         fetch(`http://localhost:3001/user/${id}/edit`, {
             method: "PATCH",

@@ -87,8 +87,8 @@ function Home(){
                         {currentUser && <button onClick={getUserFeed}>Following</button>}
                     </div>
                 </div>
-                {feed && feed.map( ({_id, author, body, createdAt, likes, replies}) => 
-                    <Post key={_id} id={_id} author={author} body={body} createdAt={createdAt} likes={likes} replies={replies}/>)
+                {feed && feed.map( ({_id, author, body, createdAt, likes, replies, picture_path}) => 
+                    <Post key={_id} id={_id} author={author} body={body} createdAt={createdAt} likes={likes} replies={replies} picture_path={picture_path}/>)
                 }
             </div>
             <ExploreCard />

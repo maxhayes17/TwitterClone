@@ -42,7 +42,8 @@ export const createPost = async (req, res) => {
         const {
             author,
             body,
-            audience
+            audience,
+            picture_path
         } = req.body;
 
         // Create array of all words in posts which are hashtags (denoted with #)
@@ -54,7 +55,8 @@ export const createPost = async (req, res) => {
             author: author,
             body: body,
             public: audience == "Everyone",
-            tags: trimmedTags
+            tags: trimmedTags,
+            picture_path: picture_path ? picture_path : ""
         });
 
 

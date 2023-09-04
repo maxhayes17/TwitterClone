@@ -19,7 +19,7 @@ router.get("/:id/replies", verifyToken, getPostReplies);
 router.get("/:id/likes", verifyToken, getPostLikes)
 
 // Create post / Create reply
-router.post("/compose", verifyToken, createPost);
+// router.post("/compose", verifyToken, createPost);
 router.post("/:id/reply", verifyToken, createReply);
 
 // Like post

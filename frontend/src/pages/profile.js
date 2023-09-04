@@ -170,8 +170,8 @@ function Profile(){
                         </div>}
 
                     </div>
-                    {posts && posts.map(({_id, author, body, root, createdAt, likes, replies}) => 
-                        <Post key={_id} id={_id} body={body} author={author} root={root} createdAt={createdAt} likes={likes} replies={replies}/>)
+                    {posts && posts.map(({_id, author, body, root, createdAt, likes, replies, picture_path}) => 
+                        <Post key={_id} id={_id} body={body} author={author} root={root} createdAt={createdAt} likes={likes} replies={replies} picture_path={picture_path}/>)
                     }
                 </div>}
             </div>}

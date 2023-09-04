@@ -22,7 +22,9 @@ const postSchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: "Post"
         }],
-        media: Boolean,
+        picture_path: {
+            type: String
+        },
         root: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Post"

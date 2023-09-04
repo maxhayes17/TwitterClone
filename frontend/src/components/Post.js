@@ -88,6 +88,11 @@ export default function Post({id, author, body, root, createdAt, userProfile, li
                         >#{match}</a>
                     ) )}
                 </p>
+                {picture_path && <div style={{width:"100px"}}>
+                    <img src={`http://localhost:3001/uploads/${picture_path}`} style={{width:"600px"}}></img>
+
+                </div>
+                }
 
                 {currentUser && <div className="inline">
 

@@ -29,7 +29,7 @@ export const updateUserInfo = async (req, res) => {
     try {
         const { id } = req.params;
         const user = await User.findById(id);
-        // console.log(req.file);
+        
         const {
             picture_path,
             name,
@@ -38,18 +38,17 @@ export const updateUserInfo = async (req, res) => {
             website
         } = req.body;
 
-        // console.log("------BODY-----")
-        // console.log(req.body);
+        console.log(req.body);
+        console.log(name);
 
+
+        // Only change if the field is not empty
         user.name = name ? name : user.name;
         user.bio = bio ? bio : user.bio;
         user.location = location ? location : user.location;
         user.website = website ? website : user.website;
-        user.picture_path = picture_path;
-        // if (user.picture_path)
-        //     user.picture_path = avatar;
+        user.picture_path = picture_path ? picture_path : user.picture_path;
 
-        // console.log(user.picture_path);
         user.save();
 
         res.status(200).json(user);
