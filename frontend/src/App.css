@@ -112,7 +112,7 @@ h3{
 ul{
   list-style: none;
 }
-.nav{
+/* .nav{
   margin: 0;
   padding: 0;
   list-style: none;
@@ -125,28 +125,29 @@ ul{
 
   background-color: black;
   border: 1px solid #333639;
-}
-.nav li{
+} */
+
+/* .nav li{
   text-align: left;
   margin-left: 25%;
   margin-top: 0px;
   color: #FFFFFF;
   font-weight: bold;
   font-size: 20px;
-}
+} */
 
-.nav a.button-round{
+/* .nav a.button-round{
   margin-left: -20px;
   padding-inline: 80px;
   padding-block: 15px;
   font-size: 1rem;
-}
-.nav div.inline{
+} */
+/* .nav div.inline{
   width: fit-content;
   padding-inline: 15px;
   padding-block: 15px;
   border-radius: 3ex;
-}
+} */
 
 .backBtn {
   margin-block: auto;
