@@ -136,6 +136,20 @@ export const getUserLiked = async (req, res) => {
     }
 }
 
+export const getUserMedia = async(req, res) => {
+    try {
+        const { id } = req.params;
+
+        const posts = await Post.find({author: id}).sort({createdAt: -1});
+        const media = posts.filter((post) => post.picture_path && post.picture_path != "");
+        console.log(media);
+
+        res.status(200).json(media);
+    } catch (err) {
+        res.status(404).json({error: err.message});
+    }
+}
+
 
 export const getUserFollowers = async (req, res) => {
     try {

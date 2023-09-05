@@ -85,8 +85,18 @@ function Profile(){
     };
 
     const getUserMedia = () => {
-        setPosts([]);
-    }
+        fetch(`http://localhost:3001/user/${id}/media`, {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            setPosts(data);
+        })
+        .catch((err) => console.log(err));
+    };
 
     const addFollower = () => {
         fetch(`http://localhost:3001/user/${user._id}/follow`, {
