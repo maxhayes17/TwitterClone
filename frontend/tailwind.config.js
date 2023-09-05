@@ -8,7 +8,9 @@ module.exports = {
     theme: {
       extend: {
         colors:{
-            'twitter-blue': '#1d9bf0'
+            'twitter-blue': '#1d9bf0',
+            'raisin-black': '#212327',
+            'onyx': '#333639'
         }
       }
     },
