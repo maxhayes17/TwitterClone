@@ -1,6 +1,6 @@
 import Navbar from "../components/Navbar";
 import ExploreCard from "../components/ExploreCard";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
@@ -13,7 +13,10 @@ function Explore(){
 
     const [feed, setFeed] = useState(null);
     const token = useSelector((state) => state.token);
-    const {tag} = useParams();
+    const { tag } = useParams();
+
+    const feedRef = useRef(null);
+
 
 
     const getPostsWithTag = () => {
@@ -25,8 +28,8 @@ function Explore(){
         })
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
             setFeed(data);
+            feedRef.current.focus();
         })
         .catch((err) => console.log(err));
     }
@@ -38,8 +41,8 @@ function Explore(){
                 <div className="vertical-nav">
                     <h2>Explore</h2>
                 {tag ? <div className="btn-group">
+                        <button ref={feedRef}>Latest</button>
                         <button>Popular</button>
-                        <button>Latest</button>
                     </div> 
                     : <div className="btn-group">
                         <button>For you</button>
@@ -50,7 +53,7 @@ function Explore(){
                 }
                 </div>
 
-                {feed && feed.map( ({_id, author, body, createdAt, likes, replies}) => <Post key={_id} id={_id} author={author} body={body} createdAt={createdAt} likes={likes} replies={replies}/>)}
+                {feed && feed.map( ({_id, author, body, createdAt, likes, replies, picture_path}) => <Post key={_id} id={_id} author={author} body={body} createdAt={createdAt} likes={likes} replies={replies} picture_path={picture_path}/>)}
             </div>
             <ExploreCard />
         </div>

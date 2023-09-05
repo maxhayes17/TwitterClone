@@ -27,8 +27,8 @@ export const getPosts = async (req, res) => {
 export const getPostsWithTag = async (req, res) => {
     try {
         const { tag } = req.params;
-        const posts = await Post.find({tags:tag});
-        console.log(posts);
+        console.log(req.params);
+        const posts = await Post.find({tags:tag}).sort({createdAt: -1});
 
         res.status(200).json(posts);
     } catch (err) {
