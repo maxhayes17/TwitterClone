@@ -18,7 +18,7 @@ export default function ExploreCard(){
         <div className="w-1/3 h-full sticky top-0 flex flex-col border-l border-onyx bg-black">
             <div className="mt-5">
                 <form>
-                    <input className="w-full mb-4 px-5 py-3 rounded-full"
+                    <input className="w-full mb-5 px-5 py-3 rounded-full"
                         type="text" placeholder="Search TwitClone" 
                         onChange={e => {
                             let result = users.filter((user) => {
@@ -47,8 +47,13 @@ export default function ExploreCard(){
                         </div>
                     </div>
                 )}
-                <div className="py-2 px-4 bg-black hover:bg-black-semitransparent hover:cursor-pointer text-left text-bold text-twitter-blue"
-                    onClick={() => {navigate(`/explore/${search}`)}}>#{search}</div>
+                <div className="flex flex-row py-3 px-4 bg-black hover:bg-black-semitransparent hover:cursor-pointer text-left"
+                    onClick={() => {navigate(`/explore/${search}`)}}>
+                        <p className="text-bold text-twitter-blue">#{search}</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 my-auto ml-auto">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>
+</div>
                 </div>}
             </div>
         </div>
