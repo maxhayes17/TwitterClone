@@ -369,21 +369,21 @@ form .button-round{
 }
 
 
-.likeBtn{
+/* .likeBtn{
   margin-block: auto;
   color: #ffffffba;
   
-}
+} */
 .likeBtn svg:hover{
   opacity: 100%;
   color: #f91880;
 }
 
-.commentBtn{
+/* .commentBtn{
   margin-right: 25px;
   margin-block: auto;
   color: #ffffffba;
-}
+} */
 .commentBtn svg:hover{
   opacity: 100%;
   color: #1d9bf0;
@@ -415,10 +415,10 @@ form .button-round{
   padding: 15px;
 }
 
-.hashtag{
+/* .hashtag{
   color:#1d9bf0;
 
-}
+} */
 .hashtag:hover{
   text-decoration: underline;
   opacity: 100%;
