@@ -10,7 +10,8 @@ module.exports = {
         colors:{
             'twitter-blue': '#1d9bf0',
             'raisin-black': '#212327',
-            'onyx': '#333639'
+            'onyx': '#333639',
+            'black-rgba': 'rgba(0,0,0,0.3)'
         }
       }
     },

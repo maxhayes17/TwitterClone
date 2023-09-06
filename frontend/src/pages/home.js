@@ -12,7 +12,7 @@ function Home(){
     useEffect(() => {
         getPosts();
         getUsers();
-        feedRef.current.focus();
+        // feedRef.current.focus();
     }, [setPosts]);
 
     const [feed, setFeed] = useState(null);
@@ -77,21 +77,23 @@ function Home(){
     };
 
     return(
-        <div>
+        <div className="flex flex-row bg-red-500 w-screen h-screen">
             <Navbar />
-            <div className="mainCard">
-                <div className="vertical-nav">
-                    <h2>Home</h2>
-                    <div className="btn-group">
-                        <button onClick={getPosts} ref={feedRef}>Public</button>
-                        {currentUser && <button onClick={getUserFeed}>Following</button>}
+            <div className="w-5/12 h-full overflow-scroll bg-black text-left">
+
+                <div className="w-full sticky top-0 z-10 bg-black-rgba backdrop-blur-sm border border-onyx">
+                    <h1 className="p-5 text-left text-xl font-bold">Home</h1>
+                    <div className="flex flex-row justify-around">
+                        <button className="text-md font-bold p-5 focus:border-b-twitter-blue focus:border-b-4 hover:bg-raisin-black" onClick={getPosts} ref={feedRef}>Public</button>
+                        {currentUser && 
+                        <button className="text-md font-bold p-5 focus:border-b-twitter-blue focus:border-b-4 hover:bg-raisin-black" onClick={getUserFeed}>Following</button>}
                     </div>
                 </div>
                 {feed && feed.map( ({_id, author, body, createdAt, likes, replies, picture_path}) => 
                     <Post key={_id} id={_id} author={author} body={body} createdAt={createdAt} likes={likes} replies={replies} picture_path={picture_path}/>)
                 }
             </div>
-            <ExploreCard />
+            {/* <ExploreCard /> */}
         </div>
     );
 }

@@ -156,17 +156,14 @@ ul{
   border-radius: 10ex;
 }
 
-.mainCard{
+/* .mainCard{
   width: auto;
-  /* width: 100%; */
   margin-left: 25%;
   margin-right: 33%;
   height: 100%;
   text-align: left;
-  /* padding-left: 20px; */
-  /* background-color: black; */
-  /* border: 1px solid #333639; */
-}
+
+} */
 .mainCard h1{
   padding: 20px 20px 0;
 }
@@ -224,15 +221,15 @@ ul{
 .post p{
   text-align: left;
 }
-.vertical-nav .btn-group{
+/* .vertical-nav .btn-group{
   margin-left: -20px;
-}
+} */
 
-.btn-group{
+/* .btn-group{
   display: inline-block;
   min-width: 100%;
-}
-.btn-group button{
+} */
+/* .btn-group button{
   background-color: black;
   color: white;
   border: none;
@@ -241,19 +238,17 @@ ul{
   font-weight: bold;
 
   padding: 20px;
-}
-.btn-group button:hover{
-  /* text-decoration: underline; */
-  background-color: #212327;
-}
+} */
+/* .btn-group button:hover{
 
-.btn-group button:focus{
+  background-color: #212327;
+} */
+
+/* .btn-group button:focus{
   outline: none;
   border-bottom: 3px solid #1d9bf0;
   margin-bottom: -1px;
-  /* text-decoration-color: #1d9bf0; */
-  /* text-decoration: underline; */
-}
+} */
 
 .vertical-nav{
   position: sticky;
@@ -277,9 +272,9 @@ ul{
   background-color: rgba(0,0,0,0);
 }
 
-.vertical-nav .inline{
+/* .vertical-nav .inline{
   margin-top: 0;
-}
+} */
 
 
 .profile-list-element{
