@@ -123,7 +123,7 @@ function Profile(){
     };
 
     return(
-        <div className="flex flex-row bg-blue-500 w-screen h-screen">
+        <div className="flex flex-row w-screen h-screen">
             <Navbar />
             {user && <div className="w-5/12 h-full overflow-auto bg-black text-left">
                 {posts && <div>

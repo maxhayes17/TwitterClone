@@ -51,7 +51,7 @@ function Login(){
     }
 
     return(
-        <div className="flex flex-row bg-red-500 w-screen h-screen">
+        <div className="flex flex-row w-screen h-screen">
             <Navbar />
             <div className="w-5/12 h-full overflow-auto bg-black text-center">
                 <div className="flex flex-col space-y-4 mt-16">

@@ -64,7 +64,7 @@ export default function Post({id, author, body, root, createdAt, userProfile, li
 
     return(
         <div className="">
-            {user && <div className="flex flex-row px-4 pt-5 border border-onyx bg-black hover:bg-black-semitransparent hover:cursor-pointer" onClick={() => navigate(`/post/${(root & root != id ? root : id)}`)}>
+            {user && <div className="flex flex-row px-4 pt-5 border-y border-onyx bg-black hover:bg-black-semitransparent hover:cursor-pointer" onClick={() => navigate(`/post/${(root & root != id ? root : id)}`)}>
                     <div className="w-fit shrink-0 mr-3">
                         <img className="w-12 h-12 rounded-full object-cover mx-auto" src={`http://localhost:3001/uploads/${user.picture_path ? user.picture_path : "image-avatar-blank.png"}`}></img>
                     </div>

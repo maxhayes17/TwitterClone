@@ -61,7 +61,7 @@ function Follows({isFollowers}){
     };
 
     return(
-        <div className="flex flex-row bg-blue-500 w-screen h-screen">
+        <div className="flex flex-row w-screen h-screen">
             <Navbar />
             {user && <div className="w-5/12 h-full overflow-auto bg-black text-left">
 
@@ -94,7 +94,7 @@ function Follows({isFollowers}){
                                     <img className="w-14 h-14 rounded-full object-cover mx-auto" src={`http://localhost:3001/uploads/${picture_path ? picture_path : "image-avatar-blank.png"}`}></img>
                                 </div>
 
-                                <div className="flex flex-col space-y-0 text-left">
+                                <div className="flex flex-col text-left">
                                     <a className="text-md text-white font-bold hover:underline hover:underline-offset-2 hover:decoration-white hover:opacity-100">{name}</a>
                                     <a className="text-md text-neutral-400">@{username}</a>
                                     <p>{bio}</p>
@@ -111,8 +111,7 @@ function Follows({isFollowers}){
                     )}
                 </div>
             </div>}
-
-            {/* <ExploreCard /> */}
+            <ExploreCard />
         </div>
     );
 }
