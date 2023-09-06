@@ -10,10 +10,10 @@ export default function Navbar(){
     // const userId = user ? user._id: null;
 
     return(
-        <div className="w-1/4 h-full fixed bg-black flex flex-col border-">
+        <div className="w-1/4 h-full sticky top-0 bg-black flex flex-col border-r border-onyx">
 
         <div className="ml-16">
-            <div className="w-fit mt-5 p-4 text-xl font-bold" onClick={() => navigate("/")}>
+            <div className="w-fit mt-5 p-4 text-xl font-bold hover:opacity-70 hover:cursor-pointer" onClick={() => navigate("/")}>
                 <i>TwitClone</i>
             </div>
 
