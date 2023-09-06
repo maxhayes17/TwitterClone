@@ -61,49 +61,58 @@ function Follows({isFollowers}){
     };
 
     return(
-        <div>
+        <div className="flex flex-row bg-blue-500 w-screen h-screen">
             <Navbar />
-            {user && <div className="mainCard">
+            {user && <div className="w-5/12 h-full overflow-auto bg-black text-left">
 
-                <div className="vertical-nav">
-                    <div className="inline">
-                        <a onClick={() => navigate(-1)} style={{paddingRight:"20px"}}>
-                            <h2>
-                                {/* back button  */}
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
-                                </svg> 
-                            </h2>
-                        </a>
-                        <div className="vertical-stack">
-                            <h3>{user.name}</h3>
-                            <p style={{opacity:"70%"}}>@{user.username}</p>
+                <div className="w-full sticky top-0 z-10 py-1 bg-black-rgba backdrop-blur-sm">
+                    <div className="flex flex-row space-x-5">
+                        <div onClick={() => navigate(-1)} className="ml-1 my-auto">
+                            {/* back button  */}
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-9 h-9 p-2 rounded-full hover:bg-raisin-black hover:cursor-pointer">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                            </svg>
+                        </div>
+                        <div className="flex flex-col justify-around text-left">
+                                <h1 className="text-xl font-extrabold">{user.name}</h1>
+                                <p className="text-sm text-neutral-400">@{user.username}</p>
                         </div>
                     </div>
-
-                    <div className="btn-group">
-                        <button onClick={getUserFollowers} ref={followersRef}>Followers</button>
-                        <button onClick={getUserFollowing} ref={followingRef}>Following</button>
+                    <div className="flex flex-row justify-around">
+                        <button className="text-md font-bold p-5 focus:border-b-twitter-blue focus:border-b-4 hover:bg-raisin-black"onClick={getUserFollowers} ref={followersRef}>Followers</button>
+                        <button className="text-md font-bold p-5 focus:border-b-twitter-blue focus:border-b-4 hover:bg-raisin-black" onClick={getUserFollowing} ref={followingRef}>Following</button>
                     </div>
                 </div>
 
-                {follows && follows.map(({_id, name, username, bio, picture_path}) =>
-                    <div className="profile-list-element" key={_id} onClick={() => {navigate(`/profile/${_id}`)}}>
-                        <div className="inline"> 
-                            <div className="image-avatar">
-                                <img src={`http://localhost:3001/uploads/${picture_path ? picture_path : "image-avatar-blank.png"}`}></img>
+
+
+                <div className="flex flex-col">
+                    {follows && follows.map(({_id, name, username, bio, picture_path}) =>
+                        <div className="py-2 px-4 bg-black hover:bg-black-semitransparent hover:cursor-pointer text-left" key={_id} onClick={() => {navigate(`/profile/${_id}`)}}>
+                            <div className="flex flex-row">
+                                <div className="w-fit shrink-0 mr-3">
+                                    <img className="w-14 h-14 rounded-full object-cover mx-auto" src={`http://localhost:3001/uploads/${picture_path ? picture_path : "image-avatar-blank.png"}`}></img>
+                                </div>
+
+                                <div className="flex flex-col space-y-0 text-left">
+                                    <a className="text-md text-white font-bold hover:underline hover:underline-offset-2 hover:decoration-white hover:opacity-100">{name}</a>
+                                    <a className="text-md text-neutral-400">@{username}</a>
+                                    <p>{bio}</p>
+                                </div>
+
+                                <div 
+                                    className={currentUser.following.includes(_id) 
+                                        ? "bg-black px-4 py-2 ml-auto h-fit rounded-full text-white font-bold border border-onyx hover:opacity-70 hover:cursor-pointer" 
+                                        : "bg-white px-4 py-2 ml-auto h-fit rounded-full text-black font-bold hover:opacity-70 hover:cursor-pointer"}>
+                                    {currentUser.following.includes(_id) ? "Following" : "Follow"}
+                                </div>
                             </div>
-                            <div className="vertical-stack">
-                                <a onClick={() => {navigate(`/profile/${_id}`)}} style={{fontWeight:"bold"}}>{name}</a>
-                                <p style={{opacity:"70%"}}>@{username}</p>
-                                <p>{bio}</p>
-                            </div>             
-                            {currentUser._id != _id && <a className="button-round" id={currentUser.following.includes(_id) ? "border" : "white"}>{currentUser.following.includes(_id) ? "Following" : "Follow"}</a>}
                         </div>
-                    </div>
-                )}
+                    )}
+                </div>
             </div>}
-            <ExploreCard />
+
+            {/* <ExploreCard /> */}
         </div>
     );
 }
