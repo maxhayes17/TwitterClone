@@ -11,7 +11,9 @@ module.exports = {
             'twitter-blue': '#1d9bf0',
             'raisin-black': '#212327',
             'onyx': '#333639',
-            'black-rgba': 'rgba(0,0,0,0.3)'
+            'black-rgba': 'rgba(0,0,0,0.3)',
+            'black-semitransparent': '#080808'
+
         }
       }
     },
