@@ -64,9 +64,9 @@ export default function Post({id, author, body, root, createdAt, userProfile, li
 
     return(
         <div className="">
-            {user && <div className="flex flex-row px-4 pt-5 border border-onyx hover:bg-raisin-black hover:cursor-pointer" onClick={() => navigate(`/post/${(root & root != id ? root : id)}`)}>
+            {user && <div className="flex flex-row px-4 pt-5 border border-onyx bg-black hover:bg-black-rgba hover:cursor-pointer" onClick={() => navigate(`/post/${(root & root != id ? root : id)}`)}>
                     <div className="w-fit shrink-0 mr-3">
-                        <img className="w-14 h-14 rounded-full object-cover" src={`http://localhost:3001/uploads/${user.picture_path ? user.picture_path : "image-avatar-blank.png"}`}></img>
+                        <img className="w-12 h-12 rounded-full object-cover mx-auto" src={`http://localhost:3001/uploads/${user.picture_path ? user.picture_path : "image-avatar-blank.png"}`}></img>
                     </div>
                     <div className="flex flex-col w-full">
 
@@ -94,35 +94,38 @@ export default function Post({id, author, body, root, createdAt, userProfile, li
                             <img className="max-w-full mt-2 rounded-xl border border-onyx"src={`http://localhost:3001/uploads/${picture_path}`}></img>
                         }
 
-                        {currentUser && <div className="flex flex-row justify-start space-x-6 my-2">
+                        {currentUser && <div className="flex flex-row justify-start space-x-6">
                             {/* like Button */}
-                            <div className="hover:fill-pink-600" onClick={(event) => {
+                            <div onClick={(event) => {
                                 event.stopPropagation()
                                 addLike();
-                            }} style={{color: currentUser.liked_posts.includes(id) ? "#f91880" : "#ffffffff"}}>
-                                <div className="flex flex-row items-center">
+                            }}>
+                                <div className="group flex flex-row p-2 hover:text-pink-600 pl-0">
                                     {currentUser.liked_posts.includes(id) 
                                     ?
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                                    </svg> 
-                                    :
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-9 h-9 text-pink-600 p-2 rounded-full group-hover:bg-pink-600 group-hover:bg-opacity-20">
+                                        <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
                                     </svg>
+
+                                    :
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-9 h-9 p-2 rounded-full group-hover:bg-pink-600 group-hover:bg-opacity-20">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                                    </svg>
+
                                     }
-                                    <p className="my-auto ml-2">{likes && likes.length}</p>
+                                    <p className="my-auto ml-1">{likes && likes.length}</p>
                                 </div>
                             </div>
                             {/* comment Button */}
                             <div onClick={(event) => {
                                 event.stopPropagation()
                                 navigate(`/post/${(root & root != id ? root : id)}/reply`)}}>
-                                <div className="flex flex-row items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat" viewBox="0 0 16 16">
-                                        <path d="M2.678 11.894a1 1 0 0 1 .287.801 10.97 10.97 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8.06 8.06 0 0 0 8 14c3.996 0 7-2.807 7-6 0-3.192-3.004-6-7-6S1 4.808 1 8c0 1.468.617 2.83 1.678 3.894zm-.493 3.905a21.682 21.682 0 0 1-.713.129c-.2.032-.352-.176-.273-.362a9.68 9.68 0 0 0 .244-.637l.003-.01c.248-.72.45-1.548.524-2.319C.743 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.52.263-1.639.742-3.468 1.105z"/>
+                                <div className="group flex flex-row p-2 hover:text-twitter-blue">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-9 h-9 p-2 rounded-full group-hover:bg-twitter-blue group-hover:bg-opacity-20">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z" />
                                     </svg>
-                                    <p className="my-auto ml-2">{replies && replies.length}</p>
+
+                                    <p className="my-auto ml-1">{replies && replies.length}</p>
                                 </div>
                             </div>
                         </div>}
