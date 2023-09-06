@@ -31,6 +31,10 @@ function App() {
       element: auth ? <Home /> : <Login />
     },
     {
+      path: "/login",
+      element: <Login />
+    },
+    {
       path: "/explore",
       element: <Explore />
     },
