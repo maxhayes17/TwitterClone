@@ -45,21 +45,33 @@ export default function PostForm({user}){
         form.target.reset();
     }
     return(
-        <div>
+        <div className="flex flex-row w-screen h-screen">
             <Navbar />
-            <div className="mainCard">
-                <VerticalNav header="New post"/>
-                <form onSubmit={handleSubmit} className="postForm">
-                    <textarea placeholder="What would you like to say?" name="body" autoComplete="off" className="input-text-large" required/>
-                    <input type="file" name="file" accept=".jpeg, .jpg, .png" onChange={(e) => setFile(e.target.files[0])}/>
-                    <div className="inline">
-                        <p style={{color: "#ffffffba"}}>Who can see this?</p>
-                        <select name="audience" required>
-                            <option value="Everyone">Everyone</option>
-                            <option value="Followers">My followers</option>
-                        </select>
-                        <button type="submit" className="button-round" id="blue">Post</button>
+            <div className="w-5/12 h-full overflow-auto bg-black text-left">
+                <div className="w-full sticky top-0 z-10 py-1 bg-black-rgba backdrop-blur-sm">
+                    <div className="flex flex-row space-x-5 p-1">
+                        <div onClick={() => navigate(-1)} className="ml-1 my-auto">
+                            {/* back button  */}
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-9 h-9 p-2 rounded-full hover:bg-raisin-black hover:cursor-pointer">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                            </svg>
+                        </div>
+                        <h1 className="my-auto text-xl font-extrabold">New Post</h1>
                     </div>
+                </div>
+
+                <form onSubmit={handleSubmit} className="flex flex-col mt-5 w-4/5">
+                    <textarea placeholder="What would you like to say?" name="body" autoComplete="off" className=" h-36 p-5" required/>
+                    <div className="flex flex-row justify-between text-neutral-400">
+                        <input className="w-fit text-sm file:bg-raisin-black file:rounded-full file:px-3 file:py-2 file:text-white file:font-bold file:border-none file:hover:bg-twitter-blue file:hover:text-twitter-blue file:hover:bg-opacity-20"
+                        type="file" name="file" accept=".jpeg, .jpg, .png" onChange={(e) => setFile(e.target.files[0])}/>
+                            <select className="bg-raisin-black rounded-md p-1" name="audience" required>
+                                <option value="Everyone">Everyone</option>
+                                <option value="Followers">My followers</option>
+                            </select>
+                            <button type="submit" className="w-fit h-fit my-auto ml-auto px-4 py-2 rounded-full text-white font-bold bg-twitter-blue hover:opacity-70 hover:cursor-pointer">Post</button>
+                    </div>
+                
                 </form>
             </div>
             <ExploreCard />
