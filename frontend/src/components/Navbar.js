@@ -37,7 +37,7 @@ export default function Navbar(){
                     <p className="my-auto mx-4">Profile</p>
                 </div>}
 
-                {user && <div className="mr-10 my-5 py-3 rounded-full text-lg font-bold bg-twitter-blue hover:opacity-70 hover:cursor-pointer" onClick={() => navigate("/post/compose")}>
+                {user && <div className="mr-10 my-5 py-3 rounded-full text-lg text-center font-bold bg-twitter-blue hover:opacity-70 hover:cursor-pointer" onClick={() => navigate("/post/compose")}>
                     Post
                 </div>}
 

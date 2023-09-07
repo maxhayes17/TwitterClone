@@ -86,7 +86,8 @@ export default function Post({id, author, body, root, createdAt, userProfile, li
                         </div>
 
                         <p className="text-left">
-                            {reactStringReplace(body, /#(\w+)/g, (match, i) => (
+                            {
+                            reactStringReplace(body, /#(\w+)/g, (match, i) => (
                                 <a key={i} 
                                 className="text-twitter-blue hover:underline hover:underline-offset-2 hover:opacity-100"
                                 onClick={(event) => {

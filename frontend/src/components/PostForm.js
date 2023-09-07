@@ -59,10 +59,10 @@ export default function PostForm({user}){
                     </div>
                 </div>
 
-                <form onSubmit={handleSubmit} className="flex flex-col mt-5 w-4/5 space-y-2">
+                <form onSubmit={handleSubmit} className="flex flex-col mt-5 w-4/5 space-y-4">
                     <textarea className="h-36 p-5 bg-raisin-black rounded-md resize-none" placeholder="What would you like to say?" name="body" autoComplete="off" required/>
                     <div className="flex flex-row justify-between text-neutral-400">
-                        <input className="w-fit text-sm file:bg-raisin-black file:rounded-full file:px-3 file:py-2 file:text-white file:font-bold file:border-none file:hover:bg-twitter-blue file:hover:text-twitter-blue file:hover:bg-opacity-20"
+                        <input className="w-fit text-sm file:bg-raisin-black file:rounded-full file:px-3 file:py-2 file:text-white file:font-bold file:border-none file:hover:bg-twitter-blue file:hover:text-twitter-blue file:hover:bg-opacity-20 file:hover:cursor-pointer"
                         type="file" name="file" accept=".jpeg, .jpg, .png" onChange={(e) => setFile(e.target.files[0])}/>
                             <select className="bg-raisin-black rounded-md p-1" name="audience" required>
                                 <option value="Everyone">Everyone</option>

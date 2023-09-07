@@ -50,7 +50,7 @@ export default function ExploreCard(){
                 <div className="flex flex-row py-3 px-4 bg-black hover:bg-black-semitransparent hover:cursor-pointer text-left"
                     onClick={() => {navigate(`/explore/${search}`)}}>
                         <p className="text-bold text-twitter-blue">#{search}</p>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 my-auto ml-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 my-auto ml-auto">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                         </svg>
 </div>
