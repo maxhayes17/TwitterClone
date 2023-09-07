@@ -51,10 +51,24 @@ export default function ProfileForm(){
         form.target.reset();
     }
     return(
-        <div>
+        <div className="flex flex-row w-screen h-screen">
             <Navbar />
-            <div className="mainCard">
-                <VerticalNav header="Edit profile"/>
+            <div className="w-5/12 h-full overflow-auto bg-black text-left">
+                <div className="w-full sticky top-0 z-10 py-1 bg-black-rgba backdrop-blur-sm">
+                    <div className="flex flex-row space-x-5 p-1">
+                        <div onClick={() => navigate(-1)} className="ml-1 my-auto">
+                            {/* back button  */}
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-9 h-9 p-2 rounded-full hover:bg-raisin-black hover:cursor-pointer">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                            </svg>
+                        </div>
+                        <h1 className="my-auto text-xl font-extrabold">Edit Profile</h1>
+                    </div>
+                </div>
+
+
+
+
                 <div className="profileForm" style={{marginTop:"50px"}}>
                     <form onSubmit={handleSubmit} enctype="multipart/form-data">
                         {/* <div className="image-avatar" style={{width:"150px", height:"150px", marginInline:"auto", marginBlock:"15px"}}>

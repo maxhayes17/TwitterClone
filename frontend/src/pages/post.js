@@ -81,7 +81,7 @@ function ViewPost({reply}){
             <Navbar />
             {post && <div className="w-5/12 h-full overflow-auto bg-black text-left">
                 <div className="w-full sticky top-0 z-10 py-1 bg-black-rgba backdrop-blur-sm">
-                    <div className="flex flex-row space-x-5">
+                    <div className="flex flex-row space-x-5 p-1">
                         <div onClick={() => navigate(-1)} className="ml-1 my-auto">
                             {/* back button  */}
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-9 h-9 p-2 rounded-full hover:bg-raisin-black hover:cursor-pointer">
