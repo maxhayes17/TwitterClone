@@ -66,23 +66,22 @@ export default function ProfileForm(){
                     </div>
                 </div>
 
-
-
-
-                <div className="profileForm" style={{marginTop:"50px"}}>
-                    <form onSubmit={handleSubmit} enctype="multipart/form-data">
-                        {/* <div className="image-avatar" style={{width:"150px", height:"150px", marginInline:"auto", marginBlock:"15px"}}>
-                            <img src={`http://localhost:3001/uploads/${user.picture_path ? user.picture_path : "image-avatar-blank.png"}`}></img>
-                        </div> */}
-                        <p style={{fontWeight:"bold"}}>Upload profile photo</p>
-                        <input type="file" name="file" accept=".jpeg, .jpg, .png" onChange={(e) => setFile(e.target.files[0])}/>
-                        <input placeholder="Name" name="name" autoComplete="off" type="text"/>
-                        <textarea placeholder="Bio" name="bio" autoComplete="off" />
-                        <input placeholder="Location" name="location" autoComplete="off" type="text"/>
-                        <input placeholder="Website" name="website" autoComplete="off" type="text"/>
-                        <button type="submit" className="button-round" id="white">Save</button>
-                    </form>
-                </div>
+                <form className="flex flex-col mt-16 space-y-3" onSubmit={handleSubmit} enctype="multipart/form-data">
+                    <div className="w-fit shrink-0 mx-auto">
+                        <img className="w-36 h-36 rounded-full object-cover mx-auto hover:cursor-pointer hover:opacity-80 border-4 border-onyx" src={`http://localhost:3001/uploads/${currentUser.picture_path ? currentUser.picture_path : "image-avatar-blank.png"}`}></img>
+                    </div>
+                    <input className="w-fit mx-auto text-sm file:bg-raisin-black file:rounded-full file:px-3 file:py-2 file:text-white file:font-bold file:border-none file:hover:bg-twitter-blue file:hover:text-twitter-blue file:hover:bg-opacity-20"
+                        type="file" name="file" accept=".jpeg, .jpg, .png" onChange={(e) => setFile(e.target.files[0])}/>
+                    <input className="w-full p-3 bg-raisin-black rounded-md"
+                        placeholder="Name" name="name" autoComplete="off" type="text"/>
+                    <textarea className="w-full h-24 p-3 bg-raisin-black rounded-md resize-none" 
+                        placeholder="Bio" name="bio" autoComplete="off" />
+                    <input className="w-full p-3 bg-raisin-black rounded-md"
+                        placeholder="Location" name="location" autoComplete="off" type="text"/>
+                    <input className="w-full p-3 bg-raisin-black rounded-md"
+                        placeholder="Website" name="website" autoComplete="off" type="text"/>
+                    <button type="submit" className="bg-white px-4 py-2 ml-auto h-fit rounded-full text-black font-bold hover:opacity-70 hover:cursor-pointer">Save</button>
+                </form>
             </div>
             <ExploreCard />
         </div>
