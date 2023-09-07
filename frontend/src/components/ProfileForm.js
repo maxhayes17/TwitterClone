@@ -65,11 +65,12 @@ export default function ProfileForm(){
                     </div>
                 </div>
 
-                <form className="flex flex-col mt-16 space-y-3" onSubmit={handleSubmit} enctype="multipart/form-data">
+                <form className="flex flex-col mt-5 space-y-3" onSubmit={handleSubmit} enctype="multipart/form-data">
+                    <h1 className="text-md font-bold text-center">Upload a profile photo</h1>
                     <div className="w-fit shrink-0 mx-auto">
                         <img className="w-36 h-36 rounded-full object-cover mx-auto hover:cursor-pointer hover:opacity-80 border-4 border-onyx" src={`http://localhost:3001/uploads/${currentUser.picture_path ? currentUser.picture_path : "image-avatar-blank.png"}`}></img>
                     </div>
-                    <input className="w-fit mx-auto text-sm file:bg-raisin-black file:rounded-full file:px-3 file:py-2 file:text-white file:font-bold file:border-none file:hover:bg-twitter-blue file:hover:text-twitter-blue file:hover:bg-opacity-20"
+                    <input className="w-fit mx-auto text-sm file:bg-raisin-black file:rounded-full file:px-3 file:py-2 file:text-white file:font-bold file:border-none file:hover:bg-twitter-blue file:hover:text-twitter-blue file:hover:bg-opacity-20 file:hover:cursor-pointer"
                         type="file" name="file" accept=".jpeg, .jpg, .png" onChange={(e) => setFile(e.target.files[0])}/>
                     <input className="w-full p-3 bg-raisin-black rounded-md"
                         placeholder="Name" name="name" autoComplete="off" type="text"/>
@@ -79,7 +80,7 @@ export default function ProfileForm(){
                         placeholder="Location" name="location" autoComplete="off" type="text"/>
                     <input className="w-full p-3 bg-raisin-black rounded-md"
                         placeholder="Website" name="website" autoComplete="off" type="text"/>
-                    <button type="submit" className="bg-white px-4 py-2 ml-auto h-fit rounded-full text-black font-bold hover:opacity-70 hover:cursor-pointer">Save</button>
+                    <button type="submit" className="bg-white px-4 py-2 mx-auto h-fit rounded-full text-black font-bold hover:opacity-70 hover:cursor-pointer">Save</button>
                 </form>
             </div>
             <ExploreCard />
