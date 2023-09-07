@@ -100,7 +100,7 @@ function ViewPost({reply}){
                     </div>
 
                     <form onSubmit={composeReply} className="flex flex-row w-full my-5 justify-around">
-                        <input className="w-3/4 my-auto" placeholder="Reply to this post!" name="body" autoComplete="off" type="text" ref={replyRef}/>
+                        <input className="w-3/4 my-auto p-3 bg-raisin-black rounded-md" placeholder="Reply to this post!" name="body" autoComplete="off" type="text" ref={replyRef}/>
                         <button type="submit" className="w-fit h-fit my-auto px-4 py-2 rounded-full text-white font-bold bg-twitter-blue hover:opacity-70 hover:cursor-pointer">Reply</button>
                     </form>
 
