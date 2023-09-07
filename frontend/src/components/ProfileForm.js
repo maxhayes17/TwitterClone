@@ -2,7 +2,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Navbar from "./Navbar";
 import ExploreCard from "./ExploreCard";
-import VerticalNav from "./VerticalNav";
 import { useState, useEffect } from "react";
 
 export default function ProfileForm(){
