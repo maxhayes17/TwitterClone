@@ -10,7 +10,7 @@ Contents:
   - [Features](#features)
   - [Navigating](#navigating)
 - [Setting up locally](#setting-up-locally)
-- [Additional Notes](#additional-notes)
+- [Images](#images)
 
 
 ## About TwitClone
@@ -22,8 +22,7 @@ This project is built on a MERN tech stack, meaning...
 * Frontend displaying and UI handled with **React**
 * Both frontend and backend services are ran on **Node.js**
 
-Along with this, all styling was done with **TailwindCSS**
-
+Along with this, styling was done with **TailwindCSS**
 
 ### Features
 When making this project, I wanted to focus on just the core features of Twitter. These include:
@@ -35,7 +34,6 @@ When making this project, I wanted to focus on just the core features of Twitter
 * Searching for other profiles or hashtags
 
 ### Navigating
-
 Important files and directories
 * `backend/models/` includes how User and Post database entries are modeled
 * `backend/routes/` includes all possible API routes
@@ -46,11 +44,10 @@ Important files and directories
 * `frontend/src/pages` includes all the different pages used throughout the app 
 
 ## Setting up locally
-
 1. Configure the following environment variables in `backend/.env`
    * `MONGO_URL` - A connection string for MongoDB database
    * `PORT` - The port for the server to run on
-   * `JWT_SECRET` - **secret** key for JSON Web Token authentication
+   * `JWT_SECRET` - **Secret** key for JSON Web Token authentication
 
 2. Install required packages in *both* frontend and backend directories
 ```bash
@@ -62,15 +59,12 @@ cd ../backend/
 npm install
 ```
 3. After doing so, you are ready to start running the app
-  
 ```bash
 # Run to start up the backend
 cd backend
 node index.js
 ```
-
 * This server will be run on the port indicated in `backend/.env`. After starting up, the port on which ther server is hosted will be displayed
-  
 ```bash
 # Run to start up the frontend
 cd frontend
@@ -79,4 +73,4 @@ npm start
 * Upon running, the website can be viewed on http://localhost:3000
 
 
-## Additional Notes
+## Images
