@@ -13,7 +13,6 @@ import userRoutes from "./routes/user.js";
 import authRoutes from "./routes/auth.js"; // Routes for authentication/authorization
 import postRoutes from "./routes/post.js";
 
-import {register} from "./controllers/auth.js"; // Controllers for API endpoints
 import { updateUserInfo } from "./controllers/user.js";
 import { createPost } from "./controllers/post.js";
 import { verifyToken } from "./middleware/auth.js";
@@ -53,7 +52,11 @@ const storage = multer.diskStorage({
 const upload = multer({storage});
 
 // Routes with file upload
+
+// Edit user profile
 app.patch("/user/:id/edit", verifyToken, upload.single('file'), updateUserInfo);
+
+// Create post
 app.post("/posts/compose", verifyToken, upload.single('file'), createPost);
 
 

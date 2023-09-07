@@ -1,6 +1,6 @@
 import express from "express";
 
-import { getPosts, createPost, createReply, addLike, getPostInfo, getPostReplies, getPostLikes, getPostsWithTag } from "../controllers/post.js";
+import { getPosts, createReply, addLike, getPostInfo, getPostReplies, getPostLikes, getPostsWithTag } from "../controllers/post.js";
 import { verifyToken } from "../middleware/auth.js";
 
 const router = express.Router();
@@ -18,8 +18,7 @@ router.get("/:id", verifyToken, getPostInfo);
 router.get("/:id/replies", verifyToken, getPostReplies);
 router.get("/:id/likes", verifyToken, getPostLikes)
 
-// Create post / Create reply
-// router.post("/compose", verifyToken, createPost);
+// Create reply
 router.post("/:id/reply", verifyToken, createReply);
 
 // Like post

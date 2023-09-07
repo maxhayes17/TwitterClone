@@ -1,14 +1,11 @@
 import express from "express";
-import { getUserInfo, updateUserInfo, addFollower, getUserFollowers, getUserFollowing, getUserPosts, getUserReplies, getUserLiked, getUserMedia, getUserFeed, getUsers } from "../controllers/user.js";
+import { getUserInfo, addFollower, getUserFollowers, getUserFollowing, getUserPosts, getUserReplies, getUserLiked, getUserMedia, getUserFeed, getUsers } from "../controllers/user.js";
 import { verifyToken } from "../middleware/auth.js";
 
 const router = express.Router();
 
 // Get ALL users
 router.get("/", verifyToken, getUsers);
-
-// Edit user profile
-// router.patch("/:id/edit", verifyToken, updateUserInfo);
 
 // Add follower
 router.patch("/:id/follow", verifyToken, addFollower);

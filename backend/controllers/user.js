@@ -18,7 +18,6 @@ export const getUserInfo = async (req, res) => {
         const { id } = req.params;
         // Find user by provided id, and return object
         const user = await User.findById(id);
-        console.log(user.email);
         res.status(200).json(user);
     } catch (err) {
         res.status(404).json({error: err.message});
@@ -30,16 +29,14 @@ export const updateUserInfo = async (req, res) => {
         const { id } = req.params;
         const user = await User.findById(id);
         
+        // De-structure body
         const {
-            picture_path,
             name,
             bio,
             location,
-            website
+            website,
+            picture_path
         } = req.body;
-
-        console.log(req.body);
-        console.log(name);
 
 
         // Only change if the field is not empty
@@ -92,7 +89,8 @@ export const addFollower = async (req, res) => {
 export const getUserPosts = async (req, res) => {
     try {
         const { id } = req.params;
-        // Sort by descending date
+
+        // Sort posts by descending date
         const posts = await Post.find({author: id}).sort({createdAt: -1});
         res.status(200).json(posts);
     } catch (err) {
@@ -106,6 +104,7 @@ export const getUserReplies = async (req, res) => {
 
         const user = await User.findById(id);
 
+        // Find all posts that user has replied to
         const replies = await Promise.all(
             user.replies.map((id) => Post.findById(id))
         )
@@ -124,6 +123,7 @@ export const getUserLiked = async (req, res) => {
 
         const user = await User.findById(id);
 
+        // Find all posts in user's liked_posts
         const liked_posts = await Promise.all(
             user.liked_posts.map((id) => Post.findById(id))
         )
@@ -140,9 +140,9 @@ export const getUserMedia = async(req, res) => {
     try {
         const { id } = req.params;
 
+        // Find all posts that user is author of WITH a picture_path (file attached)
         const posts = await Post.find({author: id}).sort({createdAt: -1});
         const media = posts.filter((post) => post.picture_path && post.picture_path != "");
-        console.log(media);
 
         res.status(200).json(media);
     } catch (err) {
@@ -156,6 +156,7 @@ export const getUserFollowers = async (req, res) => {
         const { id } = req.params;
         const user = await User.findById(id);
         
+        // Find all users in user's followers
         const followers = await Promise.all(
             user.followers.map((id) => User.findById(id))
         );
@@ -171,6 +172,7 @@ export const getUserFollowing = async (req, res) => {
         const { id } = req.params;
         const user = await User.findById(id);
         
+        // Find all users in user's following
         const following = await Promise.all(
             user.following.map((id) => User.findById(id))
         );
@@ -186,15 +188,13 @@ export const getUserFeed = async (req, res) => {
         const { id } = req.params;
         const user = await User.findById(id);
 
-
         // Will create of posts for each user followed... will have to un-nest these elements
         const posts = await Promise.all(
             user.following.map((id) => Post.find({author: id}))
         )
-
         // Use .flat() to un-nest array elements, and sort by date
-
         const feed = await posts.flat().sort((a,b) => b.createdAt - a.createdAt)
+
         res.status(200).json(feed);
     } catch (err) {
         res.status(404).json({error: err.message});

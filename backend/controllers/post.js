@@ -27,7 +27,8 @@ export const getPosts = async (req, res) => {
 export const getPostsWithTag = async (req, res) => {
     try {
         const { tag } = req.params;
-        console.log(req.params);
+
+        // Find all posts containing tag, sort by descending date
         const posts = await Post.find({tags:tag}).sort({createdAt: -1});
 
         res.status(200).json(posts);
@@ -38,7 +39,7 @@ export const getPostsWithTag = async (req, res) => {
 
 export const createPost = async (req, res) => {
     try {
-        console.log(req.body);
+        // De-structure body
         const {
             author,
             body,
@@ -49,6 +50,7 @@ export const createPost = async (req, res) => {
         // Create array of all words in posts which are hashtags (denoted with #)
         const words = body.split(' ');
         const tags = words.filter((word) => word.startsWith('#'));
+        // Remove '#' from each tag, this will become tag array
         const trimmedTags = tags.map((tag) => tag.substring(1));
 
         const newPost = new Post({
@@ -75,11 +77,14 @@ export const createPost = async (req, res) => {
 export const createReply = async (req, res) => {
     try {
         const { id } = req.params;
+
+        // De-structure body
         const {
             author,
             body
         } = req.body;
 
+        // Create new post as reply
         const reply = new Post({
             author: author,
             body: body,
@@ -87,6 +92,7 @@ export const createReply = async (req, res) => {
         });
 
         await reply.save();
+
         // Add reply to post's replies
         const rootPost = await Post.findById(id);
         rootPost.replies.push(reply._id);
@@ -114,11 +120,10 @@ export const addLike = async (req, res) => {
         const post = await Post.findById(id);
         const user = await User.findById(userId);
 
-        console.log(user.name);
-        console.log(post.body);
-
+        // If the user has already liked the post, unlike
         if (post.likes.includes(userId)){
             post.likes = post.likes.filter((id) => id != userId);
+            // Remove post from user's liked posts
             user.liked_posts = user.liked_posts.filter((postId) => postId != id);
         }
         else {
@@ -140,7 +145,8 @@ export const addLike = async (req, res) => {
 export const getPostReplies = async (req, res) => {
     try {
         const { id } = req.params;
-        // Sort by descending date
+        
+        // Sort replies by descending date
         const replies = await Post.find({root: id}).sort({createdAt: -1});
         res.status(200).json(replies);
     } catch (err) {
