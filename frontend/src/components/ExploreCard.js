@@ -18,7 +18,7 @@ export default function ExploreCard(){
         <div className="w-1/3 h-full sticky top-0 flex flex-col border-l border-onyx bg-black">
             <div className="mt-5">
                 <form>
-                    <input className="w-full mb-5 px-5 py-3 rounded-full"
+                    <input className="w-full mb-5 px-4 py-2 bg-raisin-black rounded-full"
                         type="text" placeholder="Search TwitClone" 
                         onChange={e => {
                             let result = users.filter((user) => {

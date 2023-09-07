@@ -42,7 +42,7 @@ form button{
   border-radius: 3ex;
   border: none; */
 }
-input, textarea, select{
+/* input[type="text"], textarea{
   font-family: Arial, Helvetica, sans-serif;
   padding: 10px;
   font-size: 1rem;
@@ -54,20 +54,20 @@ input, textarea, select{
   border: none;
   outline: none;
   color: white;
-}
+} */
 input[type=text]:focus, textarea:focus{
   /* outline: none; */
   outline: 2px solid #1d9bf0;
 }
 
-input[type=file]::file-selector-button{
-  /* display: none; */
+/* input[type=file]::file-selector-button{
+  display: none;
   margin-block: auto;
   background-color:#212327;
   color: GrayText;
   margin-top: 10px;
   border: none;
-}
+} */
 
 input[type=file]::file-selector-button{
   cursor: pointer;
@@ -250,12 +250,12 @@ ul{
   margin-bottom: -1px;
 } */
 
-.vertical-nav{
+/* .vertical-nav{
   position: sticky;
   height: auto;
   width: inherit;
   top: 0;
-  /* opacity: 80%; */
+  opacity: 80%;
   backdrop-filter: blur(4px);
 
   z-index: 2;
@@ -270,37 +270,37 @@ ul{
 
 .vertical-nav button {
   background-color: rgba(0,0,0,0);
-}
+} */
 
 /* .vertical-nav .inline{
   margin-top: 0;
 } */
 
 
-.profile-list-element{
+/* .profile-list-element{
   text-align: left;
   padding-left: 20px;
   padding-block: 10px;
-}
+} */
 
-div.profile-list-element:hover{
+/* div.profile-list-element:hover{
   background-color: #080808;
   cursor: pointer;
-}
-.vertical-stack{
+} */
+/* .vertical-stack{
   text-align: left;
   display: block;
 }
 .vertical-stack p, a{
   margin-top: 5px;
   margin-left: 0;
-}
+} */
 
-.image-avatar {
+/* .image-avatar {
   margin-block: auto;
   width: 40px;
   height: 40px;
-  /* background-color: #1d9bf0; */
+  background-color: #1d9bf0;
   background-color: none;
   border-radius: 10ex;
   margin-right: 10px;
@@ -309,7 +309,7 @@ div.profile-list-element:hover{
   width: 100%;
   height: 100%;
   border-radius: 10ex;
-}
+} */
 
 div.post:hover{
   background-color: #080808;
@@ -374,17 +374,17 @@ form .button-round{
   color: #ffffffba;
   
 } */
-.likeBtn svg:hover{
+/* .likeBtn svg:hover{
   opacity: 100%;
   color: #f91880;
-}
+} */
 
 /* .commentBtn{
   margin-right: 25px;
   margin-block: auto;
   color: #ffffffba;
 } */
-.commentBtn svg:hover{
+/* .commentBtn svg:hover{
   opacity: 100%;
   color: #1d9bf0;
 }
@@ -395,11 +395,11 @@ form .button-round{
 .rtBtn:hover{
   opacity: 100%;
   color: rgb(28, 210, 152);
-}
+} */
 
 
-.search{
-  /* border-bottom: 1px solid #333639; */
+/* .search{
+  border-bottom: 1px solid #333639;
 }
 .search input{
   padding-left: 20px;
@@ -413,13 +413,13 @@ form .button-round{
   margin-block: 20px;
   width: 70%;
   padding: 15px;
-}
+} */
 
 /* .hashtag{
   color:#1d9bf0;
 
 } */
-.hashtag:hover{
+/* .hashtag:hover{
   text-decoration: underline;
   opacity: 100%;
-}
+} */

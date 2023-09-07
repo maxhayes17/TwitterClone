@@ -60,8 +60,8 @@ export default function PostForm({user}){
                     </div>
                 </div>
 
-                <form onSubmit={handleSubmit} className="flex flex-col mt-5 w-4/5">
-                    <textarea placeholder="What would you like to say?" name="body" autoComplete="off" className=" h-36 p-5" required/>
+                <form onSubmit={handleSubmit} className="flex flex-col mt-5 w-4/5 space-y-2">
+                    <textarea className="h-36 p-5 bg-raisin-black rounded-md resize-none" placeholder="What would you like to say?" name="body" autoComplete="off" required/>
                     <div className="flex flex-row justify-between text-neutral-400">
                         <input className="w-fit text-sm file:bg-raisin-black file:rounded-full file:px-3 file:py-2 file:text-white file:font-bold file:border-none file:hover:bg-twitter-blue file:hover:text-twitter-blue file:hover:bg-opacity-20"
                         type="file" name="file" accept=".jpeg, .jpg, .png" onChange={(e) => setFile(e.target.files[0])}/>
@@ -71,7 +71,6 @@ export default function PostForm({user}){
                             </select>
                             <button type="submit" className="w-fit h-fit my-auto ml-auto px-4 py-2 rounded-full text-white font-bold bg-twitter-blue hover:opacity-70 hover:cursor-pointer">Post</button>
                     </div>
-                
                 </form>
             </div>
             <ExploreCard />

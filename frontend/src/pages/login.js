@@ -54,19 +54,22 @@ function Login(){
         <div className="flex flex-row w-screen h-screen">
             <Navbar />
             <div className="w-5/12 h-full overflow-auto bg-black text-center">
-                <div className="flex flex-col space-y-4 mt-16">
+                <form className="flex flex-col space-y-4 mt-16" onSubmit={handleSubmit}>
                     <h1 className="font-bold text-2xl">{isLogin ? "Login to your account" : "Create an account"}</h1>
-                    <form className="space-y-4" onSubmit={handleSubmit}>
-                        {isLogin ? <input placeholder="Username or E-mail" name="identifier" autoComplete="off" type="text"/>
-                        : <input placeholder="E-mail" name="email" autoComplete="off" type="text"/>}
-                        {!isLogin && <input placeholder="Username" name="username" autoComplete="off" type="text"/>}
-                        <input placeholder="Password" name="password" autoComplete="off" type="text"/>
-                        <button type="submit" className="bg-white px-4 py-2 ml-auto h-fit rounded-full text-black font-bold hover:opacity-70 hover:cursor-pointer">{isLogin ? "Sign in" : "Sign up"}</button>
-                        {isLogin 
-                        ? <p>Don't have an account? <a className="font-bold hover:underline hover:underline-offset-2 hover:opacity-100" onClick={() => setPageType("register")}>Sign up</a></p> 
-                        : <p>Already have an account? <a className="font-bold hover:underline hover:underline-offset-2 hover:opacity-100" onClick={() => setPageType("login")}>Login</a></p>}
-                    </form>
-                </div>
+                    {isLogin 
+                        ? <input className="w-full p-3 bg-raisin-black rounded-md"
+                            placeholder="Username or E-mail" name="identifier" autoComplete="off" type="text"/>
+                        : <input className="w-full p-3 bg-raisin-black rounded-md"
+                            placeholder="E-mail" name="email" autoComplete="off" type="text"/>}
+                    {!isLogin && <input className="w-full p-3 bg-raisin-black rounded-md"
+                                    placeholder="Username" name="username" autoComplete="off" type="text"/>}
+                    <input className="w-full p-3 bg-raisin-black rounded-md"
+                        placeholder="Password" name="password" autoComplete="off" type="text"/>
+                    <button type="submit" className="bg-white px-4 py-2 mx-auto h-fit rounded-full text-black font-bold hover:opacity-70 hover:cursor-pointer">{isLogin ? "Sign in" : "Sign up"}</button>
+                    {isLogin 
+                    ? <p>Don't have an account? <a className="font-bold hover:underline hover:underline-offset-2 hover:opacity-100" onClick={() => setPageType("register")}>Sign up</a></p> 
+                    : <p>Already have an account? <a className="font-bold hover:underline hover:underline-offset-2 hover:opacity-100" onClick={() => setPageType("login")}>Login</a></p>}
+                </form>
             </div>
             <ExploreCard />
         </div>
