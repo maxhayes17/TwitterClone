@@ -64,7 +64,7 @@ npm install
 cd backend
 node index.js
 ```
-* This server will be run on the port indicated in `backend/.env`. After starting up, the port on which ther server is hosted will be displayed
+* This server will be run on the port indicated in `backend/.env`. After starting up, the port on which the server is hosted will be displayed
 ```bash
 # Run to start up the frontend
 cd frontend
