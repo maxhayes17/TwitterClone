@@ -17,6 +17,8 @@ import { updateUserInfo } from "./controllers/user.js";
 import { createPost } from "./controllers/post.js";
 import { verifyToken } from "./middleware/auth.js";
 
+import {users, posts} from "./data.js"; // Sample data
+
 // Configuration
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -80,4 +82,9 @@ mongoose.connect(process.env.MONGO_URL, {
     useUnifiedTopology: true,
 }).then(()=>{
     app.listen(PORT, ()=> console.log(`Server Port: ${PORT}`))
+
+    // ADD DATA - Only do this ONCE; comment out after
+    // User.insertMany(users);
+    // Post.insertMany(posts);
+
 }).catch((err) => console.log(err));
