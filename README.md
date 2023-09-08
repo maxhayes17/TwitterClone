@@ -1,6 +1,6 @@
 <!-- omit in toc -->
 # TwitClone 
-by Max Hayes
+*by Max Hayes*
 
 **TwitClone** is a full-stack webapp which mimics the functionality of of the social media platform [Twitter](www.twitter.com). 
 
@@ -30,7 +30,7 @@ When making this project, I wanted to focus on just the core features of Twitter
 * Customizable user profiles
 * Followers with bi-directional relationships
 * Text or media (image/video) posts which can be liked or replied to by other users
-* Tagging posts with [#hashtags]()
+* Tagging posts with [#hashtags](#features)
 * Searching for other profiles or hashtags
 
 ### Navigating
@@ -45,9 +45,9 @@ Important files and directories
 
 ## Setting up locally
 1. Configure the following environment variables in `backend/.env`
-   * `MONGO_URL` - A connection string for MongoDB database
-   * `PORT` - The port for the server to run on
-   * `JWT_SECRET` - **Secret** key for JSON Web Token authentication
+   * `MONGO_URL` - A [connection string](https://www.mongodb.com/basics/mongodb-connection-string) for MongoDB database
+   * `PORT` - The port for the backend server to run on
+   * `JWT_SECRET` - A **Secret** key for JSON Web Token authentication
 
 2. Install required packages in *both* frontend and backend directories
 ```bash
