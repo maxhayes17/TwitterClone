@@ -18,6 +18,9 @@ form{
 }
 
 input[type=text]:focus, textarea:focus{
-  /* outline: none; */
   outline: 2px solid #1d9bf0;
+}
+a:hover{
+  opacity: 70%;
+  cursor: pointer;
 }
