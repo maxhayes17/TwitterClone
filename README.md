@@ -10,7 +10,7 @@ Contents:
   - [Features](#features)
   - [Navigating](#navigating)
 - [Setting up locally](#setting-up-locally)
-- [Images](#images)
+  - [Extra Note - Adding sample data](#extra-note---adding-sample-data)
 
 
 ## About TwitClone
@@ -59,6 +59,7 @@ cd ../backend/
 npm install
 ```
 3. After doing so, you are ready to start running the app
+   * If you want to start up the app with sample data provided, [do this first](#extra-note---adding-sample-data)
 ```bash
 # Run to start up the backend
 cd backend
@@ -72,5 +73,14 @@ npm start
 ```
 * Upon running, the website can be viewed on http://localhost:3000
 
+### Extra Note - Adding sample data
+To see the app working with some users and posts already existing, do the following:
 
-## Images
+1. Navigate to `backend/index.js`
+2. At the botton of the page you will see the following:
+```javascript
+    // User.insertMany(users);
+    // Post.insertMany(posts);
+```
+  Un-comment these lines upon initially starting up the app.
+  * This process only has to be done **once**, so make sure to **comment these lines out again** on subsequent uses
