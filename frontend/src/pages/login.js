@@ -29,7 +29,6 @@ function Login(){
         })
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
             // If successful response from login form received...
             if (isLogin){
                 // Update current state for this user, then redirect to their feed

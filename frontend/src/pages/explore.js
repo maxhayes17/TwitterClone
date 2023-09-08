@@ -29,7 +29,6 @@ function Explore(){
         .then((res) => res.json())
         .then((data) => {
             setFeed(data);
-            console.log(data);
             feedRef.current.focus();
         })
         .catch((err) => console.log(err));

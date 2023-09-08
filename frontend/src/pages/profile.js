@@ -38,7 +38,6 @@ function Profile(){
         })
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
             setUser(data);
         })
         .catch((err) => console.log(err));
@@ -125,8 +124,8 @@ function Profile(){
     return(
         <div className="flex flex-row w-screen h-screen">
             <Navbar />
-            {user && <div className="w-5/12 h-full overflow-auto bg-black text-left">
-                {posts && <div>
+            <div className="w-5/12 h-full overflow-auto bg-black text-left">
+                {user && posts && <div>
                     <div className="w-full sticky top-0 z-10 py-1 bg-black-rgba backdrop-blur-sm">
                         <div className="flex flex-row space-x-5">
                             <div onClick={() => navigate(-1)} className="ml-1 my-auto">
@@ -199,7 +198,7 @@ function Profile(){
                     }
                     </div>
                 </div>}
-            </div>}
+            </div>
             <ExploreCard />
         </div>
     );

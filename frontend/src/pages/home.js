@@ -53,7 +53,6 @@ function Home(){
         })
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
             dispatch(
                 setUsers({
                     users: data
@@ -70,7 +69,6 @@ function Home(){
         })
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
             setFeed(data);
         })
         .catch((err) => console.log(err));
