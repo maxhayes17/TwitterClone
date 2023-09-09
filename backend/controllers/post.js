@@ -14,10 +14,8 @@ export const getPostInfo = async(req, res) => {
 
 export const getPosts = async (req, res) => {
     try {
-        // Sort (public posts) by descending date
-        const posts = await Post.find({public:true}).sort({createdAt: -1});
-
-        // Filter replies out
+        // Sort (public posts) by descending date, filter replies out by only getting posts without another post as their root
+        const posts = await Post.find({public:true, root:null}).sort({createdAt: -1});
         res.status(200).json(posts);
     } catch (err) {
         res.status(404).json({error: err.message});
