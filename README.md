@@ -2,7 +2,7 @@
 # TwitClone 
 *by Max Hayes*
 
-**TwitClone** is a full-stack webapp which mimics the functionality of of the social media platform [Twitter](www.twitter.com). 
+**TwitClone** is a full-stack webapp which mimics the functionality of of the social media platform [Twitter](https://www.twitter.com). 
 
 Contents:
 - [About TwitClone](#about-twitclone)
@@ -16,7 +16,7 @@ Contents:
 ## About TwitClone
 
 ### Details
-This project is built on a MERN tech stack, meaning...
+This project is built on a **MERN** tech stack, meaning...
 * Data and database entries are handled with **MongoDB**
 * Backend API requests are handled with **Express JS**
 * Frontend displaying and UI handled with **React**
@@ -37,6 +37,7 @@ When making this project, I wanted to focus on just the core features of Twitter
 Important files and directories
 * `backend/models/` includes how User and Post database entries are modeled
 * `backend/routes/` includes all possible API routes
+* `backend/controllers/` includes handlers for each API route
 * `backend/index.js` includes configurations for backend of the application and setup for file upload/storage
   * `backend/public/uploads` will contain files uploaded locally by users
 
@@ -46,8 +47,8 @@ Important files and directories
 ## Setting up locally
 1. Configure the following environment variables in `backend/.env`
    * `MONGO_URL` - A [connection string](https://www.mongodb.com/basics/mongodb-connection-string) for MongoDB database
-   * `PORT` - The port for the backend server to run on
-   * `JWT_SECRET` - A **Secret** key for JSON Web Token authentication
+   * `PORT` - The port for the backend server to run on; Keep this as `3001`
+   * `JWT_SECRET` - A **secret** key for JSON Web Token authentication
 
 2. Install required packages in *both* frontend and backend directories
 ```bash
@@ -77,7 +78,7 @@ npm start
 To see the app working with some users and posts already existing, do the following:
 
 1. Navigate to `backend/index.js`
-2. At the botton of the page you will see the following:
+2. At the botton of the page you will see
 ```javascript
     // User.insertMany(users);
     // Post.insertMany(posts);
