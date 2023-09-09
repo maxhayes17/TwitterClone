@@ -186,10 +186,10 @@ function Profile(){
                             </p>
                         </div>
                         <div className="flex flex-row justify-around mt-5">
-                            <button className="text-md font-bold p-5 focus:border-b-twitter-blue focus:border-b-4 hover:bg-raisin-black" onClick={getUserPosts} ref={feedRef}>Posts</button>
-                            <button className="text-md font-bold p-5 focus:border-b-twitter-blue focus:border-b-4 hover:bg-raisin-black" onClick={getUserReplies}>Replies</button>
-                            <button className="text-md font-bold p-5 focus:border-b-twitter-blue focus:border-b-4 hover:bg-raisin-black" onClick={getUserMedia}>Media</button>
-                            <button className="text-md font-bold p-5 focus:border-b-twitter-blue focus:border-b-4 hover:bg-raisin-black" onClick={getUserLiked}>Likes</button>
+                            <button className="text-md font-bold p-5 focus:border-b-twitter-blue focus:border-b-4 focus:outline-none hover:bg-raisin-black" onClick={getUserPosts} ref={feedRef}>Posts</button>
+                            <button className="text-md font-bold p-5 focus:border-b-twitter-blue focus:border-b-4 focus:outline-none hover:bg-raisin-black" onClick={getUserReplies}>Replies</button>
+                            <button className="text-md font-bold p-5 focus:border-b-twitter-blue focus:border-b-4 focus:outline-none hover:bg-raisin-black" onClick={getUserMedia}>Media</button>
+                            <button className="text-md font-bold p-5 focus:border-b-twitter-blue focus:border-b-4 focus:outline-none hover:bg-raisin-black" onClick={getUserLiked}>Likes</button>
                         </div>
                     </div>
                     <div className="flex flex-col">

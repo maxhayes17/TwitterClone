@@ -49,8 +49,8 @@ function Explore(){
                         : <h1 className="p-5 text-left text-xl font-bold">Explore</h1>
                     }
                     <div className="flex flex-row justify-around">
-                        <button className="text-md font-bold p-5 focus:border-b-twitter-blue focus:border-b-4 hover:bg-raisin-black" ref={feedRef}>Latest</button>
-                        <button className="text-md font-bold p-5 focus:border-b-twitter-blue focus:border-b-4 hover:bg-raisin-black">Popular</button>
+                        <button className="text-md font-bold p-5 focus:border-b-twitter-blue focus:border-b-4 focus:outline-none hover:bg-raisin-black" ref={feedRef}>Latest</button>
+                        <button className="text-md font-bold p-5 focus:border-b-twitter-blue focus:border-b-4 focus:outline-none hover:bg-raisin-black">Popular</button>
                     </div>
                 </div>
                 <div className="flex flex-col">

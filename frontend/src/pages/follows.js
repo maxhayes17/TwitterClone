@@ -79,8 +79,8 @@ function Follows({isFollowers}){
                         </div>
                     </div>
                     <div className="flex flex-row justify-around">
-                        <button className="text-md font-bold p-5 focus:border-b-twitter-blue focus:border-b-4 hover:bg-raisin-black"onClick={getUserFollowers} ref={followersRef}>Followers</button>
-                        <button className="text-md font-bold p-5 focus:border-b-twitter-blue focus:border-b-4 hover:bg-raisin-black" onClick={getUserFollowing} ref={followingRef}>Following</button>
+                        <button className="text-md font-bold p-5 focus:border-b-twitter-blue focus:border-b-4 focus:outline-none hover:bg-raisin-black"onClick={getUserFollowers} ref={followersRef}>Followers</button>
+                        <button className="text-md font-bold p-5 focus:border-b-twitter-blue focus:border-b-4 focus:outline-none hover:bg-raisin-black" onClick={getUserFollowing} ref={followingRef}>Following</button>
                     </div>
                 </div>
 

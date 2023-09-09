@@ -61,6 +61,27 @@ export default function Post({id, author, body, root, createdAt, userProfile, li
         .catch((err) => console.log(err));
     };
 
+    let replaceText = (body) => {
+        let replacedText;
+            replacedText = reactStringReplace(body, /#(\w+)/g, (match, i) => (
+            <a key={i} 
+            className="text-twitter-blue hover:underline hover:underline-offset-2 hover:opacity-100"
+            onClick={(event) => {
+                event.stopPropagation();
+                navigate(`/explore/${match}`)}}
+            >#{match}</a>));
+
+            replacedText = reactStringReplace(replacedText, /@(\w+)/g, (match, i) => (
+                <a key={i} 
+                className="text-twitter-blue hover:underline hover:underline-offset-2 hover:opacity-100"
+                onClick={(event) => {
+                    event.stopPropagation();
+                    navigate(`/profile/${match}`)}}
+                >@{match}</a>));
+
+                return replacedText;
+    }
+
 
     return(
         <div className="">
@@ -84,17 +105,8 @@ export default function Post({id, author, body, root, createdAt, userProfile, li
                             className="text-neutral-400 my-auto mr-1">@{user.username} • </a>
                             <p>{createdAt.slice(0,10)}</p>
                         </div>
-
                         <p className="text-left">
-                            {
-                            reactStringReplace(body, /#(\w+)/g, (match, i) => (
-                                <a key={i} 
-                                className="text-twitter-blue hover:underline hover:underline-offset-2 hover:opacity-100"
-                                onClick={(event) => {
-                                    event.stopPropagation();
-                                    navigate(`/explore/${match}`)}}
-                                >#{match}</a>
-                            ) )}
+                            {replaceText(body)}
                         </p>
                         
                         {picture_path && 

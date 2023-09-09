@@ -82,14 +82,14 @@ function Home(){
                 <div className="w-full sticky top-0 z-10 bg-black-rgba backdrop-blur-sm border-b border-onyx">
                     <h1 className="p-5 text-left text-xl font-bold">Home</h1>
                     <div className="flex flex-row justify-around">
-                        <button className="text-md font-bold p-5 focus:border-b-twitter-blue focus:border-b-4 hover:bg-raisin-black" onClick={getPosts} ref={feedRef}>Public</button>
+                        <button className="text-md font-bold p-5 focus:border-b-twitter-blue focus:border-b-4 focus:outline-none hover:bg-raisin-black" onClick={getPosts} ref={feedRef}>Public</button>
                         {currentUser && 
-                        <button className="text-md font-bold p-5 focus:border-b-twitter-blue focus:border-b-4 hover:bg-raisin-black" onClick={getUserFeed}>Following</button>}
+                        <button className="text-md font-bold p-5 focus:border-b-twitter-blue focus:border-b-4 focus:outline-none hover:bg-raisin-black" onClick={getUserFeed}>Following</button>}
                     </div>
                 </div>
                 <div className="flex flex-col first:border-none">
-                {feed && feed.map( ({_id, author, body, createdAt, likes, replies, picture_path}) => 
-                    <Post key={_id} id={_id} author={author} body={body} createdAt={createdAt} likes={likes} replies={replies} picture_path={picture_path}/>)
+                {feed && feed.map( ({_id, author, body, root, createdAt, likes, replies, picture_path}) => 
+                    <Post key={_id} id={_id} author={author} body={body} root={root} createdAt={createdAt} likes={likes} replies={replies} picture_path={picture_path}/>)
                 }
                 </div>
             </div>
