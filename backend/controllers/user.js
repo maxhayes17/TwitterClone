@@ -190,7 +190,7 @@ export const getUserFeed = async (req, res) => {
 
         // Will create of posts for each user followed... will have to un-nest these elements
         const posts = await Promise.all(
-            user.following.map((id) => Post.find({author: id}))
+            user.following.map((id) => Post.find({author: id, root:null}))
         )
         // Use .flat() to un-nest array elements, and sort by date
         const feed = await posts.flat().sort((a,b) => b.createdAt - a.createdAt)
