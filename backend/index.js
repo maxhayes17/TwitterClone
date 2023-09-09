@@ -17,6 +17,8 @@ import { updateUserInfo } from "./controllers/user.js";
 import { createPost } from "./controllers/post.js";
 import { verifyToken } from "./middleware/auth.js";
 
+import User from "./models/User.js";
+import Post from "./models/Post.js";
 import {users, posts} from "./data.js"; // Sample data
 
 // Configuration
