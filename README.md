@@ -37,7 +37,7 @@ When making this project, I wanted to focus on just the core features of Twitter
 Important files and directories
 * `backend/models/` includes how User and Post database entries are modeled
 * `backend/routes/` includes all possible API routes
-* `backend/controllers/` includes handlers for each API route
+  * `backend/controllers/` includes handlers for each API route
 * `backend/index.js` includes configurations for backend of the application and setup for file upload/storage
   * `backend/public/uploads` will contain files uploaded locally by users
 
