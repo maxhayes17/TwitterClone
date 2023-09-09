@@ -12,7 +12,6 @@ const postSchema = new mongoose.Schema(
             min: 1,
             max: 400
         },
-        date: Date,
         tags: [{type: String}],
         likes: [{
             type: mongoose.Schema.Types.ObjectId,
