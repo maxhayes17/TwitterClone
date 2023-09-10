@@ -133,7 +133,7 @@ export const posts = [
         tags: ['cat'],
         likes: [userIds[1], userIds[2], userIds[3]],
         replies: [postIds[5]],
-        picture_path: 'Resized_20230904_182346.jpeg',
+        picture_path: 'IMG_9189.jpg',
     },
     {
         _id: postIds[5],
