@@ -11,6 +11,7 @@ Contents:
   - [Navigating](#navigating)
 - [Setting up locally](#setting-up-locally)
   - [Extra Note - Adding sample data](#extra-note---adding-sample-data)
+- [Screenshots](#screenshots)
 
 
 ## About TwitClone
@@ -85,3 +86,10 @@ To see the app working with some users and posts already existing, do the follow
 ```
   Un-comment these lines upon initially starting up the app.
   * This process only has to be done **once**, so make sure to **comment these lines out again** on subsequent uses
+
+## Screenshots
+
+![Home Page](screenshots/tc-home.png)
+![Profile page](screenshots/tc-profile.png)
+![Viewing a post](screenshots/tc-post.png)
+![Explore page and search results](screenshots/tc-explore-search.png)
