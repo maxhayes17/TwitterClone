@@ -177,6 +177,7 @@ function Profile(){
                             {user.location && <p>{user.location}</p>}
                             <p>Joined {user.createdAt.slice(0,10)}</p>
                         </div>
+                        {user.website && <a className="text-twitter-blue hover:underline hover:underline-offset-2 hover:cursor-pointer hover:opacity-100" href={user.website}>{user.website}</a>}
                         <div className="flex flex-row space-x-4 text-neutral-400">
                             <p className="hover:underline hover:underline-offset-2 hover:decoration-white hover:cursor-pointer">
                                 <a onClick={() => navigate(`/profile/${user._id}/following`)} className="font-extrabold text-white">{user.following.length}</a> Following
