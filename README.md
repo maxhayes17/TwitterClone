@@ -91,5 +91,5 @@ To see the app working with some users and posts already existing, do the follow
 
 ![Home Page](screenshots/tc-home.png)
 ![Profile page](screenshots/tc-profile.png)
-![Viewing a post](screenshots/tc-post.png)
 ![Explore page and search results](screenshots/tc-explore-search.png)
+![Viewing a post](screenshots/tc-post.png)
